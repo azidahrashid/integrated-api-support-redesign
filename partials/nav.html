@@ -1,3 +1,11 @@
+
+<style>
+
+
+
+</style>
+
+
 <nav class="navbar">
  <!-- Header -->
     <header class="header-bg relative z-10">
@@ -21,6 +29,57 @@
                 </div>
                 <span class="text-white text-xl font-bold">XT-FREEM</span>
             </div>
+
+
+                        <button type="button" class="inline-block relative leading-none lg:hidden" id="navbar-burger-menu">
+                            <span class="h-[3px] w-[30px] my-[5px] block bg-black dark:bg-white"></span>
+                            <span class="h-[3px] w-[30px] my-[5px] block bg-black dark:bg-white"></span>
+                            <span class="h-[3px] w-[30px] my-[5px] block bg-black dark:bg-white"></span>
+                        </button>
+                        <div class="hidden lg:flex items-center grow basis-full basis-auto"><!-- For Big Devices -->
+                            <ul class="flex ltr:ml-[30px] rtl:mr-[30px] ltr:xl:ml-[55px] rtl:xl:mr-[55px] flex-row gap-[30px] xl:gap-[50px]">
+                               
+                                <li>
+                                    <a href="./pages/faq.html" class="font-medium text-primary-600 dark:text-primary-600 transition-all hover:text-primary-600 text-[15px] xl:text-md">
+                                        FAQ's
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/inquiry.html" class="font-medium text-gray-500 dark:text-gray-400 transition-all hover:text-primary-600 text-[15px] xl:text-md">
+                                        Inquiry
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./pages/service-desk.html" class="font-medium text-gray-500 dark:text-gray-400 transition-all hover:text-primary-600 text-[15px] xl:text-md">
+                                        Service Desk
+                                    </a>
+                                </li>
+                            </ul>
+                         
+                        </div>
+    <div class="bg-white dark:bg-black mt-[20px] p-[20px] md:p-[30px] w-full hidden lg:!hidden" id="navbar-collapse"><!-- For Responsive -->
+        <ul>
+            <li class="my-[14px] md:my-[16px] first:mt-0 last:mb-0">
+                <a href="/pages/faq.html" class="font-medium text-gray-500 dark:text-gray-400 transition-all hover:text-primary-600">
+                    FAQ
+                </a>
+            </li>
+            <li class="my-[14px] md:my-[16px] first:mt-0 last:mb-0">
+                <a href="/pages/inquiry.html" class="font-medium text-gray-500 dark:text-gray-400 transition-all hover:text-primary-600">
+                    Inquiry
+                </a>
+            </li>
+            <li class="my-[14px] md:my-[16px] first:mt-0 last:mb-0">
+                <a href="/pages/service-desk.html" class="font-medium text-gray-500 dark:text-gray-400 transition-all hover:text-primary-600">
+                    Service Desk
+                </a>
+            </li>
+        
+            </li>
+        </ul>
+    </div>
+
+
             <div class="flex items-center gap-4">
                 <button class="text-white hover:text-cyan-400 transition-colors">Support</button>
                 <button  id="logoutBtn" class="text-white hover:text-cyan-400 transition-colors btn-logout">Logout</button>

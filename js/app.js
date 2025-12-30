@@ -11,16 +11,7 @@ async function loadPartial(id, path) {
   }
 }
 
-// ================================
-// Load Tailwind CDN dynamically
-// ================================
-function loadTailwind() {
-  if (document.getElementById("tailwind-cdn")) return;
-  const script = document.createElement("script");
-  script.id = "tailwind-cdn";
-  script.src = "https://cdn.tailwindcss.com";
-  document.head.appendChild(script);
-}
+
 
 // ================================
 // Load login-specific JS (particles, toggle password, loader)
@@ -39,7 +30,7 @@ function loadLoginScripts() {
 // ================================
 function showLogin() {
   loadTailwind();
-  loadPartial("front-login", "pages/login.html").then(() => {
+  loadPartial("front-login", "src/sign-in.html").then(() => {
     loadLoginScripts();
   });
 

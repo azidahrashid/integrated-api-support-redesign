@@ -3184,6 +3184,9 @@
   .bg-no-repeat {
     background-repeat: no-repeat;
   }
+  .object-contain {
+    object-fit: contain;
+  }
   .p-3 {
     padding: calc(var(--spacing) * 3);
   }
