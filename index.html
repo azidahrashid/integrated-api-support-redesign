@@ -26,7 +26,7 @@
 <body>
 
   <!-- LOGIN VIEW (FIRST LOAD) -->
-  <main id="login-view" class="container">
+  <main id="login-view" class="container-login">
     <div id="front-login"></div>
   </main>
 
@@ -47,7 +47,7 @@
 
 
 
-  <!-- Tailwind for login -->
+
 <script>
   function loadTailwind() {
     if (document.getElementById("tailwind-cdn")) return;
@@ -58,13 +58,13 @@
   }
 
   function loadLoginScripts() {
-    // Particle animation
+ 
     const script = document.createElement("script");
     script.src = "js/login-scripts.js"; 
     document.body.appendChild(script);
   }
 
-  // Show login view
+
   loadTailwind();
   loadLoginScripts();
 </script>
