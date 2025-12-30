@@ -11,8 +11,6 @@ async function loadPartial(id, path) {
   }
 }
 
-
-
 // ================================
 // Load login-specific JS (particles, toggle password, loader)
 // ================================
@@ -21,7 +19,7 @@ function loadLoginScripts() {
 
   const script = document.createElement("script");
   script.id = "login-scripts";
-  script.src = "js/login-scripts.js"; // see below
+  script.src = "js/login-scripts.js";
   document.body.appendChild(script);
 }
 
@@ -29,8 +27,7 @@ function loadLoginScripts() {
 // Show login view
 // ================================
 function showLogin() {
-
-  loadPartial("front-login", "src/sign-in.html").then(() => {
+  loadPartial("front-login", "pages/login.html").then(() => {
     loadLoginScripts();
   });
 
@@ -50,7 +47,7 @@ function showApp() {
   // Load shared partials
   loadPartial("nav", "partials/nav.html");
   loadPartial("footer", "partials/footer.html");
-  loadPartial("faq", "pages/faq.html"); // main content
+  loadPartial("faq", "pages/faq.html");
 }
 
 // ================================
@@ -63,16 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
     showLogin();
   }
 
-  // Handle login button click
+  // Handle login
   document.addEventListener("click", (e) => {
     if (e.target.id === "loginBtn") {
-      // You can add actual login validation here
       localStorage.setItem("isLoggedIn", "true");
       showApp();
     }
   });
 
-  // Optional: logout button
+  // Handle logout
   document.addEventListener("click", (e) => {
     if (e.target.id === "logoutBtn") {
       localStorage.removeItem("isLoggedIn");
