@@ -50,26 +50,7 @@
 
 
 
-<script>
-  function loadTailwind() {
-    if (document.getElementById("tailwind-cdn")) return;
-    const script = document.createElement("script");
-    script.id = "tailwind-cdn";
-    script.src = "https://cdn.tailwindcss.com";
-    document.head.appendChild(script);
-  }
 
-  function loadLoginScripts() {
- 
-    const script = document.createElement("script");
-    script.src = "js/login-scripts.js"; 
-    document.body.appendChild(script);
-  }
-
-
-  loadTailwind();
-  loadLoginScripts();
-</script>
 
 
 </body>
