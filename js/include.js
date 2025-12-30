@@ -8,6 +8,7 @@ async function loadPartial(id, path) {
 }
 
 // index.html
+loadPartial("background-particles", "partials/background.html");
 loadPartial("front-login", "pages/login.html");
 loadPartial("nav", "partials/nav.html");
 loadPartial("footer", "partials/footer.html");
