@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS OS - Secure Authentication Portal</title>
+    <title>XT Service Desk</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes spin-slow {
@@ -60,9 +60,9 @@
 
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent mb-2">
-                    NEXUS OS
+                    X.TREEM
                 </h1>
-                <p class="text-slate-400 text-sm font-mono">SECURE AUTHENTICATION PORTAL</p>
+                <p class="text-slate-400 text-sm font-mono">CUSTOMER SERVICE DESK</p>
             </div>
 
             <div class="bg-slate-900/50 border border-slate-700/50 backdrop-blur-sm rounded-lg overflow-hidden">
@@ -70,13 +70,13 @@
                 <div class="h-[2px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
 
                 <div class="p-6 pb-4">
-                    <h2 class="text-slate-100 text-xl font-semibold mb-2">Access Control</h2>
+                    <h2 class="text-slate-100 text-xl font-semibold mb-2">Login</h2>
                     <p class="text-slate-400 text-sm mb-6">Enter your credentials to access the system</p>
 
                     <form id="loginForm" class="space-y-4">
                         <!-- Email field -->
                         <div class="space-y-2">
-                            <label for="email" class="text-slate-300 text-sm block">Email Address</label>
+                            <label for="email" class="text-slate-300 text-sm block">Email</label>
                             <div class="relative group">
                                 <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
@@ -85,7 +85,7 @@
                                 <input
                                     id="email"
                                     type="email"
-                                    placeholder="user@nexus.os"
+                                    placeholder="user@gmail.com"
                                     class="w-full pl-10 pr-3 py-2 bg-slate-800/50 border border-slate-700 rounded-md focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:outline-none text-slate-100 placeholder:text-slate-500"
                                     required
                                 />
@@ -149,7 +149,7 @@
                             id="loginBtn"
                             class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium py-2.5 rounded-md relative overflow-hidden group transition-all"
                         >
-                            <span id="btnText" class="relative z-10">Access System</span>
+                            <span id="btnText" class="relative z-10">Login</span>
                             <div id="btnLoader" class="hidden items-center justify-center">
                                 <div class="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
                                 <span>Authenticating...</span>
@@ -166,7 +166,7 @@
                     </form>
 
                     <!-- Alternative login -->
-                    <div class="mt-6">
+                    <!-- <div class="mt-6">
                         <div class="relative">
                             <div class="absolute inset-0 flex items-center">
                                 <div class="w-full border-t border-slate-700/50"></div>
@@ -205,10 +205,10 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Bottom status -->
-                <div class="px-6 py-4 bg-slate-800/30 border-t border-slate-700/50">
+                <!-- <div class="px-6 py-4 bg-slate-800/30 border-t border-slate-700/50">
                     <div class="flex items-center justify-between text-xs">
                         <span class="text-slate-500 font-mono">STATUS: READY</span>
                         <div class="flex items-center space-x-2">
@@ -217,7 +217,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Footer -->
             <div class="mt-6 text-center">
@@ -225,7 +225,10 @@
                     Don't have an account?
                     <button class="text-cyan-500 hover:text-cyan-400 transition-colors font-medium">Request Access</button>
                 </p>
-                <p class="text-xs text-slate-600 mt-4 font-mono">NEXUS OS v3.2.1 | © 2025 All Rights Reserved</p>
+                <p class="text-xs text-slate-600 mt-4 font-mono">
+                    X.Treem CO.LTD | © 2023 All Rights Reserved. <br>
+                    모든 저작권을 소유하고 있습니다.
+                </p>
             </div>
         </div>
     </div>
