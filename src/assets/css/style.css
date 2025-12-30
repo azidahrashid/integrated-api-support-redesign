@@ -4380,6 +4380,10 @@
     outline-style: var(--tw-outline-style) !important;
     outline-width: 0px !important;
   }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
+  }
   .outline-0 {
     outline-style: var(--tw-outline-style);
     outline-width: 0px;
