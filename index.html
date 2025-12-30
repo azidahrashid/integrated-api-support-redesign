@@ -25,19 +25,25 @@
 
 <body>
 
-  <!-- Shared Navigation -->
-  <div id="nav"></div>
-
-  <!-- Page Content -->
-  <main class="container">
-        <div id="front-login"></div>
+  <!-- LOGIN VIEW (FIRST LOAD) -->
+  <main id="login-view" class="container">
+    <div id="front-login"></div>
   </main>
 
-  <!-- Shared Footer -->
-  <div id="footer"></div>
+  <!-- APP VIEW (AFTER LOGIN) -->
+  <div id="app-view" style="display:none">
+    <div id="nav"></div>
 
-  <!-- Include partials -->
+    <main class="container">
+      <div id="faq"></div>
+    </main>
+
+    <div id="footer"></div>
+  </div>
+
+  <!-- Scripts -->
   <script src="js/include.js"></script>
+  <script src="js/app.js"></script>
 
 </body>
 </html>
