@@ -26,7 +26,6 @@ loadPartial("front-login", "pages/faq.html");
 loadPartial("nav", "partials/nav.html");
 loadPartial("footer", "partials/footer.html");
 }
-
 // Handle login click
 document.addEventListener("click", e => {
   if (e.target.id === "loginBtn") {
