@@ -42,8 +42,33 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/include.js"></script>
+
   <script src="js/app.js"></script>
+
+
+
+  <!-- Tailwind for login -->
+<script>
+  function loadTailwind() {
+    if (document.getElementById("tailwind-cdn")) return;
+    const script = document.createElement("script");
+    script.id = "tailwind-cdn";
+    script.src = "https://cdn.tailwindcss.com";
+    document.head.appendChild(script);
+  }
+
+  function loadLoginScripts() {
+    // Particle animation
+    const script = document.createElement("script");
+    script.src = "js/login-scripts.js"; // see Step C
+    document.body.appendChild(script);
+  }
+
+  // Show login view
+  loadTailwind();
+  loadLoginScripts();
+</script>
+
 
 </body>
 </html>
