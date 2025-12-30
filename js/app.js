@@ -39,7 +39,7 @@ function loadLoginScripts() {
 // ================================
 function showLogin() {
   loadTailwind();
-  loadPartial("front-login", "pages/login.html").then(() => {
+  loadPartial("front-login", "src/sign-in.html").then(() => {
     loadLoginScripts();
   });
 
