@@ -62,15 +62,11 @@
             border-bottom: 2px solid rgba(34, 211, 238, 0.3);
         }
 
-        .search-container {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(34, 211, 238, 0.2);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 0 20px rgba(34, 211, 238, 0.1);
-        }
+        
 
         .category-btn {
             background: rgba(255, 255, 255, 0.8);
+            color: white;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(34, 211, 238, 0.3);
             transition: all 0.3s ease;
@@ -78,6 +74,7 @@
 
         .category-btn:hover {
             background: rgba(34, 211, 238, 0.1);
+            color: rgb(19, 126, 226);
             border-color: rgba(34, 211, 238, 0.6);
             transform: translateY(-2px);
         }
@@ -93,28 +90,8 @@
             transition: transform 0.3s ease;
         }
 
-        .badge {
-            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
 
-        .badge.green {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .badge.purple {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-        }
-
-        .badge.orange {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-        }
-
-        .help-icon {
+        .doc-icon {
             background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
             color: white;
             width: 60px;
@@ -146,9 +123,17 @@
         .custom-input {
             flex: 1;
             height: 40px;
+            border: 1px solid #b9caeb;
             border-radius: 8px;
             font-size: 14px;
             padding: 20px;
+            background-color: #f4f8ff69;
+        }
+
+        .custom-input:hover {
+            border: 1px solid #5f81c0;
+            border-radius: 8px;
+            background-color: #f4f8ffb9;
         }
 
         .custom-textarea {
@@ -158,6 +143,14 @@
             font-size: 14px;
             padding: 12px 16px 12px 20px; /* left padding 20px */
             resize: vertical;      /* allow resize up/down only */
+            border: 1px solid #b9caeb;
+            background-color: #f4f8ff69;
+        }
+
+        .custom-textarea:hover {
+            border: 1px solid #5f81c0;
+            border-radius: 8px;
+            background-color: #f4f8ffb9;
         }
 
         .date-input{
@@ -166,6 +159,8 @@
             border-radius: 8px;
             font-size: 14px;
             padding: 20px;
+            border: 1px solid #b9caeb;
+            background-color: #f4f8ff69;
         }
 
         .date-input::-webkit-datetime-edit {
@@ -177,6 +172,153 @@
         }
 
 
+        /* File Upload Area */
+        .file-upload-area {
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+            border: 2px dashed #b9caeb;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .file-upload-area:hover {
+            background-color: #cee6f7f6;
+            border: 2px dashed #5f81c0;
+        }
+
+        /* SVG Icon */
+        .upload-icon {
+            width: 100px;
+            height: 68px;
+            margin: 0 auto 8px;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            color: #888;
+        }
+
+        /* Text */
+        .upload-text {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .upload-subtext {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* File List */
+        .file-list {
+            margin-top: 12px;
+        }
+
+        /* Submit Button */
+        .submit-area {
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+            background-color: #1d4ed8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
+
+        .btn-submit{
+            display: inline-flex;
+            padding: 10px 20px; 
+            background-color:hsl(204, 65%, 49%);
+            color: rgb(248, 248, 248); 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer;
+            text-align: center; 
+            margin-top: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .upload-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .upload-box {
+            border: 2px dashed #d1d5db;
+            border-radius: 12px;
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #ffffff;
+            transition: background-color 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .upload-box:hover {
+            background-color: #f3f4f6;
+            border-color: #9ca3af;
+        }
+
+        .upload-icon {
+            margin-bottom: 16px;
+        }
+
+        .upload-box h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+            color: #111827;
+        }
+
+        .upload-box p {
+            margin: 0 0 16px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .upload-box button {
+            background-color: #374151;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .upload-box button:hover {
+            background-color: #1f2937;
+        }
+
+        .drag-text {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .file-list {
+            margin-top: 16px;
+        }
+        
+        .file-list div {
+            background-color: #f3f4f6;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
 
 
     </style>
@@ -196,11 +338,7 @@
             
             <!-- Logo -->
             <div class="flex items-center gap-3">
-                <img
-                    src="/css/images/xtreme_logo.png"
-                    alt="XTREEM Logo">
-                    <!-- class="w-8 h-8 object-contain block"> -->
-                <!-- <span class="text-white text-xl font-bold">XT-FREEM</span> -->
+                <img src="../css/images/xtreme_logo.png" alt="XTREEM Logo">
             </div>
 
 
@@ -214,7 +352,6 @@
                 </svg>
             </button>
             </div>
-
         </div>
     </header>
 
@@ -224,7 +361,7 @@
         <!-- Title Section -->
         <div class="text-center mb-12">
             <div class="flex justify-center mb-6">
-                <div class="help-icon">
+                <div class="doc-icon">
                     <span>📋</span>
                 </div>
             </div>
@@ -308,28 +445,30 @@
                             rows="4"
                         ></textarea>
                     </div>
-            </div>
 
-            <!-- File Upload -->
-            <div class="px-8 pb-8">
-                <div class="file-upload-area rounded-lg p-6 text-center cursor-pointer" id="fileUploadArea">
-                    <svg class="w-12 h-12 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
-                    </svg>
-                    <p class="text-sm text-gray-600 mb-1">Attach files +</p>
-                    <p class="text-xs text-gray-500">Drag & drop or click to browse</p>
-                    <input type="file" id="fileInput" class="hidden" multiple>
+                    <!-- File Upload -->
+                    <div class="form-row">
+                        <label class="form-label-left">Upload File (optional)</label>
+                        <div class="file-upload-area" id="fileUploadArea" onclick="document.getElementById('fileInput').click()">
+                            <div class="upload-icon">
+                                <img src="../css/images/upload.png" alt="Upload" class="upload-img">
+                            </div>
+                            <p class="upload-text">+ Attach files</p>
+                            <p class="upload-subtext">Drag & drop or click to browse</p>
+                            <input type="file" id="fileInput" multiple hidden>
+                        </div>
+                    </div>
+
                 </div>
-                <div id="fileList" class="mt-3 space-y-2"></div>
-            </div>
+
+            <!-- File List -->
+            <div id="fileList" style="margin-top: 12px;"></div>
 
             <!-- Submit Button -->
-            <div class="px-8 pb-8 text-center">
-                <!-- <button type="submit" class="btn-primary">Send</button> -->
-                <!-- <button type="submit" class="btn-primary">Cancel</button> -->
-                <!-- <button class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all hover:scale-105 font-semibold">Send</button> -->
-                <!-- <button class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all hover:scale-105 font-semibold">Cancel</button> -->
+            <div class="center">
+                <button class="btn-submit" type="submit">Send</button>
             </div>
+
         </form>
 
         
@@ -338,8 +477,8 @@
     <!-- Footer -->
     <footer class="relative z-10 max-w-7xl mx-auto px-6 py-8 mt-12 border-t border-gray-200">
         <div class="text-center text-gray-500 text-sm">
-            <p>© 2025 Copyright XT-FREEM. All rights reserved.</p>
-            <p class="mt-2">Managed with XT-FREEM service</p>
+            <p>© 2025 Copyright XTREEM. All rights reserved.</p>
+            <p class="mt-2">Managed with XTREEM service</p>
         </div>
     </footer>
 
