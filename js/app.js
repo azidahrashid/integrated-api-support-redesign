@@ -29,7 +29,7 @@ function loadLoginScripts() {
 // Show login view
 // ================================
 function showLogin() {
-  loadTailwind();
+
   loadPartial("front-login", "src/sign-in.html").then(() => {
     loadLoginScripts();
   });
