@@ -11,16 +11,7 @@ async function loadPartial(id, path) {
   }
 }
 
-// ================================
-// Load Tailwind CDN dynamically
-// ================================
-function loadTailwind() {
-  if (document.getElementById("tailwind-cdn")) return;
-  const script = document.createElement("script");
-  script.id = "tailwind-cdn";
-  script.src = "https://cdn.tailwindcss.com";
-  document.head.appendChild(script);
-}
+
 
 // ================================
 // Load login-specific JS (particles, toggle password, loader)
