@@ -14,6 +14,31 @@ async function loadPartial(id, path) {
 // ================================
 // Load login-specific JS (particles, toggle password, loader)
 // ================================
+
+function showLogin() {
+  const appView = document.getElementById("app-view");
+
+  // Hide main app
+  if (appView) appView.style.display = "none";
+
+  // Remove old login if it exists
+  const oldLogin = document.getElementById("login-view");
+  if (oldLogin) oldLogin.remove();
+
+  // Create a container for login
+  const loginContainer = document.createElement("div");
+  loginContainer.id = "login-view";
+  document.body.prepend(loginContainer);
+
+  // Load login HTML
+  loadPartial("login-view", "pages/login.html").then(() => {
+    // After HTML loads, load CSS & JS for login
+    loadLoginAssets();
+  });
+}
+
+
+
 function loadLoginAssets() {
   // ===== Load CSS =====
   if (!document.getElementById("login-css")) {
@@ -50,16 +75,19 @@ function showApp() {
   const loginView = document.getElementById("login-view");
   const appView = document.getElementById("app-view");
 
-  // Remove login if it exists
-  if (loginView) loginView.remove();
+  // Hide login
+  if (loginView) loginView.style.display = "none";
 
-  // Show app
+  // Show main app
   if (appView) appView.style.display = "block";
 
   // Load shared partials
   loadPartial("nav", "partials/nav.html");
   loadPartial("footer", "partials/footer.html");
   loadPartial("faq", "pages/faq.html");
+
+  // Remove login CSS/JS to avoid conflicts
+  removeLoginAssets();
 }
 
 
@@ -73,19 +101,19 @@ document.addEventListener("DOMContentLoaded", () => {
     showLogin();
   }
 
-  // Handle login
   document.addEventListener("click", (e) => {
+    // Login
     if (e.target.id === "loginBtn") {
       localStorage.setItem("isLoggedIn", "true");
       showApp();
     }
-  });
 
-  // Handle logout
-  document.addEventListener("click", (e) => {
+    // Logout
     if (e.target.id === "logoutBtn") {
       localStorage.removeItem("isLoggedIn");
       showLogin();
     }
   });
-});
+}); // ✅ Make sure this closing exists
+
+
