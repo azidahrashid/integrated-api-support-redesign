@@ -14,41 +14,54 @@ async function loadPartial(id, path) {
 // ================================
 // Load login-specific JS (particles, toggle password, loader)
 // ================================
-function loadLoginScripts() {
-  if (document.getElementById("login-scripts")) return;
+function loadLoginAssets() {
+  // ===== Load CSS =====
+  if (!document.getElementById("login-css")) {
+    const link = document.createElement("link");
+    link.id = "login-css";
+    link.rel = "stylesheet";
+    link.href = "css/login.css?v=006";
+    document.head.appendChild(link);
+  }
 
-  const script = document.createElement("script");
-  script.id = "login-scripts";
-  script.src = "js/login-scripts.js";
-  document.body.appendChild(script);
+  // ===== Load JS =====
+  if (!document.getElementById("login-scripts")) {
+    const script = document.createElement("script");
+    script.id = "login-scripts";
+    script.src = "js/login-scripts.js";
+    document.body.appendChild(script);
+  }
 }
 
-// ================================
-// Show login view
-// ================================
-function showLogin() {
-  loadPartial("front-login", "pages/login.html").then(() => {
-    loadLoginScripts();
-  });
+// ===== Remove login CSS & JS after login =====
+function removeLoginAssets() {
+  const loginCss = document.getElementById("login-css");
+  if (loginCss) loginCss.remove();
 
-  // Hide main app, show login
-  document.getElementById("app-view").style.display = "none";
-  document.getElementById("login-view").style.display = "flex";
+  const loginScript = document.getElementById("login-scripts");
+  if (loginScript) loginScript.remove();
 }
+
 
 // ================================
 // Show main app view (nav + content + footer)
 // ================================
 function showApp() {
-  // Hide login
-  document.getElementById("login-view").style.display = "none";
-  document.getElementById("app-view").style.display = "block";
+  const loginView = document.getElementById("login-view");
+  const appView = document.getElementById("app-view");
+
+  // Remove login if it exists
+  if (loginView) loginView.remove();
+
+  // Show app
+  if (appView) appView.style.display = "block";
 
   // Load shared partials
   loadPartial("nav", "partials/nav.html");
   loadPartial("footer", "partials/footer.html");
   loadPartial("faq", "pages/faq.html");
 }
+
 
 // ================================
 // Initialize
