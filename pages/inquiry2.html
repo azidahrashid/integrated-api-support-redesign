@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XTREEM - Create Inquiry Ticket</title>
+    <title>XTREEM - Inquiry Details</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -266,7 +266,7 @@
             border-radius: 8px;
             font-size: 14px;
             padding: 12px;
-            background-color: #f4f8ff9d;
+            background-color: #f4f8ff69;
         }
 
         .custom-input:hover {
@@ -483,7 +483,7 @@
         }
 
 
-        .send-btn, .open-modal-btn {
+        .send-btn {
             padding: 10px 20px;
             background-color: hsl(204, 65%, 49%);
             color: white;
@@ -517,14 +517,13 @@
             background: rgba(255, 255, 255, 0.2);   /* translucent */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-
             border-radius: 12px;
 
             /* Borders */
             border: 1px solid rgba(4, 123, 179, 0.9);
             border-left: 4px solid rgba(4, 123, 179, 0.9); /* accent */
 
-            padding: 16px 20px;
+            padding: 12px 12px;
             margin-bottom: 24px;
 
             box-shadow:
@@ -537,7 +536,8 @@
             font-weight: 600;
             color: #1e3a8a;
             margin-bottom: 8px;
-            font-size: 16px;
+            font-size: 12px;
+            justify-content: center;
         }
 
         .info-desc {
@@ -585,6 +585,108 @@
             margin-top: 8px;
         }
 
+/* Card container */
+.table-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin: 40px auto;
+    max-width: 1100px;
+}
+
+/* Header */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.table-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.table-subtitle {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* Table wrapper for responsiveness */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+/* Table head */
+thead th {
+    background: #f8fafc;
+    color: #334155;
+    text-align: left;
+    padding: 14px 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Table body */
+tbody td {
+    padding: 14px 16px;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Row hover */
+tbody tr:hover {
+    background-color: #f9fbff;
+}
+
+/* Status badges */
+.status {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status.active {
+    background-color: #e6f9f0;
+    color: #047857;
+}
+
+.status.warning {
+    background-color: #fff7ed;
+    color: #b45309;
+}
+
+.status.inactive {
+    background-color: #fef2f2;
+    color: #b91c1c;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+    .table-card {
+        padding: 16px;
+    }
+
+    thead th,
+    tbody td {
+        padding: 12px;
+    }
+}
+
+
+
     </style>
 </head>
 
@@ -631,105 +733,66 @@
                 </div>
             </div>
             <div>
-                <h1 class="page-title">Create Inquiry Tickets</h1>
-                <p class="page-subtitle">Start creating your tickets now.</p>
+                <h1 class="page-title">XT 24시간 서비스데스크</h1>
+                <p class="page-subtitle">Please check the inquiry details.</p>
             </div>
 
             <!-- Create an inquiry ticket section -->
                 <!-- Info box -->
                 <div class="info-box">
-                    <h3 class="info-title">표시는 필수항목 입니다.</h3>
-                    <ul class="info-list">
-                        <li>내용의 첫번째 줄은 제목을 입력합니다.</li>
-                        <li>에이전트명은 로그인된 계정으로 임시 입력되오나 문의하고자 하는 내용이 하부 에이전트의 내용일 경우 수정해 주시기 바랍니다.</li>
-                        <li>베팅 내역 확인 시 베팅번호가 반드시 필요하며, 베팅번호를 모르는 경우 반드시 인게임 내 히스토리에서 내역 사진을 첨부 바랍니다.</li>
-                        <li>양방 문의의 경우 유저 ‘닉네임’ 과 ‘아이디’ 그리고 ‘발생 시기’ 모두 작성 바랍니다.</li>
-                        <li>답변을 등록할 때 키보드의 (알트+엔터) 를 활용하시면 ‘등록하기 단축 버튼’으로 활용하실 수 있습니다.</li>
-                    </ul>
+                    <h3 class="info-title">Note: We respond 24/7 to inquiries regarding White IP, results, both sides, and operational urgency. 
+                            Technical inquiries are most readily answered between 10:00 AM and 8:00 PM.</h3>
                 </div>
 
-            <!-- Category Filters -->
 
-            <div class="section-title">
-                <h3>1. Please choose inquiry types:</h3>
+            <!-- Table -->
+            <div class="table-card">
+                <div class="table-header">
+                 <h3>Inquiry List</h3>
+                <span class="table-subtitle">Last 30 Days</span>
+                </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>Date & Time Created</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#A1023</td>
+                            <td>2025-12-02 12:25:14</td>
+                            <td>John Tan</td>
+                            <td><span class="status active">Technical</span></td>
+                            <td>Change balance in seamless mode</td>
+                            <td><span class="status warning">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>#A1023</td>
+                            <td>2025-04-12 09:43:54</td>
+                            <td>Sarah Lim</td>
+                            <td><span class="status warning">Operational</span></td>
+                            <td>Change balance in seamless mode</td>
+                            <td><span class="status warning">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>#A1023</td>
+                            <td>2025-08-12 15:07:59</td>
+                            <td>Daniel Wong</td>
+                            <td><span class="status warning">Operational</span></td>
+                            <td>Change balance in seamless mode</td>
+                            <td><span class="status active">Completed</span></td>
+</tr>
+</tbody>
+</table>
             </div>
-            <div class="category-container" id="categoryContainer"></div>
-
-            <!-- Form -->
-            <div class="section-title">
-                <h3>2. Fill in this form:</h3>
-            </div>
-
-            <form>
-                <!-- Content area -->
-                <!-- Agent ID -->
-                <div class="form-row">
-                    <label class="form-label-left">Agent ID
-                        <span class="required">*</span>
-                    </label>
-                    <input type="text" id="agentId" class="custom-input" placeholder="Enter your agent ID" required>
-                </div>
-
-                <!-- User ID -->
-                <div class="form-row">
-                    <label class="form-label-left">User ID (optional)</label>
-                    <input type="text" id="userId" class="custom-input" placeholder="Enter your user ID" >
-                </div>
-
-                <!-- Betting Number -->
-                <div class="form-row">
-                    <label class="form-label-left">Betting Number
-                        <span class="required">*</span>
-                    </label>
-                    <input type="text" id="bettingNumber" class="custom-input" placeholder="Enter your betting number" required>
-                </div>
-
-                <!-- Time of Occurrence -->
-                <!-- <div class="form-row">
-                    <label class="form-label-left">Time of Occurrence</label>
-                        <input type="date" id="timeOfOccur" class="date-input" placeholder="Enter your time of occurrence (required when inquiring about results)">
-                    </div> -->
-
-                <!-- Time of Occurrence -->
-                <div class="form-row">
-                    <label class="form-label-left">Time of Occurrence </label>
-                    <input type="text" id="timeOfOccur" class="custom-input" placeholder="Enter your time of occurrence (required when inquiring about results)">
-                </div>
-
-
-                <!-- Detail in Text Area -->
-                <div class="form-row">
-                    <label class="form-label-left">Details
-                        <span class="required">*</span>
-                    </label>
-                    <textarea class="custom-textarea"
-                        placeholder="Please describe in detail, including the title at the top of the line of contents. This also create a complaint/not entering a title."
-                    ></textarea>
-                </div>
-
-                <!-- File Upload -->
-                <div class="form-row">
-                    <label class="form-label-left">Upload File (optional)</label>
-                    <div class="file-upload-area" id="fileUploadArea" onclick="document.getElementById('fileInput').click()">
-                        <img src="../css/images/upload.png" alt="Upload" class="upload-img">
-                        <p class="upload-text">+ Attach files</p>
-                        <p class="upload-subtext">Drag & drop or click to browse</p>
-                        <input type="file" id="fileInput" multiple hidden>
-                    </div>
-                </div>
-
-                <!-- File List -->
-                <div id="fileList" style="margin-top: 12px;"></div>
-
-                <!-- Submit Button -->
-                <div class="button-wrapper">
-                    <button type="submit" class="send-btn">Send</button>
-                </div>
-        </form>
-    </div>
     </main>
-
-
 
     <!-- Footer -->
     <footer class="site-footer">
@@ -765,47 +828,10 @@
             }
         }
 
-        //Inquiry Type 
-        const categories = [
-            "Technical Inquiry",
-            "Inquiry for Results",
-            "Both Sides Inquiry",
-            "Operational",
-            "Account Inquiry",
-            "Promotion",
-            "계좌 문의",
-            "운영 관련",
-            "기능 개선",
-            "결과 처리 요청",
-            "비스포크",
-            "프로모션",
-            "비스포크 토너먼트 신청",
-            "후원금 신청",
-            "기타"
-        ];
-
-        const container = document.getElementById("categoryContainer");
-
-        categories.forEach((name, index) => {
-        const btn = document.createElement("button");
-        btn.className = "category-btn";
-        btn.textContent = name;
-
-        if (index === 0) btn.classList.add("active");
-
-        btn.addEventListener("click", () => {
-            document
-                .querySelectorAll(".category-btn")
-                .forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-        });
-
-        container.appendChild(btn);
-    });
+        
 
         // Initialize particles
         createParticles();
-
     </script>
 </body>
 </html>
