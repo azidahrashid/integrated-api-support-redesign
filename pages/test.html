@@ -7,68 +7,115 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
-        * {
-            font-family: 'Inter', sans-serif;
-            box-sizing: border-box;
-        }
+    body {
+  font-family: Arial, sans-serif;
+}
 
-        *,
-            *::before,
-            *::after {
-                box-sizing: border-box;
-            }
+/* Button */
+.open-modal-btn {
+  padding: 10px 16px;
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-        body {
-            background: linear-gradient(135deg, #f8f9fb 0%, #e8edf3 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 998;
+}
 
-        .particle {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0.4;
-            animation: float 20s infinite;
-        }
+/* Modal Container */
+.right-modal {
+  position: fixed;
+  top: 0;
+  right: -520px;
+  width: 1000px;
+  max-width: 100%;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  transition: 0.4s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+}
 
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(30px, -30px) scale(1.1);
-            }
-            66% {
-                transform: translate(-20px, 20px) scale(0.9);
-            }
-        }
+/* Active State */
+.right-modal.active {
+  right: 0;
+}
 
-        .glow-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(60px);
-            pointer-events: none;
-            z-index: 0;
-            animation: pulse 8s ease-in-out infinite;
-        }
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
 
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(1.2);
-            }
-        }
+/* Header */
+.modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
 
-        /* Header full width */
+/* Body */
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-body label {
+  display: block;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.modal-body input,
+.modal-body textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.hint-box {
+  padding: 10px;
+  border: 1px solid #dbeafe;
+  background: #eff6ff;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* Submit */
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Header full width */
         .site-header {
             width: 100%;
             background: linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0a1628 100%);
@@ -266,7 +313,7 @@
             border-radius: 8px;
             font-size: 14px;
             padding: 12px;
-            background-color: #f4f8ff9d;
+            background-color: #f4f8ff69;
         }
 
         .custom-input:hover {
@@ -585,57 +632,27 @@
             margin-top: 8px;
         }
 
-    </style>
-</head>
+</style>
 
 
-<body class="overflow-x-hidden">
-    <!-- Animated Background Orbs -->
-    <div class="glow-orb" style="width: 400px; height: 400px; background: #06b6d4; top: 10%; left: -5%;"></div>
-    <div class="glow-orb" style="width: 300px; height: 300px; background: #3b82f6; bottom: 10%; right: -5%;"></div>
-    <div class="glow-orb" style="width: 250px; height: 250px; background: #8b5cf6; top: 50%; right: 20%;"></div>
 
-    <!-- Particles -->
-    <div id="particles"></div>
+<!-- Open Modal Button -->
+<button class="open-modal-btn" id="openModal">
+  Create New Inquiry
+</button>
 
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-container">
-            <!-- Left Logo -->
-            <div class="header-logo">
-                <img src="../css/images/xtreme_logo.png" alt="XTREEM Logo">
-            </div>
+<!-- Overlay -->
+<div class="modal-overlay" id="modalOverlay"></div>
 
+<!-- Right Aligned Modal -->
+<div class="right-modal" id="rightModal">
+  <div class="modal-header">
+    <h2>Create New Inquiry</h2>
+    <button class="close-btn" id="closeModal">&times;</button>
+  </div>
 
-            <!-- Right side -->
-            <div class="header-actions">
-            <button class="header-btn">Support</button>
-            <button class="header-btn">
-                <svg class="user-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-            </button>
-            </div>
-        </div>
-    </header>
-
-
-    <!-- Main Content -->
-    <main class="page-wrapper">
-        <div class="content-container">
-            <!-- Title Section -->
-            <div class="title-section">
-                <div class="doc-icon">
-                    <span>📋</span>
-                </div>
-            </div>
-            <div>
-                <h1 class="page-title">Create Inquiry Tickets</h1>
-                <p class="page-subtitle">Start creating your tickets now.</p>
-            </div>
-
-            <!-- Create an inquiry ticket section -->
+  <div class="modal-body">
+    <!-- Create an inquiry ticket section -->
                 <!-- Info box -->
                 <div class="info-box">
                     <h3 class="info-title">표시는 필수항목 입니다.</h3>
@@ -667,7 +684,7 @@
                     <label class="form-label-left">Agent ID
                         <span class="required">*</span>
                     </label>
-                    <input type="text" id="agentId" class="custom-input" placeholder="Enter your agent ID" required>
+                    <input type="text" id="agentId" class="custom-input" placeholder="Enter your agent ID" >
                 </div>
 
                 <!-- User ID -->
@@ -681,7 +698,7 @@
                     <label class="form-label-left">Betting Number
                         <span class="required">*</span>
                     </label>
-                    <input type="text" id="bettingNumber" class="custom-input" placeholder="Enter your betting number" required>
+                    <input type="text" id="bettingNumber" class="custom-input" placeholder="Enter your betting number">
                 </div>
 
                 <!-- Time of Occurrence -->
@@ -726,86 +743,27 @@
                     <button type="submit" class="send-btn">Send</button>
                 </div>
         </form>
-    </div>
-    </main>
 
+        
 
+<script>
+  const openBtn = document.getElementById("openModal");
+  const closeBtn = document.getElementById("closeModal");
+  const modal = document.getElementById("rightModal");
+  const overlay = document.getElementById("modalOverlay");
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <p>© 2025 Copyright XTREEM. All rights reserved.</p>
-            <p class="footer-subtext">Managed with XTREEM service</p>
-        </div>
-    </footer>
+  openBtn.addEventListener("click", () => {
+    modal.classList.add("active");
+    overlay.classList.add("active");
+  });
 
-    <script>
-        // Create particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 4 + 2;
-                const startX = Math.random() * window.innerWidth;
-                const startY = Math.random() * window.innerHeight;
-                const delay = Math.random() * 20;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${startX}px`;
-                particle.style.top = `${startY}px`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.background = `rgba(${Math.random() > 0.5 ? '6, 182, 212' : '59, 130, 246'}, 0.6)`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
 
-        //Inquiry Type 
-        const categories = [
-            "Technical Inquiry",
-            "Inquiry for Results",
-            "Both Sides Inquiry",
-            "Operational",
-            "Account Inquiry",
-            "Promotion",
-            "계좌 문의",
-            "운영 관련",
-            "기능 개선",
-            "결과 처리 요청",
-            "비스포크",
-            "프로모션",
-            "비스포크 토너먼트 신청",
-            "후원금 신청",
-            "기타"
-        ];
-
-        const container = document.getElementById("categoryContainer");
-
-        categories.forEach((name, index) => {
-        const btn = document.createElement("button");
-        btn.className = "category-btn";
-        btn.textContent = name;
-
-        if (index === 0) btn.classList.add("active");
-
-        btn.addEventListener("click", () => {
-            document
-                .querySelectorAll(".category-btn")
-                .forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-        });
-
-        container.appendChild(btn);
-    });
-
-        // Initialize particles
-        createParticles();
-
-    </script>
-</body>
+  function closeModal() {
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+</script>
+</head>
 </html>
