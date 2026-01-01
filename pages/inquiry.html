@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XTREEM - Create Inquiry Ticket</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         * {
             font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
         }
+
+        *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
 
         body {
             background: linear-gradient(135deg, #f8f9fb 0%, #e8edf3 100%);
             min-height: 100vh;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            width: 100%;
         }
 
         .particle {
@@ -57,18 +67,165 @@
             }
         }
 
+
+        /* Header full width */
+        .site-header {
+            width: 100%;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0a1628 100%);
+            border-bottom: 2px solid rgba(34, 211, 238, 0.3);
+            box-sizing: border-box;
+            padding: 16px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Inner container: center content with spacing */
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;  /* logo left, buttons right */
+            align-items: center;
+        }
+
+        /* Logo section */
+        .header-logo img {
+            height: 40px;  /* adjust logo height */
+        }
+
+        /* Header buttons section */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Button styling */
+        .header-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 8px 12px;
+            transition: color 0.3s;
+        }
+
+        .header-btn:hover {
+            color: #00ffff; /* similar to Tailwind cyan-400 hover */
+        }
+
+        /* User icon inside button */
+        .user-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+
         .header-bg {
             background: linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0a1628 100%);
             border-bottom: 2px solid rgba(34, 211, 238, 0.3);
         }
 
+        .header-container {
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .page-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;   /* centers content horizontally */
+        }
+
+        .content-container {
+            width: 100%;
+            max-width: 1200px;         /* desktop width */
+            padding: 24px;             /* inner spacing */
+            transition: padding 0.2s ease;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1152px;
+            margin: 0 100px;
+            padding: 48px 24px;
+            text-align: center;
+        }
+
+        .title-section {
+            text-align: center;
+        }
+
+        .doc-icon {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 24px rgba(6, 182, 212, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .page-title {
+            font: 36px;
+            font-weight: 700;
+            color: #111827;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .page-subtitle {
+            font: 20px;
+            color: #6e6e6e;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-title {
+            margin-bottom: 8px;
+        }
+
+        .section-title h3 {
+            font-weight: 600;
+            color: #1e3a8a;
+            font-size: 16px;
+        }
+
+        .category-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
 
         .category-btn {
             background: rgba(255, 255, 255, 0.8);
-            color: white;
+            font-size: 14px;
+            color: rgb(104, 104, 104);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 20px;
+            padding: 8px 12px 8px 12px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .category-btn:hover {
@@ -85,19 +242,7 @@
             box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
         }
 
-        .doc-icon {
-            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 8px 24px rgba(6, 182, 212, 0.3);
-            animation: pulse 2s ease-in-out infinite;
-        }
+        
 
         .form-row {
             display: flex;
@@ -120,7 +265,7 @@
             border: 1px solid #b9caeb;
             border-radius: 8px;
             font-size: 14px;
-            padding: 20px;
+            padding: 12px;
             background-color: #f4f8ff69;
         }
 
@@ -130,16 +275,39 @@
             background-color: #f4f8ffb9;
         }
 
-        .custom-textarea {
-            flex: 1;               /* fill container */
+        .custom-input:active {
+            border: 1px solid #df1818;
             border-radius: 8px;
+            background-color: #f4f8ffb9;
+        }
+
+        .custom-textarea {
+            flex: 1;
             height: 200px;
             font-size: 14px;
-            padding: 12px 16px 12px 20px; /* left padding 20px */
-            resize: vertical;      /* allow resize up/down only */
+            padding: 12px 16px 12px 20px;
+            border-radius: 8px;
+            resize: vertical;
             border: 1px solid #b9caeb;
             background-color: #f4f8ff69;
+            color: #111827;
         }
+
+        .custom-textarea::placeholder {
+            color: #9ca3af;
+            opacity: 1;
+        }
+
+
+            /* flex: 1;               fill container */
+            /* border-radius: 8px; */
+            /* height: 200px; */
+            /* font-size: 14px; */
+            /* padding: 12px 16px 12px 20px; left padding 20px */
+            /* resize: vertical;      allow resize up/down only */
+            /* border: 1px solid #b9caeb; */
+            /* background-color: #f4f8ff69; */
+        
 
         .custom-textarea:hover {
             border: 1px solid #5f81c0;
@@ -185,12 +353,19 @@
         /* SVG Icon */
         .upload-icon {
             width: 100px;
-            height: 68px;
+            height: 40px;
             margin: 0 auto 8px;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
             color: #888;
+        }
+
+        .upload-icon img {
+            width: 80px;
+            height: 60px;
+            display: block;
+            margin: 0 auto;
         }
 
         /* Text */
@@ -219,6 +394,7 @@
         .btn-submit{
             display: inline-flex;
             padding: 10px 20px; 
+            font-size: 12px;
             background-color:hsl(204, 65%, 49%);
             color: rgb(248, 248, 248); 
             border: none; 
@@ -321,9 +497,6 @@
 
 
         .send-btn:hover {
-            display: inline-flex;
-            justify-content: flex-end;
-            /* align-items: center; */
             padding: 10px 20px;
             background-color:hsl(204, 65%, 40%);
             color: white;
@@ -332,6 +505,7 @@
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.5s;
+            background-color: hsl(204, 65%, 40%);
         }
 
         .required {
@@ -340,7 +514,7 @@
         }
 
         .info-box {
-            background-color: rgba(255, 255, 255, 0.75);
+            /* background-color: rgba(255, 255, 255, 0.75); */
             border-radius: 12px;
             padding: 16px;
             margin-bottom: 24px;
@@ -376,11 +550,35 @@
             margin-bottom: 4px;
         }
 
+        .site-footer {
+            position: relative;
+            z-index: 10;
+            margin-top: 48px;
+            border-top: 1px solid #e5e7eb;
+            background-color: transparent;
+        }
 
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            text-align: center;
+        }
 
+        .footer-container p {
+            font-size: 14px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .footer-subtext {
+            margin-top: 8px;
+        }
 
     </style>
 </head>
+
+
 <body class="overflow-x-hidden">
     <!-- Animated Background Orbs -->
     <div class="glow-orb" style="width: 400px; height: 400px; background: #06b6d4; top: 10%; left: -5%;"></div>
@@ -391,22 +589,21 @@
     <div id="particles"></div>
 
     <!-- Header -->
-    <header class="header-bg relative z-10">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            
-            <!-- Logo -->
-            <div class="flex items-center gap-3">
+    <header class="site-header">
+        <div class="header-container">
+            <!-- Left Logo -->
+            <div class="header-logo">
                 <img src="../css/images/xtreme_logo.png" alt="XTREEM Logo">
             </div>
 
 
             <!-- Right side -->
-            <div class="flex items-center gap-4">
-            <button class="text-white hover:text-cyan-400 transition-colors">Support</button>
-            <button class="text-white hover:text-cyan-400 transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            <div class="header-actions">
+            <button class="header-btn">Support</button>
+            <button class="header-btn">
+                <svg class="user-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
             </button>
             </div>
@@ -415,134 +612,120 @@
 
 
     <!-- Main Content -->
-    <main class="relative z-10 max-w-6xl mx-auto px-6 py-12">
-        <!-- Title Section -->
-        <div class="text-center mb-12">
-            <div class="flex justify-center mb-6">
+    <main class="page-wrapper">
+        <div class="content-container">
+            <!-- Title Section -->
+            <div class="title-section">
                 <div class="doc-icon">
                     <span>📋</span>
                 </div>
             </div>
-            <h1 class="text-4xl font-bold text-gray-900 mb-3">Create Inquiry Tickets</h1>
-            <p class="text-gray-600 text-lg">Start creating your tickets now.</p>
-        </div>
-
-        <!-- Create an inquiry ticket section -->
-            <!-- Info box -->
-            <div class="info-box">
-                <h3 class="info-title">표시는 필수항목 입니다.</h3>
-                <ul class="info-list">
-                    <li>내용의 첫번째 줄은 제목을 입력합니다.</li>
-                    <li>에이전트명은 로그인된 계정으로 임시 입력되오나 문의하고자 하는 내용이 하부 에이전트의 내용일 경우 수정해 주시기 바랍니다.</li>
-                    <li>베팅 내역 확인 시 베팅번호가 반드시 필요하며, 베팅번호를 모르는 경우 반드시 인게임 내 히스토리에서 내역 사진을 첨부 바랍니다.</li>
-                    <li>양방 문의의 경우 유저 ‘닉네임’ 과 ‘아이디’ 그리고 ‘발생 시기’ 모두 작성 바랍니다.</li>
-                    <li>답변을 등록할 때 키보드의 (알트+엔터) 를 활용하시면 ‘등록하기 단축 버튼’으로 활용하실 수 있습니다.</li>
-                </ul>
+            <div>
+                <h1 class="page-title">Create Inquiry Tickets</h1>
+                <p class="page-subtitle">Start creating your tickets now.</p>
             </div>
 
-        <!-- Category Filters -->
-         <div>
-            <h3 class="font-semibold text-blue-900 mb-2">1. Please choose inquiry types:</h3>
-         </div>
-        <div id="categoryContainer" class="flex flex-wrap gap-3 mb-8"></div>
+            <!-- Create an inquiry ticket section -->
+                <!-- Info box -->
+                <div class="info-box">
+                    <h3 class="info-title">표시는 필수항목 입니다.</h3>
+                    <ul class="info-list">
+                        <li>내용의 첫번째 줄은 제목을 입력합니다.</li>
+                        <li>에이전트명은 로그인된 계정으로 임시 입력되오나 문의하고자 하는 내용이 하부 에이전트의 내용일 경우 수정해 주시기 바랍니다.</li>
+                        <li>베팅 내역 확인 시 베팅번호가 반드시 필요하며, 베팅번호를 모르는 경우 반드시 인게임 내 히스토리에서 내역 사진을 첨부 바랍니다.</li>
+                        <li>양방 문의의 경우 유저 ‘닉네임’ 과 ‘아이디’ 그리고 ‘발생 시기’ 모두 작성 바랍니다.</li>
+                        <li>답변을 등록할 때 키보드의 (알트+엔터) 를 활용하시면 ‘등록하기 단축 버튼’으로 활용하실 수 있습니다.</li>
+                    </ul>
+                </div>
 
+            <!-- Category Filters -->
 
-        </div>
+            <div class="section-title">
+                <h3>1. Please choose inquiry types:</h3>
+            </div>
+            <div class="category-container" id="categoryContainer"></div>
 
-        <!-- Form -->
-         <div>
-            <h3 class="font-semibold text-blue-900 mb-2">2. Fill in this form:</h3>
-         </div>
-        <form id="inquiryForm" class="glass-card rounded-xl overflow-hidden">
-            <div class="two-column">
-                <!-- Sidebar -->
-                 <!-- Content area -->
-                <div class="content-area space-y-6">
-                <!-- <div class="sidebar"> -->
-                    <!-- <div class="sidebar-item">Inquiry Type</div> -->
+            <!-- Form -->
+            <div class="section-title">
+                <h3>2. Fill in this form:</h3>
+            </div>
 
-                    <!-- Agent ID -->
-                    <div class="form-row">
-                        <label class="form-label-left">Agent ID
-                            <span class="required">*</span>
-                        </label>
-                        <input type="text" id="agentId" class="form-control custom-input" placeholder="Enter your agent ID" required>
-                    </div>
+            <form>
+                <!-- Content area -->
+                <!-- Agent ID -->
+                <div class="form-row">
+                    <label class="form-label-left">Agent ID
+                        <span class="required">*</span>
+                    </label>
+                    <input type="text" id="agentId" class="custom-input" placeholder="Enter your agent ID" required>
+                </div>
 
-                    <!-- User ID -->
-                    <div class="form-row">
-                        <label class="form-label-left">User ID (optional)</label>
-                        <input type="text" id="userId" class="form-control custom-input" placeholder="Enter your user ID" required>
-                    </div>
+                <!-- User ID -->
+                <div class="form-row">
+                    <label class="form-label-left">User ID (optional)</label>
+                    <input type="text" id="userId" class="custom-input" placeholder="Enter your user ID" required>
+                </div>
 
-                    <!-- Betting Number -->
-                    <div class="form-row">
-                        <label class="form-label-left">Betting Number
-                            <span class="required">*</span>
-                        </label>
-                        <input type="text" id="bettingNumber" class="form-control custom-input" placeholder="Enter your betting number">
-                    </div>
+                <!-- Betting Number -->
+                <div class="form-row">
+                    <label class="form-label-left">Betting Number
+                        <span class="required">*</span>
+                    </label>
+                    <input type="text" id="bettingNumber" class="custom-input" placeholder="Enter your betting number">
+                </div>
 
-                    <!-- Time of Occurrence -->
-                     <!-- <div class="form-row">
-                        <label class="form-label-left">Time of Occurrence</label>
+                <!-- Time of Occurrence -->
+                <!-- <div class="form-row">
+                    <label class="form-label-left">Time of Occurrence</label>
                         <input type="date" id="timeOfOccur" class="date-input" placeholder="Enter your time of occurrence (required when inquiring about results)">
                     </div> -->
 
-                    <!-- Time of Occurrence -->
-                    <div class="form-row">
-                        <label class="form-label-left">Time of Occurrence </label>
-                        <input type="text" id="timeOfOccur" class="form-control custom-input" placeholder="Enter your time of occurrence (required when inquiring about results)">
-                    </div>
-
-
-                    <!-- Detail -->
-                    <div class="form-row">
-                        <label class="form-label-left">Details
-                            <span class="required">*</span>
-                        </label>
-                        <textarea
-                            class="form-control custom-textarea"
-                            placeholder="Please describe in detail, including the title at the top of the line of contents. This also create a complaint/not entering a title."
-                            rows="4"
-                        ></textarea>
-                    </div>
-
-                    <!-- File Upload -->
-                    <div class="form-row">
-                        <label class="form-label-left">Upload File (optional)</label>
-                        <div class="file-upload-area" id="fileUploadArea" onclick="document.getElementById('fileInput').click()">
-                            <div class="upload-icon">
-                                <img src="../css/images/upload.png" alt="Upload" class="upload-img">
-                            </div>
-                            <p class="upload-text">+ Attach files</p>
-                            <p class="upload-subtext">Drag & drop or click to browse</p>
-                            <input type="file" id="fileInput" multiple hidden>
-                        </div>
-                    </div>
-
+                <!-- Time of Occurrence -->
+                <div class="form-row">
+                    <label class="form-label-left">Time of Occurrence </label>
+                    <input type="text" id="timeOfOccur" class="custom-input" placeholder="Enter your time of occurrence (required when inquiring about results)">
                 </div>
 
-            <!-- File List -->
-            <div id="fileList" style="margin-top: 12px;"></div>
 
-            <!-- Submit Button -->
-             <!-- <div class="wrapper"> -->
+                <!-- Detail in Text Area -->
+                <div class="form-row">
+                    <label class="form-label-left">Details
+                        <span class="required">*</span>
+                    </label>
+                    <textarea class="custom-textarea"
+                        placeholder="Please describe in detail, including the title at the top of the line of contents. This also create a complaint/not entering a title."
+                    ></textarea>
+                </div>
+
+                <!-- File Upload -->
+                <div class="form-row">
+                    <label class="form-label-left">Upload File (optional)</label>
+                    <div class="file-upload-area" id="fileUploadArea" onclick="document.getElementById('fileInput').click()">
+                        <img src="../css/images/upload.png" alt="Upload" class="upload-img">
+                        <p class="upload-text">+ Attach files</p>
+                        <p class="upload-subtext">Drag & drop or click to browse</p>
+                        <input type="file" id="fileInput" multiple hidden>
+                    </div>
+                </div>
+
+                <!-- File List -->
+                <div id="fileList" style="margin-top: 12px;"></div>
+
+                <!-- Submit Button -->
                 <div class="button-wrapper">
                     <button type="submit" class="send-btn">Send</button>
                 </div>
-            <!-- </div> -->
-
         </form>
+    </div>
+    </main>
 
-        
 
 
     <!-- Footer -->
-    <footer class="relative z-10 max-w-7xl mx-auto px-6 py-8 mt-12 border-t border-gray-200">
-        <div class="text-center text-gray-500 text-sm">
+    <footer class="site-footer">
+        <div class="footer-container">
             <p>© 2025 Copyright XTREEM. All rights reserved.</p>
-            <p class="mt-2">Managed with XTREEM service</p>
+            <p class="footer-subtext">Managed with XTREEM service</p>
         </div>
     </footer>
 
@@ -595,15 +778,20 @@
 
         categories.forEach((name, index) => {
         const btn = document.createElement("button");
-        btn.className = `
-            category-btn px-5 py-2 rounded-full text-sm font-semibold
-            ${index === 0 ? "active" : "text-gray-700"}
-        `;
+        btn.className = "category-btn";
         btn.textContent = name;
-        container.appendChild(btn);
+
+        if (index === 0) btn.classList.add("active");
+
+        btn.addEventListener("click", () => {
+            document
+                .querySelectorAll(".category-btn")
+                .forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
         });
 
-
+        container.appendChild(btn);
+    });
 
         // Initialize particles
         createParticles();
