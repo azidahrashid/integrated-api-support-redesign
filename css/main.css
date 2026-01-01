@@ -5217,3 +5217,12 @@ html[dir="rtl"] {
     }
   }
 }
+
+
+
+
+.flex-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
