@@ -31,7 +31,7 @@ function loadLoginAssets() {
     document.head.appendChild(link);
   }
 
-  // Load login JS (toggle, form)
+  // Load login JS ( toggle, form)
   if (!document.getElementById("login-scripts")) {
     const script = document.createElement("script");
     script.id = "login-scripts";
@@ -78,28 +78,11 @@ function showApp() {
   // Load shared partials
   loadPartial("nav", "partials/nav.html");
   loadPartial("footer", "partials/footer.html");
-
-  // Load default page (SPA)
-  loadPage("pages/service-desk.html");
+  loadPartial("faq", "pages/faq.html");
+  loadPartial("inquiry", "pages/inquiry.html");
+  loadPartial("service-desk", "pages/service-desk.html");
 
   removeLoginAssets(); // remove login CSS/JS
-}
-
-// ================================
-// SPA page loader
-// ================================
-async function loadPage(path) {
-  const container = document.getElementById("page-content");
-  if (!container) return;
-
-  try {
-    const res = await fetch(path);
-    if (!res.ok) throw new Error(`Failed to load ${path}`);
-    container.innerHTML = await res.text();
-  } catch (err) {
-    console.error(err);
-    container.innerHTML = "<p>Failed to load page.</p>";
-  }
 }
 
 // ================================
@@ -112,34 +95,44 @@ document.addEventListener("DOMContentLoaded", () => {
     showLogin();
   }
 
+
+async function loadPage(path) {
+  const container = document.getElementById("page-content");
+  if (!container) return;
+
+  const res = await fetch(path);
+  container.innerHTML = await res.text();
+}
+
   document.addEventListener("click", (e) => {
-    // SPA navigation
-    const link = e.target.closest("[data-page]");
-    if (link) {
-      e.preventDefault();
-      loadPage(link.dataset.page);
+  // SPA navigation
+  const link = e.target.closest("[data-page]");
+  if (link) {
+    e.preventDefault();
+    loadPage(link.dataset.page);
 
-      // Close mobile menu after click
-      const burger = document.getElementById("navbar-burger-menu");
-      const collapse = document.getElementById("navbar-collapse");
-      if (burger && collapse) {
-        burger.classList.remove("active");
-        collapse.classList.remove("active");
-      }
-      return;
+    // Close mobile menu after click
+    const burger = document.getElementById("navbar-burger-menu");
+    const collapse = document.getElementById("navbar-collapse");
+    if (burger && collapse) {
+      burger.classList.remove("active");
+      collapse.classList.remove("active");
     }
+    return;
+  }
 
-    // Login
-    if (e.target.id === "loginBtn") {
-      localStorage.setItem("isLoggedIn", "true");
-      showApp();
-    }
+  // Login
+  if (e.target.id === "loginBtn") {
+    localStorage.setItem("isLoggedIn", "true");
+    showApp();
+  }
 
-    // Logout
-    if (e.target.id === "logoutBtn") {
-      e.preventDefault();
-      localStorage.removeItem("isLoggedIn");
-      showLogin();
-    }
-  });
+  // Logout
+  if (e.target.id === "logoutBtn") {
+    e.preventDefault();
+    localStorage.removeItem("isLoggedIn");
+    showLogin();
+  }
+});
+
 });
