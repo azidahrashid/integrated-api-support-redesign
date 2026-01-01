@@ -33,7 +33,7 @@ function showLogin() {
 
   // Hide main app, show login
   document.getElementById("app-view").style.display = "none";
-  document.getElementById("login-view").style.display = "block";
+  document.getElementById("login-view").style.display = "flex";
 }
 
 // ================================
