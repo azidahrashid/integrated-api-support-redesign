@@ -90,8 +90,6 @@ function showApp() {
   removeLoginAssets();
 }
 
-
-
 // ================================
 // Initialize
 // ================================
@@ -115,6 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
       showLogin();
     }
   });
-}); // ✅ Make sure this closing exists
+});
 
 
