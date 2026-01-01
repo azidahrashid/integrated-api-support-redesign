@@ -1,7 +1,9 @@
 // Particle animation
 // Particle animation (UI themed)
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById('particleCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
 
 function resizeCanvas() {
   canvas.width = canvas.offsetWidth;
@@ -92,6 +94,11 @@ function animate() {
 animate();
 
 window.addEventListener('resize', resizeCanvas);
+
+  }
+});
+
+
 
 // Password toggle
 const togglePassword = document.getElementById('togglePassword');

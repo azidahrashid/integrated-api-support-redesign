@@ -5,34 +5,36 @@ async function loadPartial(id, path) {
   try {
     const res = await fetch(path);
     if (!res.ok) throw new Error(`Failed to load ${path}`);
-    document.getElementById(id).innerHTML = await res.text();
+
+    const container = document.getElementById(id); // get the container
+    if (!container) {
+      console.warn(`Container with id="${id}" not found!`);
+      return; // stop here if container doesn't exist
+    }
+
+    container.innerHTML = await res.text(); // safe to set now
   } catch (err) {
     console.error(err);
   }
 }
+
 
 // ================================
 // Load login-specific JS (particles, toggle password, loader)
 // ================================
 
 function showLogin() {
+  const loginView = document.getElementById("login-view");
   const appView = document.getElementById("app-view");
 
   // Hide main app
   if (appView) appView.style.display = "none";
 
-  // Remove old login if it exists
-  const oldLogin = document.getElementById("login-view");
-  if (oldLogin) oldLogin.remove();
+  // Show login view
+  if (loginView) loginView.style.display = "flex"; 
 
-  // Create a container for login
-  const loginContainer = document.createElement("div");
-  loginContainer.id = "login-view";
-  document.body.prepend(loginContainer);
-
-  // Load login HTML
+  // Load login HTML partial
   loadPartial("front-login", "pages/login.html").then(() => {
-    // After HTML loads, load CSS & JS for login
     loadLoginAssets();
   });
 }
