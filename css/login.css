@@ -14,11 +14,11 @@
     }
 }
 
-.animate-spin-slow {
+.sign-in-style .animate-spin-slow {
     animation: spin-slow 8s linear infinite;
 }
 
-.animate-pulse {
+.sign-in-style .animate-pulse {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
@@ -32,17 +32,17 @@
     }
 }
 
-.delay-700 {
+.sign-in-style .delay-700 {
     animation-delay: 700ms;
 }
 
-.delay-1000 {
+.sign-in-style .delay-1000 {
     animation-delay: 1000ms;
 }
 
 *,
 ::before,
-::after {
+.sign-in-style ::after {
     --tw-border-spacing-x: 0;
     --tw-border-spacing-y: 0;
     --tw-translate-x: 0;
@@ -96,7 +96,7 @@
     --tw-contain-style:
 }
 
-::backdrop {
+.sign-in-style ::backdrop {
     --tw-border-spacing-x: 0;
     --tw-border-spacing-y: 0;
     --tw-translate-x: 0;
@@ -154,7 +154,7 @@
 
 *,
 ::after,
-::before {
+.sign-in-style ::before {
     box-sizing: border-box;
     border-width: 0;
     border-style: solid;
@@ -162,12 +162,12 @@
 }
 
 ::after,
-::before {
+.sign-in-style ::before {
     --tw-content: ''
 }
 
 :host,
-html {
+.sign-in-style html {
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     -moz-tab-size: 4;
@@ -178,18 +178,18 @@ html {
     -webkit-tap-highlight-color: transparent
 }
 
-body {
+.sign-in-style body {
     margin: 0;
     line-height: inherit
 }
 
-hr {
+.sign-in-style hr {
     height: 0;
     color: inherit;
     border-top-width: 1px
 }
 
-abbr:where([title]) {
+.sign-in-style abbr:where([title]) {
     -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted
 }
@@ -199,52 +199,52 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+.sign-in-style h6 {
     font-size: inherit;
     font-weight: inherit
 }
 
-a {
+.sign-in-style a {
     color: inherit;
     text-decoration: inherit
 }
 
 b,
-strong {
+.sign-in-style strong {
     font-weight: bolder
 }
 
 code,
 kbd,
 pre,
-samp {
+.sign-in-style samp {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-feature-settings: normal;
     font-variation-settings: normal;
     font-size: 1em
 }
 
-small {
+.sign-in-style small {
     font-size: 80%
 }
 
 sub,
-sup {
+.sign-in-style sup {
     font-size: 75%;
     line-height: 0;
     position: relative;
     vertical-align: baseline
 }
 
-sub {
+.sign-in-style sub {
     bottom: -.25em
 }
 
-sup {
+.sign-in-style sup {
     top: -.5em
 }
 
-table {
+.sign-in-style table {
     text-indent: 0;
     border-color: inherit;
     border-collapse: collapse
@@ -254,7 +254,7 @@ button,
 input,
 optgroup,
 select,
-textarea {
+.sign-in-style textarea {
     font-family: inherit;
     font-feature-settings: inherit;
     font-variation-settings: inherit;
@@ -268,51 +268,51 @@ textarea {
 }
 
 button,
-select {
+.sign-in-style select {
     text-transform: none
 }
 
 button,
 input:where([type=button]),
 input:where([type=reset]),
-input:where([type=submit]) {
+.sign-in-style input:where([type=submit]) {
     -webkit-appearance: button;
     background-color: transparent;
     background-image: none
 }
 
-:-moz-focusring {
+.sign-in-style :-moz-focusring {
     outline: auto
 }
 
-:-moz-ui-invalid {
+.sign-in-style :-moz-ui-invalid {
     box-shadow: none
 }
 
-progress {
+.sign-in-style progress {
     vertical-align: baseline
 }
 
 ::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
+.sign-in-style ::-webkit-outer-spin-button {
     height: auto
 }
 
-[type=search] {
+.sign-in-style [type=search] {
     -webkit-appearance: textfield;
     outline-offset: -2px
 }
 
-::-webkit-search-decoration {
+.sign-in-style ::-webkit-search-decoration {
     -webkit-appearance: none
 }
 
-::-webkit-file-upload-button {
+.sign-in-style ::-webkit-file-upload-button {
     -webkit-appearance: button;
     font: inherit
 }
 
-summary {
+.sign-in-style summary {
     display: list-item
 }
 
@@ -328,47 +328,47 @@ h5,
 h6,
 hr,
 p,
-pre {
+.sign-in-style pre {
     margin: 0
 }
 
-fieldset {
+.sign-in-style fieldset {
     margin: 0;
     padding: 0
 }
 
-legend {
+.sign-in-style legend {
     padding: 0
 }
 
 menu,
 ol,
-ul {
+.sign-in-style ul {
     list-style: none;
     margin: 0;
     padding: 0
 }
 
-dialog {
+.sign-in-style dialog {
     padding: 0
 }
 
-textarea {
+.sign-in-style textarea {
     resize: vertical
 }
 
 input::placeholder,
-textarea::placeholder {
+.sign-in-style textarea::placeholder {
     opacity: 1;
     color: #9ca3af
 }
 
 [role=button],
-button {
+.sign-in-style button {
     cursor: pointer
 }
 
-:disabled {
+.sign-in-style :disabled {
     cursor: default
 }
 
@@ -379,242 +379,632 @@ iframe,
 img,
 object,
 svg,
-video {
+.sign-in-style video {
     display: block;
     vertical-align: middle
 }
 
 img,
-video {
+.sign-in-style video {
     max-width: 100%;
     height: auto
 }
 
-
-
-
 .sign-in-style [hidden]:where(:not([hidden=until-found])) {
-    display: none;
+    display: none
 }
 
 .sign-in-style .absolute {
-    position: absolute;
+    position: absolute
 }
 
 .sign-in-style .relative {
-    position: relative;
+    position: relative
 }
 
 .sign-in-style .inset-0 {
-    inset: 0px;
+    inset: 0px
 }
 
 .sign-in-style .bottom-20 {
-    bottom: 5rem;
+    bottom: 5rem
 }
 
 .sign-in-style .left-20 {
-    left: 5rem;
+    left: 5rem
 }
 
 .sign-in-style .left-3 {
-    left: 0.75rem;
+    left: 0.75rem
 }
 
 .sign-in-style .right-20 {
-    right: 5rem;
+    right: 5rem
 }
 
 .sign-in-style .right-3 {
-    right: 0.75rem;
+    right: 0.75rem
 }
 
 .sign-in-style .right-40 {
-    right: 10rem;
+    right: 10rem
 }
 
 .sign-in-style .top-1\/2 {
-    top: 50%;
+    top: 50%
 }
 
 .sign-in-style .top-20 {
-    top: 5rem;
+    top: 5rem
 }
 
 .sign-in-style .top-40 {
-    top: 10rem;
+    top: 10rem
 }
 
 .sign-in-style .z-10 {
-    z-index: 10;
+    z-index: 10
 }
 
 .sign-in-style .mb-2 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem
 }
 
 .sign-in-style .mb-6 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem
 }
 
 .sign-in-style .mb-8 {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem
 }
 
 .sign-in-style .mr-2 {
-    margin-right: 0.5rem;
+    margin-right: 0.5rem
 }
 
 .sign-in-style .mt-0\.5 {
-    margin-top: 0.125rem;
+    margin-top: 0.125rem
 }
 
 .sign-in-style .mt-4 {
-    margin-top: 1rem;
+    margin-top: 1rem
 }
 
 .sign-in-style .mt-6 {
-    margin-top: 1.5rem;
+    margin-top: 1.5rem
 }
 
 .sign-in-style .block {
-    display: block;
+    display: block
 }
 
 .sign-in-style .flex {
-    display: flex;
+    display: flex
 }
 
 .sign-in-style .hidden {
-    display: none;
+    display: none
 }
 
 .sign-in-style .h-16 {
-    height: 4rem;
+    height: 4rem
 }
 
 .sign-in-style .h-4 {
-    height: 1rem;
+    height: 1rem
 }
 
 .sign-in-style .h-48 {
-    height: 12rem;
+    height: 12rem
 }
 
 .sign-in-style .h-5 {
-    height: 1.25rem;
+    height: 1.25rem
 }
 
 .sign-in-style .h-6 {
-    height: 1.5rem;
+    height: 1.5rem
 }
 
 .sign-in-style .h-64 {
-    height: 16rem;
+    height: 16rem
 }
 
 .sign-in-style .h-96 {
-    height: 24rem;
+    height: 24rem
 }
 
 .sign-in-style .h-\[2px\] {
-    height: 2px;
+    height: 2px
 }
 
 .sign-in-style .h-full {
-    height: 100%;
+    height: 100%
 }
 
 .sign-in-style .min-h-screen {
-    min-height: 100vh;
+    min-height: 100vh
 }
 
 .sign-in-style .w-16 {
-    width: 4rem;
+    width: 4rem
 }
 
 .sign-in-style .w-4 {
-    width: 1rem;
+    width: 1rem
 }
 
 .sign-in-style .w-48 {
-    width: 12rem;
+    width: 12rem
 }
 
 .sign-in-style .w-5 {
-    width: 1.25rem;
+    width: 1.25rem
 }
 
 .sign-in-style .w-6 {
-    width: 1.5rem;
+    width: 1.5rem
 }
 
 .sign-in-style .w-64 {
-    width: 16rem;
+    width: 16rem
 }
 
 .sign-in-style .w-96 {
-    width: 24rem;
+    width: 24rem
 }
 
 .sign-in-style .w-full {
-    width: 100%;
+    width: 100%
 }
 
 .sign-in-style .max-w-md {
-    max-width: 28rem;
+    max-width: 28rem
 }
 
 .sign-in-style .flex-shrink-0 {
-    flex-shrink: 0;
+    flex-shrink: 0
 }
 
 .sign-in-style .-translate-y-1\/2 {
     --tw-translate-y: -50%;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-        rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
-        skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
-        scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
-
 @keyframes pulse {
-    50% { opacity: .5; }
+    50% {
+        opacity: .5
+    }
 }
 
 .sign-in-style .animate-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg)
+    }
 }
 
 .sign-in-style .animate-spin {
-    animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite
 }
 
-.sign-in-style .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+.sign-in-style .cursor-pointer {
+    cursor: pointer
+}
+
+.sign-in-style .items-start {
+    align-items: flex-start
+}
+
+.sign-in-style .items-center {
+    align-items: center
+}
+
+.sign-in-style .justify-center {
+    justify-content: center
+}
+
+.sign-in-style .justify-between {
+    justify-content: space-between
+}
+
+.sign-in-style .space-x-2> :not([hidden])~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(0.5rem * var(--tw-space-x-reverse));
-    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))
 }
 
-.sign-in-style .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+.sign-in-style .space-y-2> :not([hidden])~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+    margin-bottom: calc(0.5rem * var(--tw-space-y-reverse))
+}
+
+.sign-in-style .space-y-4> :not([hidden])~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1rem * var(--tw-space-y-reverse))
+}
+
+.sign-in-style .overflow-hidden {
+    overflow: hidden
+}
+
+.sign-in-style .rounded {
+    border-radius: 0.25rem
+}
+
+.sign-in-style .rounded-full {
+    border-radius: 9999px
+}
+
+.sign-in-style .rounded-lg {
+    border-radius: 0.5rem
+}
+
+.sign-in-style .rounded-md {
+    border-radius: 0.375rem
+}
+
+.sign-in-style .border {
+    border-width: 1px
+}
+
+.sign-in-style .border-2 {
+    border-width: 2px
+}
+
+.sign-in-style .border-slate-600 {
+    --tw-border-opacity: 1;
+    border-color: rgb(71 85 105 / var(--tw-border-opacity, 1))
+}
+
+.sign-in-style .border-slate-700 {
+    --tw-border-opacity: 1;
+    border-color: rgb(51 65 85 / var(--tw-border-opacity, 1))
+}
+
+.sign-in-style .border-slate-700\/50 {
+    border-color: rgb(51 65 85 / 0.5)
+}
+
+.sign-in-style .border-white\/30 {
+    border-color: rgb(255 255 255 / 0.3)
+}
+
+.sign-in-style .border-t-white {
+    --tw-border-opacity: 1;
+    border-top-color: rgb(255 255 255 / var(--tw-border-opacity, 1))
+}
+
+.sign-in-style .bg-blue-500\/10 {
+    background-color: rgb(59 130 246 / 0.1)
+}
+
+.sign-in-style .bg-cyan-500\/10 {
+    background-color: rgb(6 182 212 / 0.1)
+}
+
+.sign-in-style .bg-cyan-500\/20 {
+    background-color: rgb(6 182 212 / 0.2)
+}
+
+.sign-in-style .bg-purple-500\/10 {
+    background-color: rgb(168 85 247 / 0.1)
+}
+
+.sign-in-style .bg-slate-800 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(30 41 59 / var(--tw-bg-opacity, 1))
+}
+
+.sign-in-style .bg-slate-800\/30 {
+    background-color: rgb(30 41 59 / 0.3)
+}
+
+.sign-in-style .bg-slate-800\/50 {
+    background-color: rgb(30 41 59 / 0.5)
+}
+
+.sign-in-style .bg-slate-900\/50 {
+    background-color: rgb(15 23 42 / 0.5)
+}
+
+.sign-in-style .bg-\[linear-gradient\(rgba\(6\2c 182\2c 212\2c 0\.03\)_1px\2c transparent_1px\)\2c linear-gradient\(90deg\2c rgba\(6\2c 182\2c 212\2c 0\.03\)_1px\2c transparent_1px\)\] {
+    background-image: linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px)
+}
+
+.sign-in-style .bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops))
+}
+
+.sign-in-style .bg-gradient-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops))
+}
+
+.sign-in-style .from-black {
+    --tw-gradient-from: #000 var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+}
+
+.sign-in-style .from-cyan-400 {
+    --tw-gradient-from: #22d3ee var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(34 211 238 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+}
+
+.sign-in-style .from-cyan-500 {
+    --tw-gradient-from: #06b6d4 var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(6 182 212 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+}
+
+.sign-in-style .from-transparent {
+    --tw-gradient-from: transparent var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+}
+
+.sign-in-style .via-blue-500 {
+    --tw-gradient-to: rgb(59 130 246 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), #3b82f6 var(--tw-gradient-via-position), var(--tw-gradient-to)
+}
+
+.sign-in-style .via-cyan-500 {
+    --tw-gradient-to: rgb(6 182 212 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), #06b6d4 var(--tw-gradient-via-position), var(--tw-gradient-to)
+}
+
+.sign-in-style .to-blue-500 {
+    --tw-gradient-to: #3b82f6 var(--tw-gradient-to-position)
+}
+
+.sign-in-style .to-purple-500 {
+    --tw-gradient-to: #a855f7 var(--tw-gradient-to-position)
+}
+
+.sign-in-style .to-slate-900 {
+    --tw-gradient-to: #0f172a var(--tw-gradient-to-position)
+}
+
+.sign-in-style .to-transparent {
+    --tw-gradient-to: transparent var(--tw-gradient-to-position)
+}
+
+.sign-in-style .bg-\[size\:50px_50px\] {
+    background-size: 50px 50px
+}
+
+.sign-in-style .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text
+}
+
+.sign-in-style .p-3 {
+    padding: 0.75rem
+}
+
+.sign-in-style .p-6 {
+    padding: 1.5rem
+}
+
+.sign-in-style .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem
+}
+
+.sign-in-style .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem
+}
+
+.sign-in-style .py-2\.5 {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem
+}
+
+.sign-in-style .pb-4 {
+    padding-bottom: 1rem
+}
+
+.sign-in-style .pl-10 {
+    padding-left: 2.5rem
+}
+
+.sign-in-style .pr-10 {
+    padding-right: 2.5rem
+}
+
+.sign-in-style .pr-3 {
+    padding-right: 0.75rem
+}
+
+.sign-in-style .text-center {
+    text-align: center
+}
+
+.sign-in-style .font-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+}
+
+.sign-in-style .text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem
+}
+
+.sign-in-style .text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem
+}
+
+.sign-in-style .text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem
+}
+
+.sign-in-style .text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem
+}
+
+.sign-in-style .font-bold {
+    font-weight: 700
+}
+
+.sign-in-style .font-medium {
+    font-weight: 500
+}
+
+.sign-in-style .font-semibold {
+    font-weight: 600
+}
+
+.sign-in-style .text-cyan-400 {
+    --tw-text-opacity: 1;
+    color: rgb(34 211 238 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .text-cyan-500 {
+    --tw-text-opacity: 1;
+    color: rgb(6 182 212 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .text-green-500 {
+    --tw-text-opacity: 1;
+    color: rgb(34 197 94 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .text-slate-100 {
+    --tw-text-opacity: 1;
+    color: rgb(241 245 249 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .text-slate-300 {
+    --tw-text-opacity: 1;
+    color: rgb(203 213 225 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .text-slate-400 {
+    --tw-text-opacity: 1;
+    color: rgb(148 163 184 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .text-slate-500 {
+    --tw-text-opacity: 1;
+    color: rgb(100 116 139 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .text-slate-600 {
+    --tw-text-opacity: 1;
+    color: rgb(71 85 105 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .text-transparent {
+    color: transparent
+}
+
+.sign-in-style .text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .accent-cyan-500 {
+    accent-color: #06b6d4
+}
+
+.sign-in-style .opacity-30 {
+    opacity: 0.3
+}
+
+.sign-in-style .blur-3xl {
+    --tw-blur: blur(64px);
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.sign-in-style .blur-xl {
+    --tw-blur: blur(24px);
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.sign-in-style .backdrop-blur-sm {
+    --tw-backdrop-blur: blur(4px);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
+}
+
+.sign-in-style .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms
+}
+
+.sign-in-style .transition-colors {
+    transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms
+}
+
+.sign-in-style .delay-1000 {
+    transition-delay: 1000ms
+}
+
+.sign-in-style .delay-700 {
+    transition-delay: 700ms
 }
 
 .sign-in-style .placeholder\:text-slate-500::placeholder {
-    color: rgb(100 116 139 / 1);
+    --tw-text-opacity: 1;
+    color: rgb(100 116 139 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .hover\:from-cyan-600:hover {
+    --tw-gradient-from: #0891b2 var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(8 145 178 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+}
+
+.sign-in-style .hover\:to-blue-600:hover {
+    --tw-gradient-to: #2563eb var(--tw-gradient-to-position)
 }
 
 .sign-in-style .hover\:text-cyan-400:hover {
-    color: rgb(34 211 238 / 1);
+    --tw-text-opacity: 1;
+    color: rgb(34 211 238 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .hover\:text-slate-300:hover {
+    --tw-text-opacity: 1;
+    color: rgb(203 213 225 / var(--tw-text-opacity, 1))
+}
+
+.sign-in-style .focus\:border-cyan-500:focus {
+    --tw-border-opacity: 1;
+    border-color: rgb(6 182 212 / var(--tw-border-opacity, 1))
 }
 
 .sign-in-style .focus\:outline-none:focus {
     outline: 2px solid transparent;
-    outline-offset: 2px;
+    outline-offset: 2px
+}
+
+.sign-in-style .focus\:ring-1:focus {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
+}
+
+.sign-in-style .focus\:ring-cyan-500:focus {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(6 182 212 / var(--tw-ring-opacity, 1))
+}
+
+.sign-in-style .imageye-selected {
+    outline: 2px solid black !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
 }
