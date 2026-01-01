@@ -73,12 +73,10 @@ function removeLoginAssets() {
 // ================================
 function showApp() {
   const loginView = document.getElementById("login-view");
-  const frontLogin = document.getElementById("front-login"); // the inner container
   const appView = document.getElementById("app-view");
 
-  // Hide login container but keep the DOM so it can reload later
+  // Hide login
   if (loginView) loginView.style.display = "none";
-  if (frontLogin) frontLogin.innerHTML = ""; // optional: clear old content
 
   // Show main app
   if (appView) appView.style.display = "block";
@@ -88,7 +86,7 @@ function showApp() {
   loadPartial("footer", "partials/footer.html");
   loadPartial("faq", "pages/faq.html");
 
-  // Remove login CSS & JS to avoid conflicts
+  // Remove login CSS/JS to avoid conflicts
   removeLoginAssets();
 }
 
