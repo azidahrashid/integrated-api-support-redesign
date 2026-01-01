@@ -93,19 +93,15 @@ animate();
 
 window.addEventListener('resize', resizeCanvas);
 
-
-// Toggle password visibility
+// Password toggle
 const togglePassword = document.getElementById('togglePassword');
 const passwordInput = document.getElementById('password');
-const eyeOff = document.getElementById('eyeOff');
-const eye = document.getElementById('eye');
 
-if (togglePassword) {
+if (togglePassword && passwordInput) {
   togglePassword.addEventListener('click', () => {
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-    eyeOff.classList.toggle('hidden');
-    eye.classList.toggle('hidden');
+    const type = passwordInput.type === 'password' ? 'text' : 'password';
+    passwordInput.type = type;
+    togglePassword.textContent = type === 'password' ? 'visibility' : 'visibility_off';
   });
 }
 
@@ -118,17 +114,17 @@ const btnLoader = document.getElementById('btnLoader');
 if (loginForm) {
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     loginBtn.disabled = true;
     btnText.classList.add('hidden');
     btnLoader.classList.remove('hidden');
-    btnLoader.classList.add('flex');
 
-    await new Promise(resolve => setTimeout(resolve, 2000)); // simulate login
+    // Simulate login delay
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     loginBtn.disabled = false;
     btnText.classList.remove('hidden');
     btnLoader.classList.add('hidden');
-    btnLoader.classList.remove('flex');
 
     alert('Login successful! (Demo)');
   });
