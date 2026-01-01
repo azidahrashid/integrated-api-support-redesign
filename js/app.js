@@ -1,48 +1,28 @@
 // ================================
-// Helper function to load HTML partials
+// Helper to load HTML partials
 // ================================
 async function loadPartial(id, path) {
   try {
     const res = await fetch(path);
     if (!res.ok) throw new Error(`Failed to load ${path}`);
 
-    const container = document.getElementById(id); // get the container
+    const container = document.getElementById(id);
     if (!container) {
       console.warn(`Container with id="${id}" not found!`);
-      return; // stop here if container doesn't exist
+      return;
     }
 
-    container.innerHTML = await res.text(); // safe to set now
+    container.innerHTML = await res.text();
   } catch (err) {
     console.error(err);
   }
 }
 
-
 // ================================
-// Load login-specific JS (particles, toggle password, loader)
+// Load login-specific assets
 // ================================
-
-function showLogin() {
-  const loginView = document.getElementById("login-view");
-  const appView = document.getElementById("app-view");
-
-  // Hide main app
-  if (appView) appView.style.display = "none";
-
-  // Show login view
-  if (loginView) loginView.style.display = "flex"; 
-
-  // Load login HTML partial
-  loadPartial("front-login", "pages/login.html").then(() => {
-    loadLoginAssets();
-  });
-}
-
-
-
 function loadLoginAssets() {
-  // ===== Load CSS =====
+  // Load CSS
   if (!document.getElementById("login-css")) {
     const link = document.createElement("link");
     link.id = "login-css";
@@ -51,7 +31,7 @@ function loadLoginAssets() {
     document.head.appendChild(link);
   }
 
-  // ===== Load JS =====
+  // Load login JS (canvas, toggle, form)
   if (!document.getElementById("login-scripts")) {
     const script = document.createElement("script");
     script.id = "login-scripts";
@@ -60,7 +40,7 @@ function loadLoginAssets() {
   }
 }
 
-// ===== Remove login CSS & JS after login =====
+// Remove login assets after login
 function removeLoginAssets() {
   const loginCss = document.getElementById("login-css");
   if (loginCss) loginCss.remove();
@@ -69,18 +49,30 @@ function removeLoginAssets() {
   if (loginScript) loginScript.remove();
 }
 
+// ================================
+// Show login view
+// ================================
+function showLogin() {
+  const loginView = document.getElementById("login-view");
+  const appView = document.getElementById("app-view");
+
+  if (appView) appView.style.display = "none";
+  if (loginView) loginView.style.display = "flex";
+
+  // Load login HTML into front-login
+  loadPartial("front-login", "pages/login.html").then(() => {
+    loadLoginAssets(); // load CSS & JS after HTML is ready
+  });
+}
 
 // ================================
-// Show main app view (nav + content + footer)
+// Show main app view
 // ================================
 function showApp() {
   const loginView = document.getElementById("login-view");
   const appView = document.getElementById("app-view");
 
-  // Hide login
   if (loginView) loginView.style.display = "none";
-
-  // Show main app
   if (appView) appView.style.display = "block";
 
   // Load shared partials
@@ -88,8 +80,7 @@ function showApp() {
   loadPartial("footer", "partials/footer.html");
   loadPartial("faq", "pages/faq.html");
 
-  // Remove login CSS/JS to avoid conflicts
-  removeLoginAssets();
+  removeLoginAssets(); // remove login CSS/JS
 }
 
 // ================================
@@ -103,18 +94,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.addEventListener("click", (e) => {
-    // Login
+    // Login button
     if (e.target.id === "loginBtn") {
       localStorage.setItem("isLoggedIn", "true");
       showApp();
     }
 
-    // Logout
+    // Logout button
     if (e.target.id === "logoutBtn") {
       localStorage.removeItem("isLoggedIn");
       showLogin();
     }
   });
 });
-
-
