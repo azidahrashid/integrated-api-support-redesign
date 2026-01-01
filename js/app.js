@@ -79,6 +79,8 @@ function showApp() {
   loadPartial("nav", "partials/nav.html");
   loadPartial("footer", "partials/footer.html");
   loadPartial("faq", "pages/faq.html");
+  loadPartial("inquiry", "pages/inquiry.html");
+  loadPartial("service-desk", "pages/service-desk.html");
 
   removeLoginAssets(); // remove login CSS/JS
 }

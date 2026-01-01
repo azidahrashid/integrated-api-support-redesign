@@ -1034,7 +1034,7 @@
     background-color: var(--color-green-500);
   }
   .bg-orange-400 {
-    background-color: var(--color-orange-400);
+    background-color: var(--color-cyan-400);
   }
   .bg-primary-400 {
     background-color: var(--color-primary-400);
@@ -1499,7 +1499,7 @@
     color: var(--color-green-500);
   }
   .text-orange-400 {
-    color: var(--color-orange-400);
+    color: var(--color-cyan-400);
   }
   .text-primary-500 {
     color: var(--color-primary-500);
@@ -1620,7 +1620,7 @@
   .group-hover\:\!bg-orange-400 {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
-        background-color: var(--color-orange-400) !important;
+        background-color: var(--color-cyan-400) !important;
       }
     }
   }
@@ -1683,14 +1683,14 @@
   .hover\:bg-orange-400 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-orange-400);
+        background-color: var(--color-cyan-400);
       }
     }
   }
   .hover\:bg-orange-500 {
     &:hover {
       @media (hover: hover) {
-        background-color: var(--color-orange-500);
+        background-color: var(--color-cyan-500);
       }
     }
   }
@@ -1751,7 +1751,7 @@
   .hover\:text-orange-400 {
     &:hover {
       @media (hover: hover) {
-        color: var(--color-orange-400);
+        color: var(--color-cyan-400);
       }
     }
   }
