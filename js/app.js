@@ -97,12 +97,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function loadPage(path) {
-  const container = document.getElementById("page-content");
+  const container = document.getElementById("service-desk"); // use service-desk as container
   if (!container) return;
 
-  const res = await fetch(path);
-  container.innerHTML = await res.text();
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`Failed to load ${path}`);
+    container.innerHTML = await res.text();
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = "<p>Error loading page.</p>";
+  }
 }
+
 
   document.addEventListener("click", (e) => {
   // SPA navigation
