@@ -31,7 +31,7 @@ function showLogin() {
   document.body.prepend(loginContainer);
 
   // Load login HTML
-  loadPartial("login-view", "pages/login.html").then(() => {
+  loadPartial("front-login", "pages/login.html").then(() => {
     // After HTML loads, load CSS & JS for login
     loadLoginAssets();
   });
