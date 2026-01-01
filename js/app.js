@@ -45,7 +45,7 @@ function loadLoginAssets() {
     const link = document.createElement("link");
     link.id = "login-css";
     link.rel = "stylesheet";
-    link.href = "css/login.css?v=006";
+    link.href = "css/login.css?v=007";
     document.head.appendChild(link);
   }
 
@@ -68,28 +68,33 @@ function removeLoginAssets() {
 }
 
 
+
+// ================================
+// Show login view
+// ================================
+function showLogin() {
+  loadPartial("front-login", "pages/login.html").then(() => {
+    loadLoginScripts();
+  });
+
+  // Hide main app, show login
+  document.getElementById("app-view").style.display = "none";
+  document.getElementById("login-view").style.display = "flex";
+}
+
 // ================================
 // Show main app view (nav + content + footer)
 // ================================
 function showApp() {
-  const loginView = document.getElementById("login-view");
-  const appView = document.getElementById("app-view");
-
   // Hide login
-  if (loginView) loginView.style.display = "none";
-
-  // Show main app
-  if (appView) appView.style.display = "block";
+  document.getElementById("login-view").style.display = "none";
+  document.getElementById("app-view").style.display = "block";
 
   // Load shared partials
   loadPartial("nav", "partials/nav.html");
   loadPartial("footer", "partials/footer.html");
   loadPartial("faq", "pages/faq.html");
-
-  // Remove login CSS/JS to avoid conflicts
-  removeLoginAssets();
 }
-
 
 // ================================
 // Initialize

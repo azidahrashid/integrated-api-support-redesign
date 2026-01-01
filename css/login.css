@@ -21,6 +21,11 @@ body {
   overflow: hidden;
 }
 
+.login-center {
+   margin:0 auto;
+}
+
+
 .login-wrapper {
   width: 100%;
   max-width: 420px;
