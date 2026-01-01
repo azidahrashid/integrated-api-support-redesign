@@ -95,17 +95,43 @@ document.addEventListener("DOMContentLoaded", () => {
     showLogin();
   }
 
-  document.addEventListener("click", (e) => {
-    // Login button
-    if (e.target.id === "loginBtn") {
-      localStorage.setItem("isLoggedIn", "true");
-      showApp();
-    }
 
-    // Logout button
-    if (e.target.id === "logoutBtn") {
-      localStorage.removeItem("isLoggedIn");
-      showLogin();
+async function loadPage(path) {
+  const container = document.getElementById("page-content");
+  if (!container) return;
+
+  const res = await fetch(path);
+  container.innerHTML = await res.text();
+}
+
+  document.addEventListener("click", (e) => {
+  // SPA navigation
+  const link = e.target.closest("[data-page]");
+  if (link) {
+    e.preventDefault();
+    loadPage(link.dataset.page);
+
+    // Close mobile menu after click
+    const burger = document.getElementById("navbar-burger-menu");
+    const collapse = document.getElementById("navbar-collapse");
+    if (burger && collapse) {
+      burger.classList.remove("active");
+      collapse.classList.remove("active");
     }
-  });
+    return;
+  }
+
+  // Login
+  if (e.target.id === "loginBtn") {
+    localStorage.setItem("isLoggedIn", "true");
+    showApp();
+  }
+
+  // Logout
+  if (e.target.id === "logoutBtn") {
+    e.preventDefault();
+    localStorage.removeItem("isLoggedIn");
+    showLogin();
+  }
 });
+
