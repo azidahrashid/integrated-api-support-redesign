@@ -31,7 +31,7 @@ function loadLoginAssets() {
     document.head.appendChild(link);
   }
 
-  // Load login JS (canvas, toggle, form)
+  // Load login JS ( toggle, form)
   if (!document.getElementById("login-scripts")) {
     const script = document.createElement("script");
     script.id = "login-scripts";
