@@ -153,6 +153,9 @@ function showApp() {
   // Load shared partials
 loadPartial("nav", "partials/nav.html").then(() => {
   initNavbar();
+
+     // 🔁 re-init particles if page contains them
+    initParticles();
 });
 loadPartial("footer", "partials/footer.html");
 
@@ -274,6 +277,45 @@ function initNavbar() {
     });
   });
 }
+
+
+
+
+  // ================================
+  // Particles
+  // ================================
+
+function initParticles() {
+  const particlesContainer = document.getElementById('particles');
+  if (!particlesContainer) return; // 🔴 IMPORTANT
+
+  particlesContainer.innerHTML = ""; // prevent duplicates
+
+  const particleCount = 30;
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+
+    const size = Math.random() * 4 + 2;
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * window.innerHeight;
+    const delay = Math.random() * 20;
+
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${startX}px`;
+    particle.style.top = `${startY}px`;
+    particle.style.animationDelay = `${delay}s`;
+    particle.style.background = `rgba(${
+      Math.random() > 0.5 ? '6,182,212' : '59,130,246'
+    }, 0.6)`;
+
+    particlesContainer.appendChild(particle);
+  }
+}
+
+
 
 
 
