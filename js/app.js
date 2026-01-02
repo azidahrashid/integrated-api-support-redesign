@@ -159,8 +159,6 @@ function showApp() {
    // ✅ Safe place: particles container now exists
     initParticles();
 
-    // ✅ LOAD DEFAULT PAGE
-    loadPage("pages/main-board.html"); // <-- CHANGE THIS PATH
   });
 
   loadPartial("footer", "partials/footer.html");
