@@ -258,7 +258,7 @@ function initNavbar() {
   // Active nav handling
   // ================================
   const navLinks = document.querySelectorAll(
-    '#navbar a[data-page]'
+    '#navbar .headernavmenu a[data-page]'
   );
 
   navLinks.forEach(link => {
@@ -276,6 +276,25 @@ function initNavbar() {
       }
     });
   });
+
+
+
+  const navLinksmobile = document.querySelectorAll(
+    '#navbar .headernavmenu_mobile a[data-page]'
+  );
+
+  navLinksmobile.forEach(link => {
+    link.addEventListener("click", () => {
+      // remove active from all links
+      navLinksmobile.forEach(l => l.classList.remove("active-nav-mobile"));
+
+      // add active to clicked link
+      link.classList.add("active-nav-mobile");
+
+
+    });
+  });
+
 }
 
 
