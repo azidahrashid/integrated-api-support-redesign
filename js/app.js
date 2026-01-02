@@ -151,16 +151,23 @@ function showApp() {
   if (appView) appView.style.display = "block";
 
   // Load shared partials
-loadPartial("nav", "partials/nav.html").then(() => {
-  initNavbar();
-});
-loadPartial("footer", "partials/footer.html");
+  loadPartial("nav", "partials/nav.html").then(() => {
+    initNavbar();
 
 
 
+   // ✅ Safe place: particles container now exists
+    initParticles();
 
-  removeLoginAssets(); // remove login CSS/JS
+    // ✅ LOAD DEFAULT PAGE
+    loadPage("pages/main-board.html"); // <-- CHANGE THIS PATH
+  });
+
+  loadPartial("footer", "partials/footer.html");
+
+  removeLoginAssets();
 }
+
 
 // ================================
 // Initialize
@@ -173,19 +180,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-async function loadPage(path) {
-  const container = document.getElementById("main-board"); // default page
-  if (!container) return;
+    // ================================
+    // SPA Page Loader
+    // ================================
+    async function loadPage(path) {
+      const container = document.getElementById("main-board");
+      if (!container) return;
 
-  try {
-    const res = await fetch(path);
-    if (!res.ok) throw new Error(`Failed to load ${path}`);
-    container.innerHTML = await res.text();
-  } catch (err) {
-    console.error(err);
-    container.innerHTML = "<p>Error loading page.</p>";
-  }
-}
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error(`Failed to load ${path}`);
+        container.innerHTML = await res.text();
+
+        // 🔁 re-init particles if page contains them
+        initParticles();
+
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = "<p>Error loading page.</p>";
+      }
+    }
+
 
 
   document.addEventListener("click", (e) => {
@@ -220,6 +235,47 @@ async function loadPage(path) {
 });
 
 });
+
+
+
+
+
+// ================================
+// particles
+// ================================
+function initParticles() {
+  const particlesContainer = document.getElementById('particles');
+  if (!particlesContainer) return; 
+
+  particlesContainer.innerHTML = ""; // prevent duplicates
+
+  const particleCount = 30;
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+
+    const size = Math.random() * 4 + 2;
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * window.innerHeight;
+    const delay = Math.random() * 20;
+
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${startX}px`;
+    particle.style.top = `${startY}px`;
+    particle.style.animationDelay = `${delay}s`;
+    particle.style.background = `rgba(${
+      Math.random() > 0.5 ? '6,182,212' : '59,130,246'
+    }, 0.6)`;
+
+    particlesContainer.appendChild(particle);
+  }
+}
+
+
+
+
 
 
 // ================================
