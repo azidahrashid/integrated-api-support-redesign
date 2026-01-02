@@ -77,12 +77,10 @@ function showApp() {
 
   // Load shared partials
 loadPartial("nav", "partials/nav.html").then(() => {
-  initNavbar(); 
+  initNavbar();
 });
 loadPartial("footer", "partials/footer.html");
-loadPartial("faq", "pages/faq.html");
-loadPartial("inquiry", "pages/inquiry.html");
-loadPartial("inquiry-details", "pages/inquiry-details.html");
+
 
 
 
@@ -101,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function loadPage(path) {
-  const container = document.getElementById("service-desk"); // use service-desk as container
+  const container = document.getElementById("main-board"); // use service-desk as container
   if (!container) return;
 
   try {
