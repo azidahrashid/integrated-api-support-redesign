@@ -51296,7 +51296,7 @@ html[dir="rtl"] {
 .card {
   margin: 2.3rem auto;
   cursor: pointer;
-  width: 27rem;
+  /* width: 27rem; */
 }
 
 .card .card_upper {
@@ -51500,5 +51500,5 @@ footer a:hover {
 
 
 .mobile-home {
-    margin: 10px 0;
+    margin: 10px 25px;
 }
