@@ -82,7 +82,7 @@ loadPartial("nav", "partials/nav.html").then(() => {
 loadPartial("footer", "partials/footer.html");
 loadPartial("faq", "pages/faq.html");
 loadPartial("inquiry", "pages/inquiry.html");
-loadPartial("service-desk", "pages/service-desk.html");
+loadPartial("inquiry-details", "pages/inquiry-details.html");
 
 
 
