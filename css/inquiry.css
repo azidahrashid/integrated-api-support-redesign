@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XTREEM - Inquiry Details</title>
-    <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         * {
@@ -266,7 +260,7 @@
             border-radius: 8px;
             font-size: 14px;
             padding: 12px;
-            background-color: #f4f8ff69;
+            background-color: #f4f8ff9d;
         }
 
         .custom-input:hover {
@@ -483,7 +477,7 @@
         }
 
 
-        .send-btn {
+        .send-btn, .open-modal-btn {
             padding: 10px 20px;
             background-color: hsl(204, 65%, 49%);
             color: white;
@@ -517,13 +511,14 @@
             background: rgba(255, 255, 255, 0.2);   /* translucent */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+
             border-radius: 12px;
 
             /* Borders */
             border: 1px solid rgba(4, 123, 179, 0.9);
             border-left: 4px solid rgba(4, 123, 179, 0.9); /* accent */
 
-            padding: 12px 12px;
+            padding: 16px 20px;
             margin-bottom: 24px;
 
             box-shadow:
@@ -536,8 +531,7 @@
             font-weight: 600;
             color: #1e3a8a;
             margin-bottom: 8px;
-            font-size: 12px;
-            justify-content: center;
+            font-size: 16px;
         }
 
         .info-desc {
@@ -585,253 +579,4 @@
             margin-top: 8px;
         }
 
-/* Card container */
-.table-card {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 20px 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    margin: 40px auto;
-    max-width: 1100px;
-}
-
-/* Header */
-.table-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.table-header h3 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: #0f172a;
-}
-
-.table-subtitle {
-    font-size: 14px;
-    color: #64748b;
-}
-
-/* Table wrapper for responsiveness */
-.table-wrapper {
-    overflow-x: auto;
-}
-
-/* Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-}
-
-/* Table head */
-thead th {
-    background: #f8fafc;
-    color: #334155;
-    text-align: left;
-    padding: 14px 16px;
-    font-weight: 600;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-/* Table body */
-tbody td {
-    padding: 14px 16px;
-    color: #334155;
-    border-bottom: 1px solid #f1f5f9;
-}
-
-/* Row hover */
-tbody tr:hover {
-    background-color: #f9fbff;
-}
-
-/* Status badges */
-.status {
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-    display: inline-block;
-}
-
-.status.active {
-    background-color: #e6f9f0;
-    color: #047857;
-}
-
-.status.warning {
-    background-color: #fff7ed;
-    color: #b45309;
-}
-
-.status.inactive {
-    background-color: #fef2f2;
-    color: #b91c1c;
-}
-
-/* Mobile tweaks */
-@media (max-width: 768px) {
-    .table-card {
-        padding: 16px;
-    }
-
-    thead th,
-    tbody td {
-        padding: 12px;
-    }
-}
-
-
-
-    </style>
-</head>
-
-
-<body class="overflow-x-hidden">
-    <!-- Animated Background Orbs -->
-    <div class="glow-orb" style="width: 400px; height: 400px; background: #06b6d4; top: 10%; left: -5%;"></div>
-    <div class="glow-orb" style="width: 300px; height: 300px; background: #3b82f6; bottom: 10%; right: -5%;"></div>
-    <div class="glow-orb" style="width: 250px; height: 250px; background: #8b5cf6; top: 50%; right: 20%;"></div>
-
-    <!-- Particles -->
-    <div id="particles"></div>
-
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-container">
-            <!-- Left Logo -->
-            <div class="header-logo">
-                <img src="../css/images/xtreme_logo.png" alt="XTREEM Logo">
-            </div>
-
-
-            <!-- Right side -->
-            <div class="header-actions">
-            <button class="header-btn">Support</button>
-            <button class="header-btn">
-                <svg class="user-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-            </button>
-            </div>
-        </div>
-    </header>
-
-
-    <!-- Main Content -->
-    <main class="page-wrapper">
-        <div class="content-container">
-            <!-- Title Section -->
-            <div class="title-section">
-                <div class="doc-icon">
-                    <span>📋</span>
-                </div>
-            </div>
-            <div>
-                <h1 class="page-title">XT 24시간 서비스데스크</h1>
-                <p class="page-subtitle">Please check the inquiry details.</p>
-            </div>
-
-            <!-- Create an inquiry ticket section -->
-                <!-- Info box -->
-                <div class="info-box">
-                    <h3 class="info-title">Note: We respond 24/7 to inquiries regarding White IP, results, both sides, and operational urgency. 
-                            Technical inquiries are most readily answered between 10:00 AM and 8:00 PM.</h3>
-                </div>
-
-
-            <!-- Table -->
-            <div class="table-card">
-                <div class="table-header">
-                 <h3>Inquiry List</h3>
-                <span class="table-subtitle">Last 30 Days</span>
-                </div>
-
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Ticket ID</th>
-                            <th>Date & Time Created</th>
-                            <th>Author</th>
-                            <th>Category</th>
-                            <th>Title</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#A1023</td>
-                            <td>2025-12-02 12:25:14</td>
-                            <td>John Tan</td>
-                            <td><span class="status active">Technical</span></td>
-                            <td>Change balance in seamless mode</td>
-                            <td><span class="status warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>#A1023</td>
-                            <td>2025-04-12 09:43:54</td>
-                            <td>Sarah Lim</td>
-                            <td><span class="status warning">Operational</span></td>
-                            <td>Change balance in seamless mode</td>
-                            <td><span class="status warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>#A1023</td>
-                            <td>2025-08-12 15:07:59</td>
-                            <td>Daniel Wong</td>
-                            <td><span class="status warning">Operational</span></td>
-                            <td>Change balance in seamless mode</td>
-                            <td><span class="status active">Completed</span></td>
-</tr>
-</tbody>
-</table>
-            </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <p>© 2025 Copyright XTREEM. All rights reserved.</p>
-            <p class="footer-subtext">Managed with XTREEM service</p>
-        </div>
-    </footer>
-
-    <script>
-        // Create particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 4 + 2;
-                const startX = Math.random() * window.innerWidth;
-                const startY = Math.random() * window.innerHeight;
-                const delay = Math.random() * 20;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${startX}px`;
-                particle.style.top = `${startY}px`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.background = `rgba(${Math.random() > 0.5 ? '6, 182, 212' : '59, 130, 246'}, 0.6)`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        
-
-        // Initialize particles
-        createParticles();
-    </script>
-</body>
-</html>
+ 

@@ -1,180 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XT-FREEM - FAQ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f8f9fb 0%, #e8edf3 100%);
-            min-height: 100vh;
-        }
-
-        .particle {
-            position: fixed;
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0.4;
-            animation: float 20s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(30px, -30px) scale(1.1);
-            }
-            66% {
-                transform: translate(-20px, 20px) scale(0.9);
-            }
-        }
-
-        .glow-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(60px);
-            pointer-events: none;
-            z-index: 0;
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(1.2);
-            }
-        }
-
-        .header-bg {
-            background: linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0a1628 100%);
-            border-bottom: 2px solid rgba(34, 211, 238, 0.3);
-        }
-
-        .search-container {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(34, 211, 238, 0.2);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 0 20px rgba(34, 211, 238, 0.1);
-        }
-
-        .category-btn {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(34, 211, 238, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .category-btn:hover {
-            background: rgba(34, 211, 238, 0.1);
-            border-color: rgba(34, 211, 238, 0.6);
-            transform: translateY(-2px);
-        }
-
-        .category-btn.active {
-            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-            color: white;
-            border-color: #06b6d4;
-            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
-        }
-
-        .faq-item {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(34, 211, 238, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            border-color: rgba(34, 211, 238, 0.4);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
-        }
-
-        .faq-question {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .faq-item.open .faq-answer {
-            max-height: 500px;
-        }
-
-        .faq-item.open .expand-icon {
-            transform: rotate(180deg);
-        }
-
-        .expand-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .badge {
-            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .badge.green {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .badge.purple {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-        }
-
-        .badge.orange {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-        }
-
-        .help-icon {
-            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 8px 24px rgba(6, 182, 212, 0.3);
-            animation: pulse 2s ease-in-out infinite;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/faq.css">
 </head>
-<body class="overflow-x-hidden">
+
+<body>
+
     <!-- Animated Background Orbs -->
     <div class="glow-orb" style="width: 400px; height: 400px; background: #06b6d4; top: 10%; left: -5%;"></div>
     <div class="glow-orb" style="width: 300px; height: 300px; background: #3b82f6; bottom: 10%; right: -5%;"></div>
     <div class="glow-orb" style="width: 250px; height: 250px; background: #8b5cf6; top: 50%; right: 20%;"></div>
 
-    <!-- Particles -->
+     <!-- Particles -->
     <div id="particles"></div>
 
+
     <!-- Header -->
-    <header class="header-bg relative z-10">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8">
+     <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
                     <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="url(#gradient1)"/>
                         <path d="M20 10L30 20L20 30L10 20L20 10Z" fill="url(#gradient2)"/>
@@ -190,244 +39,359 @@
                         </defs>
                     </svg>
                 </div>
-                <span class="text-white text-xl font-bold">XT-FREEM</span>
+                <span class="logo-text">XT-FREEM</span>
             </div>
-            <div class="flex items-center gap-4">
-                <button class="text-white hover:text-cyan-400 transition-colors">Support</button>
-                <button class="text-white hover:text-cyan-400 transition-colors">
+            <div class="header-actions">
+                <button class="link-btn">Support</button>
+                <button class="icon-btn">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
                 </button>
-            </div>
+            </div>`
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="relative z-10 max-w-6xl mx-auto px-6 py-12">
+     <!-- Main Content -->
+      <main class="main-container">
         <!-- Title Section -->
-        <div class="text-center mb-12">
-            <div class="flex justify-center mb-6">
+        <div class="mb-12">
+            <div class="main">
                 <div class="help-icon">
                     <span>?</span>
                 </div>
             </div>
-            <h1 class="text-4xl font-bold text-gray-900 mb-3">How can I help you?</h1>
-            <p class="text-gray-600 text-lg">Frequently Asked Questions</p>
+            <h1>Questions? Look here.</h1>
+            <p>We respond 24/7 to inquiries regarding White IP, results, both sides, and operational urgency.</p>
+            <p>Technical inquiries are most readily answered between 10:00 AM and 8:00 PM.</p>
+
+            <h2 class="animated-heading"><span>Frequently</span><span> Asked</span><span> Questions </span></h2>
         </div>
 
-        <!-- Search Bar -->
-        <div class="search-container rounded-2xl p-6 mb-8">
-            <div class="flex gap-3">
-                <div class="flex-1 relative">
-                    <svg class="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                    <input 
-                        type="text" 
-                        id="searchInput"
-                        placeholder="Search for FAQs..." 
-                        class="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition-all"
-                    >
-                </div>
-                <button class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all hover:scale-105 font-semibold">
-                    Search
-                </button>
-            </div>
+    <!-- Search Bar -->
+    <div class="search-container">
+    <div class="search-flex">
+        <div class="search-input-wrapper">
+        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+            </path>
+        </svg>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for the information you're curious about."
+            class="search-input"
+        >
         </div>
 
-        <!-- Category Filters -->
-        <div class="flex flex-wrap gap-3 mb-8">
-            <button class="category-btn active px-5 py-2 rounded-full text-sm font-semibold" data-category="all">
-                All
-            </button>
-            <button class="category-btn px-5 py-2 rounded-full text-sm font-semibold text-gray-700" data-category="general">
-                General
-            </button>
-            <button class="category-btn px-5 py-2 rounded-full text-sm font-semibold text-gray-700" data-category="account">
-                Account
-            </button>
-            <button class="category-btn px-5 py-2 rounded-full text-sm font-semibold text-gray-700" data-category="billing">
-                Billing
-            </button>
-            <button class="category-btn px-5 py-2 rounded-full text-sm font-semibold text-gray-700" data-category="technical">
-                Technical
-            </button>
-            <button class="category-btn px-5 py-2 rounded-full text-sm font-semibold text-gray-700" data-category="support">
-                Support
-            </button>
+        <button class="refresh-btn" title="Reset search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 4v6h-6"></path>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+        </button>
+
+        <button class="search-btn">
+        Search
+        </button>
         </div>
+    </div>
 
-        <!-- FAQ Items -->
-        <div id="faqContainer" class="space-y-4">
-            <!-- FAQ Item 1 -->
-            <div class="faq-item rounded-xl overflow-hidden" data-category="general">
-                <div class="faq-question p-6 flex items-center justify-between">
-                    <div class="flex items-center gap-4 flex-1">
-                        <span class="badge">General</span>
-                        <h3 class="text-lg font-semibold text-gray-900">What is XT-FREEM and how does it work?</h3>
-                    </div>
-                    <svg class="expand-icon w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
+
+    <!-- Category Filters -->
+    <div class="category-filters">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="How to contact us">How to contact us</button>
+        <button class="category-btn" data-category="Betting and Results">Betting and Results</button>
+        <button class="category-btn" data-category="API">API</button>
+        <button class="category-btn" data-category="How to use the agent page">How to use the agent page</button>
+        <button class="category-btn" data-category="support">Support</button>
+    </div>
+
+
+<div class="pagination-outer-container">
+    <!-- DropDown Menu -->
+    <div class="pagination-bar">
+        <div class="items-per-page">
+            <label for="itemsPerPage" class="items-label">Show:</label>
+
+            <div class="dropdown">
+            <button id="dropdownBtn" class="dropdown-btn">
+                <span id="selectedValue">10 items</span>
+                <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            <ul id="dropdownMenu" class="dropdown-menu hidden">
+                <li>10 items</li>
+                <li>25 items</li>
+                <li>50 items</li>
+                <li>100 items</li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination buttons -->
+    <div id="pagination" class="pagination">
+        
+        <button id="prevPage" class="page-btn prev-btn">
+            <svg class="page-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Prev</span>
+        </button>
+
+        <span id="pageNumbers" class="page-numbers"></span>
+
+        <button id="nextPage" class="page-btn next-btn">
+            <span>Next</span>
+            <svg class="page-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+    </div>
+</div>  
+
+    <!-- Page Count -->
+    <div class="pagination-header-container">
+        <div class="pagination-info">
+            <span class="total-text">Total <span id="totalCount">0</span> items</span>
+            <span class="current-page">Page 1</span>
+        </div>
+        <hr class="accent-divider">
+    </div>
+
+
+    <!-- FAQ items -->
+     <div class="faq-container" id="faqContainer">
+        <!-- FAQ Items 1 -->
+        <div class="faq-card" data-category="How to contact us">
+            <div class="faq-header">
+                <div class="faq-title-group">
+                    <span class="badge">How to contact us</span>
+                    <h3 class="faq-question-text">What is XT-FREEM and how does it work?</h3>
                 </div>
-                <div class="faq-answer">
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        XT-FREEM is a comprehensive service desk platform designed to streamline your support operations. It provides ticket management, inquiry tracking, and a centralized hub for handling customer requests efficiently. Our platform uses advanced AI to categorize and route tickets automatically.
-                    </div>
+                <div class="faq-icon-wrapper">
+                    <svg class="icon icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <svg class="icon icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                    </svg>
                 </div>
             </div>
-
-            <!-- FAQ Item 2 -->
-            <div class="faq-item rounded-xl overflow-hidden" data-category="account">
-                <div class="faq-question p-6 flex items-center justify-between">
-                    <div class="flex items-center gap-4 flex-1">
-                        <span class="badge green">Account</span>
-                        <h3 class="text-lg font-semibold text-gray-900">How do I create an account?</h3>
-                    </div>
-                    <svg class="expand-icon w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        Creating an account is simple! Click on the "Sign Up" button in the top right corner, enter your email address, create a secure password, and verify your email. You'll gain immediate access to all features of the platform.
-                    </div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    XT-FREEM is a comprehensive service desk platform designed to streamline your support operations. It
+                    provides ticket management, inquiry tracking, and a centralized hub for handling customer requests
+                    efficiently. Our platform uses advanced AI to categorize and route tickets automatically.
                 </div>
             </div>
-
-            <!-- FAQ Item 3 -->
-            <div class="faq-item rounded-xl overflow-hidden" data-category="technical">
-                <div class="faq-question p-6 flex items-center justify-between">
-                    <div class="flex items-center gap-4 flex-1">
-                        <span class="badge purple">Technical</span>
-                        <h3 class="text-lg font-semibold text-gray-900">What browsers are supported?</h3>
-                    </div>
-                    <svg class="expand-icon w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
+        </div>
+        
+        <!-- FAQ Items 2 -->
+        <div class="faq-card" data-category="Betting and Results">
+            <div class="faq-header">
+                <div class="faq-title-group">
+                    <span class="badge badge-green">Betting and Results</span>
+                    <h3 class="faq-question-text">How do I create an Betting and Results?</h3>
                 </div>
-                <div class="faq-answer">
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        XT-FREEM supports all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your preferred browser for the best experience and security.
-                    </div>
+                <div class="faq-icon-wrapper">
+                    <svg class="icon icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <svg class="icon icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                    </svg>
                 </div>
             </div>
-
-            <!-- FAQ Item 4 -->
-            <div class="faq-item rounded-xl overflow-hidden" data-category="billing">
-                <div class="faq-question p-6 flex items-center justify-between">
-                    <div class="flex items-center gap-4 flex-1">
-                        <span class="badge orange">Billing</span>
-                        <h3 class="text-lg font-semibold text-gray-900">What payment methods do you accept?</h3>
-                    </div>
-                    <svg class="expand-icon w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for enterprise customers. All payments are processed securely through our encrypted payment gateway.
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Item 5 -->
-            <div class="faq-item rounded-xl overflow-hidden" data-category="support">
-                <div class="faq-question p-6 flex items-center justify-between">
-                    <div class="flex items-center gap-4 flex-1">
-                        <span class="badge">Support</span>
-                        <h3 class="text-lg font-semibold text-gray-900">How can I contact customer support?</h3>
-                    </div>
-                    <svg class="expand-icon w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        You can reach our 24/7 customer support team through the "Create an Inquiry" button, live chat, email at support@xt-freem.com, or by phone at 1-800-XT-FREEM. We typically respond to inquiries within 2 hours.
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Item 6 -->
-            <div class="faq-item rounded-xl overflow-hidden" data-category="account">
-                <div class="faq-question p-6 flex items-center justify-between">
-                    <div class="flex items-center gap-4 flex-1">
-                        <span class="badge green">Account</span>
-                        <h3 class="text-lg font-semibold text-gray-900">Can I change my email address?</h3>
-                    </div>
-                    <svg class="expand-icon w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        Yes! Go to your account settings, select "Email Settings," and follow the verification process. You'll need to verify both your old and new email addresses for security purposes.
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Item 7 -->
-            <div class="faq-item rounded-xl overflow-hidden" data-category="technical">
-                <div class="faq-question p-6 flex items-center justify-between">
-                    <div class="flex items-center gap-4 flex-1">
-                        <span class="badge purple">Technical</span>
-                        <h3 class="text-lg font-semibold text-gray-900">Is my data secure and encrypted?</h3>
-                    </div>
-                    <svg class="expand-icon w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        We use industry-standard AES-256 encryption for data at rest and TLS 1.3 for data in transit. Our platform is SOC 2 Type II compliant and undergoes regular security audits.
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Item 8 -->
-            <div class="faq-item rounded-xl overflow-hidden" data-category="general">
-                <div class="faq-question p-6 flex items-center justify-between">
-                    <div class="flex items-center gap-4 flex-1">
-                        <span class="badge">General</span>
-                        <h3 class="text-lg font-semibold text-gray-900">Do you offer a free trial?</h3>
-                    </div>
-                    <svg class="expand-icon w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-                        Yes! We offer a 14-day free trial with full access to all features. No credit card required to start. You can upgrade to a paid plan anytime during or after the trial period.
-                    </div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    Creating an Betting and Results is simple! Click on the "Sign Up" button in the top right corner, enter your
+                    email address, create a secure password, and verify your email. You'll gain immediate access to all features
+                    of the platform.
                 </div>
             </div>
         </div>
 
-        <!-- CTA Section -->
-        <div class="mt-12 text-center search-container rounded-2xl p-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-3">Still have questions?</h2>
-            <p class="text-gray-600 mb-6">Can't find the answer you're looking for? Please contact our support team.</p>
-            <button class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all hover:scale-105 font-semibold">
-                Contact Support
-            </button>
+        <!-- FAQ Items 3 -->
+        <div class="faq-card" data-category="How to use the agent page">
+            <div class="faq-header">
+                <div class="faq-title-group">
+                    <span class="badge badge-purple">How to use the agent page</span>
+                    <h3 class="faq-question-text">What browsers are supported?</h3>
+                </div>
+                <div class="faq-icon-wrapper">
+                    <svg class="icon icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <svg class="icon icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    XT-FREEM supports all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your preferred browser for the best experience and security.
+                </div>
+            </div>
         </div>
+
+
+        <!-- FAQ Items 4 -->
+        <div class="faq-card" data-category="API">
+            <div class="faq-header">
+                <div class="faq-title-group">
+                    <span class="badge badge-orange">API</span>
+                    <h3 class="faq-question-text">What payment methods do you accept?</h3>
+                </div>
+                <div class="faq-icon-wrapper">
+                    <svg class="icon icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <svg class="icon icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for enterprise customers. All payments are processed securely through our encrypted payment gateway.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Items 5 -->
+        <div class="faq-card" data-category="support">
+            <div class="faq-header">
+                <div class="faq-title-group">
+                    <span class="badge">Support</span>
+                    <h3 class="faq-question-text">How can I contact customer support?</h3>
+                </div>
+                <div class="faq-icon-wrapper">
+                    <svg class="icon icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <svg class="icon icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    You can reach our 24/7 customer support team through the "Create an Inquiry" button, live chat, email at support@xt-freem.com, or by phone at 1-800-XT-FREEM. We typically respond to inquiries within 2 hours.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- FAQ Items 6 -->
+        <div class="faq-card" data-category="Betting and Results">
+            <div class="faq-header">
+                <div class="faq-title-group">
+                    <span class="badge badge-green">Betting and Results</span>
+                    <h3 class="faq-question-text">Can I change my email address?</h3>
+                </div>
+                <div class="faq-icon-wrapper">
+                    <svg class="icon icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <svg class="icon icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    Yes! Go to your account settings, select "Email Settings," and follow the verification process. You'll need to verify both your old and new email addresses for security purposes.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Items 7 -->
+        <div class="faq-card" data-category="How to use the agent page">
+            <div class="faq-header">
+                <div class="faq-title-group">
+                    <span class="badge badge-purple">How to use the agent page</span>
+                    <h3 class="faq-question-text">Is my data secure and encrypted?</h3>
+                </div>
+                <div class="faq-icon-wrapper">
+                    <svg class="icon icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <svg class="icon icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    We use industry-standard AES-256 encryption for data at rest and TLS 1.3 for data in transit. Our platform is SOC 2 Type II compliant and undergoes regular security audits.
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Items 8 -->
+         <div class="faq-card" data-category="How to contact us">
+            <div class="faq-header">
+                <div class="faq-title-group">
+                    <span class="badge ">How to contact us</span>
+                    <h3 class="faq-question-text">Do you offer a free trial?</h3>
+                </div>
+                <div class="faq-icon-wrapper">
+                    <svg class="icon icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    <svg class="icon icon-minus" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    Yes! We offer a 14-day free trial with full access to all features. No credit card required to start. You can upgrade to a paid plan anytime during or after the trial period.
+                </div>
+            </div>
+        </div>
+     </div>
+
+
+     <!-- CTA Section -->
+     <div class="support-container">
+        <div class="support-card">
+            <h2 class="support-title">Still have questions?</h2>
+            <p class="support-text">Can't find the answer you're looking for? Please contact our suppport team</p>
+            <button class="support-button" style="font-size: 18px;">Contact Us</button>
+        </div>
+    </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="relative z-10 max-w-7xl mx-auto px-6 py-8 mt-12 border-t border-gray-200">
-        <div class="text-center text-gray-500 text-sm">
-            <p>© 2025 Copyright XT-FREEM. All rights reserved.</p>
-            <p class="mt-2">Managed with XT-FREEM service</p>
-        </div>
-    </footer>
+    <!-- Button back to top -->
+    <button id="backToTop" class="back-to-top">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
 
-    <script>
-        // Create particles
+</body>
+
+<script>
+    
+    // Create particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 30;
+
+            // Clear existing particles
+            particlesContainer.innerHTML = '';
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -449,14 +413,37 @@
             }
         }
 
+        createParticles();
+
+        // H2 animation
+        const heading = document.querySelector('.animated-heading');
+
+        if (heading && !heading.classList.contains('animated-done')) {
+            const originalText = heading.textContent;
+            
+            heading.innerHTML = originalText
+                .split('') 
+                .map(letter => {
+                    if (letter === ' ') {
+                        return `<span class="space">&nbsp;</span>`; 
+                    } else {
+                        return `<span>${letter}</span>`;
+                    }
+                })
+                .join('');
+            
+            // Mark as done so it doesn't repeat
+            heading.classList.add('animated-done');
+        }
+
         // FAQ accordion functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
+        document.querySelectorAll('.faq-header').forEach(question => {
             question.addEventListener('click', () => {
-                const faqItem = question.closest('.faq-item');
+                const faqItem = question.closest('.faq-card');
                 const wasOpen = faqItem.classList.contains('open');
                 
                 // Close all other items
-                document.querySelectorAll('.faq-item').forEach(item => {
+                document.querySelectorAll('.faq-card').forEach(item => {
                     item.classList.remove('open');
                 });
                 
@@ -477,7 +464,7 @@
                 btn.classList.add('active');
                 
                 // Filter FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
+                document.querySelectorAll('.faq-card').forEach(item => {
                     if (category === 'all' || item.dataset.category === category) {
                         item.style.display = 'block';
                     } else {
@@ -487,14 +474,36 @@
             });
         });
 
+        //DropDown
+        const btn = document.getElementById("dropdownBtn");
+            const menu = document.getElementById("dropdownMenu");
+            const value = document.getElementById("selectedValue");
+
+            btn.onclick = () => menu.classList.toggle("hidden");
+
+            menu.querySelectorAll("li").forEach(item => {
+                item.onclick = () => {
+                    value.textContent = item.textContent;
+                    menu.classList.add("hidden");
+                };
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                    menu.classList.add("hidden");
+                }
+            });
+
+
         // Search functionality
         const searchInput = document.getElementById('searchInput');
+
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
             
-            document.querySelectorAll('.faq-item').forEach(item => {
-                const question = item.querySelector('h3').textContent.toLowerCase();
-                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+            document.querySelectorAll('.faq-card').forEach(item => {
+                const question = item.querySelector('.faq-question-text').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
                 
                 if (question.includes(searchTerm) || answer.includes(searchTerm)) {
                     item.style.display = 'block';
@@ -502,10 +511,101 @@
                     item.style.display = 'none';
                 }
             });
+
+             updateCount(); //update after search
+
         });
 
-        // Initialize particles
-        createParticles();
-    </script>
-</body>
+        //Update Page Count functionality
+        function updateCount() {
+
+            const visibleItems = document.querySelectorAll('#faqContainer .faq-card:not([style*="display: none"])');
+            const counter = document.getElementById('totalCount');
+
+            if (counter) {
+                counter.textContent = visibleItems.length;
+            }
+        }
+
+        //Call on DOM load
+        document.addEventListener('DOMContentLoaded', updateCount);
+
+        //call after filtering by category
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (category === 'all'  || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // update count after filtering
+                updateCount();
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+        const refreshBtn = document.querySelector('.refresh-btn');
+        const searchInput = document.querySelector('.search-input');
+        const faqCards = document.querySelectorAll('.faq-card');
+
+        refreshBtn.addEventListener('click', function() {
+            // Clear the input value
+            searchInput.value = '';
+
+            //Show all FAQ cards again
+            faqCards.forEach(card => {
+                card.style.display = 'block';
+                // Optional: Close any open cards when resetting
+                card.classList.remove('open');
+            });
+
+            // Add a quick 'spin' animation class to the icon (optional)
+            const icon = this.querySelector('svg');
+            icon.style.transition = 'transform 0.5s ease';
+            icon.style.transform = 'rotate(360deg)';
+            
+            // Reset the rotation after animation so it can spin again next click
+            setTimeout(() => {
+                icon.style.transition = 'none';
+                icon.style.transform = 'rotate(0deg)';
+            }, 500);
+
+            // Set focus back to search input for better UX
+            searchInput.focus();
+        });
+    });
+
+        // Scroll-to-top button logic
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", () => {
+            // Show button after scrolling down 300px
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" 
+            });
+        });
+
+        
+
+</script>
+
+
+
 </html>

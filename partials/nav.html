@@ -1,114 +1,103 @@
         <!-- Navbar -->
         <div
-            class="navbar fixed top-0 right-0 left-0 transition-all h-auto z-[5] py-[20px] md:py-[25px] lg:py-[30px] xl:py-[35px]"
+            class="site-header navbar fixed top-0 right-0 left-0 transition-all h-auto z-[5] py-[20px] md:py-[25px] lg:py-[30px] xl:py-[35px]"
             id="navbar"
         >
             <div class="container sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1430px] 2xl:max-w-[1745px] mx-auto px-[12px]">
                 <div class="flex items-center relative flex-wrap lg:flex-nowrap justify-between lg:justify-start">
-                    <a href="index.html" class="inline-block w-[110px]">
-                        <img src="/css/images/xtreme_logo.png" alt="logo" class="inline-block dark:hidden">
-                        <img src="/css/images/xtreme_logo.png" alt="logo" class="hidden dark:inline-block">
+                    <a href="javascript:void(0)"  data-page="index.html" class="inline-block w-[110px]">
+                        <img src="./css/images/xtreme_logo.png" alt="logo" class="inline-block dark:hidden">
+                        <img src="./css/images/xtreme_logo.png" alt="logo" class="hidden dark:inline-block">
                     </a>
                     <button
                         type="button"
                         id="navbar-burger-menu"
                         class="inline-block relative leading-none lg:hidden"
                     >
-                        <span class="h-[3px] w-[30px] my-[5px] block bg-dark dark:bg-white"></span>
-                        <span class="h-[3px] w-[30px] my-[5px] block bg-dark dark:bg-white"></span>
-                        <span class="h-[3px] w-[30px] my-[5px] block bg-dark dark:bg-white"></span>
+                        <span class="h-[3px] w-[30px] my-[5px] block bg-white"></span>
+                        <span class="h-[3px] w-[30px] my-[5px] block bg-white"></span>
+                        <span class="h-[3px] w-[30px] my-[5px] block bg-white"></span>
                     </button>
                     <div class="hidden lg:flex items-center grow basis-full basis-auto">
                         <!-- For Big Devices -->
                         <ul class="flex mx-auto flex-row bg-white/40 dark:bg-dark/40 rounded-[40px] p-[5px]">
+                        
                             <li>
-                                <a href="index.html" class="font-semibold rounded-[70px] text-base block py-[9.5px] xl:py-[11.5px] px-[20px] xl:px-[26px] bg-orange-400 text-white">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="pages/faq.html" class="text-black dark:text-white font-semibold rounded-[70px] text-base block py-[9.5px] xl:py-[11.5px] px-[20px] xl:px-[26px] transition-all hover:bg-orange-400 hover:text-white">
+                                <a href="javascript:void(0)"  data-page="pages/faq.html" class="text-white  dark:text-white font-semibold rounded-[70px] text-base block py-[9.5px] xl:py-[11.5px] px-[20px] xl:px-[26px] transition-all bg-[#11192B] hover:bg-[#11192B] hover:text-white">
                                     FAQ
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/inquiry.html" class="text-black dark:text-white font-semibold rounded-[70px] text-base block py-[9.5px] xl:py-[11.5px] px-[20px] xl:px-[26px] transition-all hover:bg-orange-400 hover:text-white">
+                                <a href="javascript:void(0)"  data-page="pages/inquiry.html" class="text-white  dark:text-white font-semibold rounded-[70px] text-base block py-[9.5px] xl:py-[11.5px] px-[20px] xl:px-[26px] transition-all hover:bg-[#11192B] hover:text-white">
                                     Inquiry
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/service-desk.html" class="text-black dark:text-white font-semibold rounded-[70px] text-base block py-[9.5px] xl:py-[11.5px] px-[20px] xl:px-[26px] transition-all hover:bg-orange-400 hover:text-white">
-                                    Help Desk
+                                <a href="javascript:void(0)"  data-page="pages/inquiry-details.html" class="text-white  dark:text-white font-semibold rounded-[70px] text-base block py-[9.5px] xl:py-[11.5px] px-[20px] xl:px-[26px] transition-all hover:bg-[#11192B] hover:text-white">
+                                    Inquiry Details
                                 </a>
                             </li>
                             
                          
                         </ul>
                         <div class="flex items-center gap-[25px] xl:gap-[40px]">
-                            <a id="logoutBtn" href="#" class="text-orange-400 font-black text-xs uppercase tracking-[1.2px] xl:tracking-[1.8px] transition-all underline underline-offset-2 hover:text-primary-500" target="_blank">
+                            <button id="logoutBtn"  class="text-[#CDDAFF] font-black text-xs uppercase tracking-[1.2px] xl:tracking-[1.8px] transition-all underline underline-offset-2 hover:text-primary-500" >
                                 Log Out
-                            </a>
+                            </button>
                             <div class="flex items-center gap-[10px]">
-                                <a href="tel:+32145678761" class="flex-none flex items-center justify-center rounded-full bg-[#221006] dark:bg-dark text-orange-400 text-lg w-[50px] h-[50px] xl:w-[54px] xl:h-[54px]">
+                                <a href="javascript:void(0)" class="flex-none flex items-center justify-center rounded-full bg-[#6560F0] dark:bg-dark text-[#CDDAFF] text-lg w-[50px] h-[50px] xl:w-[54px] xl:h-[54px]">
                                    <span class="material-symbols-outlined input-icon">person</span>
                                 </a>
                                 <div class="pt-[3px] hidden xl:block">
                                     <!-- <span class="block uppercase tracking-[1.8px] text-xs font-semibold mb-px">
-                                        USER ID
+                                        Agent's ID
                                     </span> -->
-                                    <a href="javascript:void(0)" class="inline-block tracking-[0.18px] font-bold text-base md:text-[15px] lg:text-md xl:text-lg text-black dark:text-white transition-all hover:text-orange-400">
-                                        USER ID
-                                    </a>
+                                    <p class="inline-block tracking-[0.18px] font-bold text-base md:text-[15px] lg:text-md xl:text-lg text-white dark:text-white transition-all">
+                                        Agent's ID
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div
-                        class="bg-white dark:bg-[#221006] rounded-[15px] border border-gray-200 dark:border-gray-900 mt-[15px] p-[20px] md:p-[30px] w-full hidden lg:!hidden"
+                        class="bg-menu-mobile  dark:bg-[#221006] rounded-[15px] border border-gray-200 dark:border-gray-900 mt-[15px] p-[20px] md:p-[30px] w-full hidden lg:!hidden"
                         id="navbar-collapse"
                     >
                         <!-- For Responsive -->
                         <ul>
                             <li class="my-[15px] md:my-[17px] first:mt-0 last:mb-0">
-                                <a href="index.html" class="font-semibold text-base block text-orange-400">
-                                    Home
-                                </a>
-                            </li>
-                   
-                            <li class="my-[15px] md:my-[17px] first:mt-0 last:mb-0">
-                                <a href="pages/faq.html" class="text-black dark:text-white font-semibold text-base block transition-all hover:text-orange-400">
+                                <a href="javascript:void(0)"  data-page="pages/faq.html" class="text-white  dark:text-white font-semibold text-base block transition-all hover:text-[#CDDAFF]">
                                     FAQ
                                 </a>
                             </li>
                              <li class="my-[15px] md:my-[17px] first:mt-0 last:mb-0">
-                                <a href="pages/inquiry.html" class="text-black dark:text-white font-semibold text-base block transition-all hover:text-orange-400">
+                                <a href="javascript:void(0)"  data-page="pages/inquiry.html" class="text-white  dark:text-white font-semibold text-base block transition-all hover:text-[#CDDAFF]">
                                     Inquiry
                                 </a>
                             </li>
                              <li class="my-[15px] md:my-[17px] first:mt-0 last:mb-0">
-                                <a href="pages/service-desk.html" class="text-black dark:text-white font-semibold text-base block transition-all hover:text-orange-400">
-                                     Help Desk
+                                <a href="javascript:void(0)"  data-page="pages/inquiry-details.html" class="text-white  dark:text-white font-semibold text-base block transition-all hover:text-[#CDDAFF]">
+                                     Inquiry Details
                                 </a>
                             </li>
-                          
                         </ul>
                         <div class="sm:flex items-center gap-[25px] mt-[15px] md:mt-[17px]">
                             <div class="flex items-center gap-[10px] mb-[15px] sm:mb-0">
-                                <div class="flex-none flex items-center justify-center rounded-full bg-[#221006] dark:bg-dark text-orange-400 text-lg w-[50px] h-[50px]">
-                                    <i class="ri-phone-fill"></i>
+                                <div class="flex-none flex items-center justify-center rounded-full bg-[#6560F0] dark:bg-dark text-[#CDDAFF] text-lg w-[50px] h-[50px]">
+                                   <span class="material-symbols-outlined input-icon">person</span>
                                 </div>
                                 <div class="pt-[2px]">
                                     <!-- <span class="block uppercase tracking-[1.8px] text-xs font-semibold mb-[3px]">
-                                        USER ID
+                                        Agent's ID
                                     </span> -->
-                                    <a href="javascript:void(0)" class="inline-block tracking-[0.18px] font-bold text-base md:text-[15px] lg:text-md xl:text-lg text-black dark:text-white transition-all hover:text-orange-400">
-                                        USER ID
-                                    </a>
+                                    <p href="javascript:void(0)" class="inline-block tracking-[0.18px] font-bold text-base md:text-[15px] lg:text-md xl:text-lg text-white dark:text-white transition-all">
+                                        Agent's ID
+                                    </p>
                                 </div>
                             </div>
-                            <a id="logoutBtn" href="#" class="text-orange-400 font-black text-xs uppercase tracking-[1.2px] xl:tracking-[1.8px] transition-all underline underline-offset-2 hover:text-primary-500">
+                            <button id="logoutBtn"  class="text-[#CDDAFF] font-black text-xs uppercase tracking-[1.2px] xl:tracking-[1.8px] transition-all underline underline-offset-2 hover:text-primary-500">
                                 Log Out
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -119,24 +108,7 @@
 
 
 <script>
-     // Navbar Sticky
-    const getNavbarID = document.getElementById("navbar");
-    if (getNavbarID) {
-        window.addEventListener('scroll', event => {
-            const height = 150;
-            const { scrollTop } = event.target.scrollingElement;
-            document.querySelector('#navbar').classList.toggle('is-sticky', scrollTop >= height);
-        });
-    }
 
-    // Navbar Collapse
-    const getNavbarBurgerMenuID = document.getElementById("navbar-burger-menu");
-    if (getNavbarBurgerMenuID) {
-        const button = document.getElementById('navbar-burger-menu');
-        const div = document.getElementById('navbar-collapse');
-        button.addEventListener('click', function() {
-            button.classList.toggle('active'); // Toggle active class on the button
-            div.classList.toggle('active');    // Toggle active class on the div
-        });
-    }
+
+    
 </script>
