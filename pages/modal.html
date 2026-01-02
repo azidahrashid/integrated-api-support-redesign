@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XTREEM - View Inquiry Details</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #cfcfcf, #cfcfcf);
+  min-height: 100vh;
+  padding: 40px;
+  color: #1f1e1e;
+}
+
+/* Open Button */
+.open-btn {
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #6366f1, #2563eb);
+  color: #1f1f1f;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(99,102,241,.4);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: .4s;
+  z-index: 10;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal */
+.glass-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(.96);
+  width: 960px;
+  max-width: 95vw;
+  height: auto;
+  max-height: 90vh;
+
+  background: rgba(255, 255, 255, 0.712);
+  backdrop-filter: blur(20px);
+  border-radius: 22px;
+  box-shadow: 0 40px 120px rgba(0,0,0,.6);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: .35s ease;
+  z-index: 999;
+
+  animation: none;
+}
+
+.glass-modal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+  animation: popIn .35s ease;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Header */
+.modal-header {
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modal-header h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.modal-header p {
+  font-size: 13px;
+  color: #535862;
+  margin-top: 6px;
+}
+
+.close-btn {
+  background: rgb(201, 201, 201);
+  /* border: none; */
+  color: #353333;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgb(160, 160, 160);
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: rgb(175, 174, 174);
+  color: #1f1e1e;
+}
+
+
+/* Body */
+.modal-body {
+  padding: 22px;
+  overflow-y: auto;
+}
+
+/* Glass Card */
+.glass-card {
+  /* background: rgba(255,255,255,0.06); */
+  border-radius: 18px;
+  padding: 0 20px 20px 20px;
+  /* border: 1px solid rgba(255,255,255,0.12); */
+  /* margin: 20px; */
+}
+
+/* Ticket ID */
+.ticket-id span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.ticket-id h3 {
+  margin-top: 4px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.ticket-section-2 span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.ticket-section-2 p {
+  margin-top: 4px;
+  font-size: 20px;
+  /* font-weight: 600; */
+}
+
+/* Card */
+.ticket-meta-card {
+  padding: 18px 20px;
+  border: 1.5px solid #7783b6;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+
+/* Rows */
+.meta-row {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 14px;
+}
+
+.meta-row:last-child {
+  margin-bottom: 0;
+}
+
+/* One column */
+.meta-row.one-col {
+  grid-template-columns: 1fr;
+}
+
+/* Two columns */
+.meta-row.two-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Items */
+.meta-item label {
+  font-size: 12px;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.meta-item p,
+.meta-item span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* User */
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  /* background: linear-gradient(135deg, #6366f1, #8b5cf6); */
+  border: 1px solid #6366f1;
+  color: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+
+/* Badges */
+.badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.badge.technical {
+  background: #d5c0e0;
+  color: #8118be;
+}
+
+.badge.pending {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+/* Sections below card */
+.ticket-section {
+  margin-top: 18px;
+}
+
+.ticket-section label {
+  font-size: 12px;
+  color: #6b7280;
+  display: block;
+  /* margin-bottom: 6px; */
+}
+
+.ticket-section p {
+  font-size: 16px;
+  color: #374151;
+  /* line-height: 1.6; */
+}
+
+
+/* Sections */
+.section {
+  margin-top: 20px;
+}
+
+.section h4 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.section p {
+  font-size: 13px;
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+/* Attachments */
+.attachments img {
+  width: 140px;
+  height: 90px;
+  border-radius: 12px;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: transform .3s ease;
+  position: relative;
+  /* margin: 20px; */
+  /* padding: 12px; */
+}
+
+/* Scale thumbnail slightly */
+.attachments img:hover {
+  transform: scale(1.05);
+}
+
+/* Big preview using ::after */
+.attachments img::after {
+  content: "";
+  position: absolute;
+  top: -220px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 200px;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+}
+
+/* Show preview on hover */
+.attachments img:hover::after {
+  opacity: 1;
+}
+
+/* Fullscreen Overlay */
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s ease;
+  z-index: 9999; /* HIGHER than modal */
+}
+
+/* Active */
+.image-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Image */
+.image-lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 18px;
+  box-shadow: 0 40px 120px rgba(0,0,0,.8);
+  animation: zoomIn .25s ease;
+}
+
+/* Close Button */
+.lightbox-close {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  background: rgba(255,255,255,.15);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+}
+
+/* Zoom animation */
+@keyframes zoomIn {
+  from {
+    transform: scale(.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #D5D5D5;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: #9b9b9b;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 14px 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.tab.active {
+  color: #2468EA;
+  border-bottom: 2px solid #6366f1;
+}
+
+/* Content */
+.tab-content {
+  display: none;
+  margin-top: 20px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  padding: 0 22px;
+  gap: 20px;
+  border-bottom: 1px solid rgb(160, 160, 160);
+  margin-bottom: 20px;
+}
+
+
+.tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+}
+
+
+
+/* Chat */
+.chat-box {
+  height: 300px;
+  overflow-y: auto;
+  padding: 16px;
+  background: rgba(255,255,255,.06);
+  border-radius: 14px;
+}
+
+.message {
+  max-width: 75%;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+}
+
+.message.user {
+  background: rgba(99,102,241,.2);
+  margin-left: auto;
+}
+
+.message.agent {
+  background: rgba(255,255,255,.15);
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.chat-input button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.communication-card {
+  margin-top: 18px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.communication-card.user {
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.communication-card.user .avatar {
+  background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.communication-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+}
+
+/* Top Row */
+.comm-top {
+  display: flex;
+  align-items: center;
+}
+
+/* User */
+.comm-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.user-info .name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.user-info .role {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Time */
+.comm-time {
+  margin-left: auto;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Divider */
+.comm-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(99,102,241,.2),
+    rgba(99,102,241,.05)
+  );
+  margin: 14px 0;
+}
+
+/* Message */
+.comm-message {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #374151;
+  white-space: pre-line;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+</style>
+
+
+<!-- Open Modal Button -->
+<button class="open-modal-btn" id="openModal">
+  View Inquiry Details
+</button>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<div class="glass-modal" id="modal">
+
+  <div class="modal-header">
+    <div>
+      <h2>View Inquiry Details</h2>
+      <p>Understand the user's request and provide assistance.</p>
+    </div>
+    <button class="close-btn" id="closeModal">✕</button>
+  </div>
+
+  <div class="tabs">
+    <span class="tab active" data-tab="details">Ticket Details</span>
+    <span class="tab" data-tab="chat">Communication</span>
+  </div>
+
+  <div class="modal-body glass-card">
+
+    <!-- CONTENT: Ticket Details -->
+<div class="tab-content active" id="details">
+  <!-- Ticket ID -->
+    <div class="ticket-id">
+      <span>Ticket ID</span>
+      <h3>#321234</h3>
+    </div>
+
+    <!-- Ticket Meta Card -->
+<div class="ticket-meta-card">
+
+  <!-- ROW 1 -->
+  <div class="meta-row one-col">
+    <div class="meta-item">
+      <label>Agent</label>
+      <div class="user">
+        <!-- <div class="avatar" data-name="Rokmcc8"></div> -->
+        <span>Rokmcc8</span>
+      </div>
+    </div>
+  </div>
+
+      <!-- ROW 2 -->
+  <div class="meta-row two-col">
+    <div class="meta-item">
+      <label>Requestor</label>
+      <div class="user">
+        <div class="avatar" data-name="Olivia Rhye"></div>
+        <span>Olivia Rhye</span>
+      </div>
+    </div>
+
+    <div class="meta-item">
+      <label>Date & Time Created</label>
+      <p>2025-12-08 12:09:56</p>
+    </div>
+  </div>
+
+      <!-- ROW 3 -->
+  <div class="meta-row two-col">
+    <div class="meta-item">
+      <label>Category</label>
+      <span class="badge technical">Technical</span>
+    </div>
+
+    <div class="meta-item">
+      <label>Status</label>
+      <span class="badge pending">Pending</span>
+    </div>
+  </div>
+
+</div>
+
+  <!-- Ticket Title -->
+  <div class="ticket-section">
+    <div class="ticket-section-2">
+      <label>Ticket Title</label>
+      <p>Balance Insufficient Issue</p>
+    </div>
+
+  <!-- Ticket Description -->
+    <div class="ticket-section-2">
+      <label>Ticket Description</label>
+      <p>I am unable to complete my transaction because the system indicates that my
+      balance is insufficient. Kindly help me verify my account balance and advise
+      on what steps I should take to successfully complete the transaction.</p>
+    </div>
+  </div>
+    
+
+    <div class="section">
+      <h4>Attachments</h4>
+      <div class="attachments">
+        <img src="https://picsum.photos/1200/800?1" class="zoomable">
+        <img src="https://picsum.photos/1200/800?2" class="zoomable">
+        <img src="https://picsum.photos/1200/800?3" class="zoomable">
+      </div>
+    </div>
+</div>
+    
+  <!-- Fullscreen Image Lightbox -->
+  <div class="image-lightbox" id="imageLightbox">
+    <span class="lightbox-close" id="lightboxClose">✕</span>
+    <img id="lightboxImage" />
+  </div>
+</div>
+</div>
+
+<div class="communication-card support">
+
+  <!-- Top Row -->
+  <div class="comm-top">
+    <div class="comm-user">
+      <div class="avatar" data-name="Customer Support"></div>
+      <div class="user-info">
+        <span class="name">Customer Support</span>
+        <span class="role">Support Team</span>
+      </div>
+    </div>
+
+    <span class="comm-time">2025-12-08 13:22</span>
+  </div>
+
+  <!-- Divider -->
+  <div class="comm-divider"></div>
+
+  <!-- Message -->
+  <div class="comm-message">
+    We apologize for the inconvenience.<br>
+    It has now been normalized.<br>
+    Please review.
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<script src="script.js"></script>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+  /* ===== MODAL ===== */
+  const openBtn = document.getElementById("openModal");
+  const closeBtn = document.getElementById("closeModal");
+  const modal = document.getElementById("modal");
+  const overlay = document.getElementById("overlay");
+
+  openBtn.addEventListener("click", () => {
+    modal.classList.add("active");
+    overlay.classList.add("active");
+  });
+
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+
+  function closeModal() {
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+
+  /* ===== IMAGE LIGHTBOX ===== */
+  const zoomImages = document.querySelectorAll(".zoomable");
+  const lightbox = document.getElementById("imageLightbox");
+  const lightboxImg = document.getElementById("lightboxImage");
+  const lightboxClose = document.getElementById("lightboxClose");
+
+  if (zoomImages.length && lightbox) {
+    zoomImages.forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+      });
+    });
+  }
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener("click", closeLightbox);
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+    lightboxImg.src = "";
+  }
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const tabs = document.querySelectorAll(".tab");
+  const contents = document.querySelectorAll(".tab-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+
+      // Remove active state
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      // Activate clicked tab
+      tab.classList.add("active");
+      document
+        .getElementById(tab.dataset.tab)
+        .classList.add("active");
+    });
+  });
+
+});
+
+  /* ===== Avatar Image ===== */
+  document.querySelectorAll('.avatar').forEach(avatar => {
+    const name = avatar.dataset.name.trim();
+    const parts = name.split(' ');
+
+    let initials = parts[0][0];
+    if (parts.length > 1) {
+      initials += parts[parts.length - 1][0];
+    }
+
+    avatar.textContent = initials.toUpperCase();
+  });
+
+  
+
+
+
+</script>
+
+</head>
+</html>
