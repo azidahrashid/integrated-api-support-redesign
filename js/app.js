@@ -76,11 +76,15 @@ function showApp() {
   if (appView) appView.style.display = "block";
 
   // Load shared partials
-  loadPartial("nav", "partials/nav.html");
-  loadPartial("footer", "partials/footer.html");
-  loadPartial("faq", "pages/faq.html");
-  loadPartial("inquiry", "pages/inquiry.html");
-  loadPartial("service-desk", "pages/service-desk.html");
+loadPartial("nav", "partials/nav.html").then(() => {
+  initNavbar(); 
+});
+loadPartial("footer", "partials/footer.html");
+loadPartial("faq", "pages/faq.html");
+loadPartial("inquiry", "pages/inquiry.html");
+loadPartial("service-desk", "pages/service-desk.html");
+
+
 
   removeLoginAssets(); // remove login CSS/JS
 }
@@ -148,24 +152,25 @@ async function loadPage(path) {
 // ================================
 // Navbar
 // ================================
+function initNavbar() {
+  // Sticky navbar
+  const navbar = document.getElementById("navbar");
+  if (navbar) {
+    window.addEventListener("scroll", () => {
+      const height = 150;
+      const scrollTop = document.documentElement.scrollTop;
+      navbar.classList.toggle("is-sticky", scrollTop >= height);
+    });
+  }
 
-     // Navbar Sticky
-    const getNavbarID = document.getElementById("navbar");
-    if (getNavbarID) {
-        window.addEventListener('scroll', event => {
-            const height = 150;
-            const { scrollTop } = event.target.scrollingElement;
-            document.querySelector('#navbar').classList.toggle('is-sticky', scrollTop >= height);
-        });
-    }
+  // Hamburger toggle
+  const button = document.getElementById("navbar-burger-menu");
+  const collapse = document.getElementById("navbar-collapse");
 
-    // Navbar Collapse
-    const getNavbarBurgerMenuID = document.getElementById("navbar-burger-menu");
-    if (getNavbarBurgerMenuID) {
-        const button = document.getElementById('navbar-burger-menu');
-        const div = document.getElementById('navbar-collapse');
-        button.addEventListener('click', function() {
-            button.classList.toggle('active'); // Toggle active class on the button
-            div.classList.toggle('active');    // Toggle active class on the div
-        });
-    }
+  if (!button || !collapse) return;
+
+  button.addEventListener("click", () => {
+    button.classList.toggle("active");
+    collapse.classList.toggle("active");
+  });
+}
