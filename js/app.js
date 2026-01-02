@@ -153,6 +153,9 @@ function showApp() {
   // Load shared partials
 loadPartial("nav", "partials/nav.html").then(() => {
   initNavbar();
+
+     // 🔁 re-init particles if page contains them
+    initParticles();
 });
 loadPartial("footer", "partials/footer.html");
 
@@ -174,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function loadPage(path) {
-  const container = document.getElementById("main-board"); // default page
+  const container = document.getElementById("home"); // default page
   if (!container) return;
 
   try {
@@ -255,7 +258,7 @@ function initNavbar() {
   // Active nav handling
   // ================================
   const navLinks = document.querySelectorAll(
-    '#navbar a[data-page]'
+    '#navbar .headernavmenu a[data-page]'
   );
 
   navLinks.forEach(link => {
@@ -273,7 +276,65 @@ function initNavbar() {
       }
     });
   });
+
+
+
+  const navLinksmobile = document.querySelectorAll(
+    '#navbar .headernavmenu_mobile a[data-page]'
+  );
+
+  navLinksmobile.forEach(link => {
+    link.addEventListener("click", () => {
+      // remove active from all links
+      navLinksmobile.forEach(l => l.classList.remove("active-nav-mobile"));
+
+      // add active to clicked link
+      link.classList.add("active-nav-mobile");
+
+
+    });
+  });
+
 }
+
+
+
+
+  // ================================
+  // Particles
+  // ================================
+
+function initParticles() {
+  const particlesContainer = document.getElementById('particles');
+  if (!particlesContainer) return; // 🔴 IMPORTANT
+
+  particlesContainer.innerHTML = ""; // prevent duplicates
+
+  const particleCount = 30;
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+
+    const size = Math.random() * 4 + 2;
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * window.innerHeight;
+    const delay = Math.random() * 20;
+
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${startX}px`;
+    particle.style.top = `${startY}px`;
+    particle.style.animationDelay = `${delay}s`;
+    particle.style.background = `rgba(${
+      Math.random() > 0.5 ? '6,182,212' : '59,130,246'
+    }, 0.6)`;
+
+    particlesContainer.appendChild(particle);
+  }
+}
+
+
 
 
 
