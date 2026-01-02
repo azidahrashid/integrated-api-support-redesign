@@ -151,21 +151,16 @@ function showApp() {
   if (appView) appView.style.display = "block";
 
   // Load shared partials
-  loadPartial("nav", "partials/nav.html").then(() => {
-    initNavbar();
+loadPartial("nav", "partials/nav.html").then(() => {
+  initNavbar();
+});
+loadPartial("footer", "partials/footer.html");
 
 
 
-   // ✅ Safe place: particles container now exists
-    initParticles();
 
-  });
-
-  loadPartial("footer", "partials/footer.html");
-
-  removeLoginAssets();
+  removeLoginAssets(); // remove login CSS/JS
 }
-
 
 // ================================
 // Initialize
@@ -179,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function loadPage(path) {
-  const container = document.getElementById("main-board"); // default page
+  const container = document.getElementById("faq"); // default page
   if (!container) return;
 
   try {
@@ -225,47 +220,6 @@ async function loadPage(path) {
 });
 
 });
-
-
-
-
-
-// ================================
-// particles
-// ================================
-function initParticles() {
-  const particlesContainer = document.getElementById('particles');
-  if (!particlesContainer) return; 
-
-  particlesContainer.innerHTML = ""; // prevent duplicates
-
-  const particleCount = 30;
-
-  for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-
-    const size = Math.random() * 4 + 2;
-    const startX = Math.random() * window.innerWidth;
-    const startY = Math.random() * window.innerHeight;
-    const delay = Math.random() * 20;
-
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = `${startX}px`;
-    particle.style.top = `${startY}px`;
-    particle.style.animationDelay = `${delay}s`;
-    particle.style.background = `rgba(${
-      Math.random() > 0.5 ? '6,182,212' : '59,130,246'
-    }, 0.6)`;
-
-    particlesContainer.appendChild(particle);
-  }
-}
-
-
-
-
 
 
 // ================================
