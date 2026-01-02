@@ -51440,7 +51440,7 @@ footer a:hover {
 
   .card {
     margin-top: 0;
-    width: 33.33%;
+    width: 32.33%;
   }
 
   .card div.lowergrouping {
@@ -51499,3 +51499,6 @@ footer a:hover {
 
 
 
+.mobile-home {
+    margin: 10px 0;
+}
