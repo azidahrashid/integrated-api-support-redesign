@@ -18,6 +18,83 @@ async function loadPartial(id, path) {
   }
 }
 
+
+
+
+
+// ================================
+// Initialize
+// ================================
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("isLoggedIn")) {
+    showApp();
+  } else {
+    showLogin();
+  }
+
+
+    // ================================
+    // SPA Page Loader
+    // ================================
+    async function loadPage(path) {
+      const container = document.getElementById("main-board");
+      if (!container) return;
+
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error(`Failed to load ${path}`);
+        container.innerHTML = await res.text();
+
+        // 🔁 re-init particles if page contains them
+        initParticles();
+
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = "<p>Error loading page.</p>";
+      }
+    }
+
+
+
+  document.addEventListener("click", (e) => {
+  // SPA navigation
+  const link = e.target.closest("[data-page]");
+  if (link) {
+    e.preventDefault();
+    loadPage(link.dataset.page);
+
+    // Close mobile menu after click
+    const burger = document.getElementById("navbar-burger-menu");
+    const collapse = document.getElementById("navbar-collapse");
+    if (burger && collapse) {
+      burger.classList.remove("active");
+      collapse.classList.remove("active");
+    }
+    return;
+  }
+
+  // Login
+  if (e.target.id === "loginBtn") {
+    localStorage.setItem("isLoggedIn", "true");
+    showApp();
+  }
+
+  // Logout
+  if (e.target.id === "logoutBtn") {
+    e.preventDefault();
+    localStorage.removeItem("isLoggedIn");
+    showLogin();
+  }
+});
+
+});
+
+
+
+
+
+
+
 // ================================
 // Load login-specific assets
 // ================================
@@ -167,75 +244,6 @@ function showApp() {
 
   removeLoginAssets();
 }
-
-
-// ================================
-// Initialize
-// ================================
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("isLoggedIn")) {
-    showApp();
-  } else {
-    showLogin();
-  }
-
-
-    // ================================
-    // SPA Page Loader
-    // ================================
-    async function loadPage(path) {
-      const container = document.getElementById("main-board");
-      if (!container) return;
-
-      try {
-        const res = await fetch(path);
-        if (!res.ok) throw new Error(`Failed to load ${path}`);
-        container.innerHTML = await res.text();
-
-        // 🔁 re-init particles if page contains them
-        initParticles();
-
-      } catch (err) {
-        console.error(err);
-        container.innerHTML = "<p>Error loading page.</p>";
-      }
-    }
-
-
-
-  document.addEventListener("click", (e) => {
-  // SPA navigation
-  const link = e.target.closest("[data-page]");
-  if (link) {
-    e.preventDefault();
-    loadPage(link.dataset.page);
-
-    // Close mobile menu after click
-    const burger = document.getElementById("navbar-burger-menu");
-    const collapse = document.getElementById("navbar-collapse");
-    if (burger && collapse) {
-      burger.classList.remove("active");
-      collapse.classList.remove("active");
-    }
-    return;
-  }
-
-  // Login
-  if (e.target.id === "loginBtn") {
-    localStorage.setItem("isLoggedIn", "true");
-    showApp();
-  }
-
-  // Logout
-  if (e.target.id === "logoutBtn") {
-    e.preventDefault();
-    localStorage.removeItem("isLoggedIn");
-    showLogin();
-  }
-});
-
-});
-
 
 
 
