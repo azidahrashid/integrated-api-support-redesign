@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function loadPage(path) {
-  const container = document.getElementById("main-board"); // use service-desk as container
+  const container = document.getElementById("faq"); // default page
   if (!container) return;
 
   try {
