@@ -3555,6 +3555,13 @@
       background-color: color-mix(in oklab, var(--color-white) 90%, transparent);
     }
   }
+
+
+.bg-menu-mobile {
+    background: #9cc3ff42;
+}
+
+
   .bg-contain {
     background-size: contain;
   }
@@ -5635,6 +5642,17 @@
       }
     }
   }
+
+
+  .hover\:bg-\[\#11192B\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #11192B;
+      }
+    }
+  }
+
+
   .hover\:bg-\[\#275b96\] {
     &:hover {
       @media (hover: hover) {

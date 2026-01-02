@@ -143,3 +143,29 @@ async function loadPage(path) {
 });
 
 });
+
+
+// ================================
+// Navbar
+// ================================
+
+     // Navbar Sticky
+    const getNavbarID = document.getElementById("navbar");
+    if (getNavbarID) {
+        window.addEventListener('scroll', event => {
+            const height = 150;
+            const { scrollTop } = event.target.scrollingElement;
+            document.querySelector('#navbar').classList.toggle('is-sticky', scrollTop >= height);
+        });
+    }
+
+    // Navbar Collapse
+    const getNavbarBurgerMenuID = document.getElementById("navbar-burger-menu");
+    if (getNavbarBurgerMenuID) {
+        const button = document.getElementById('navbar-burger-menu');
+        const div = document.getElementById('navbar-collapse');
+        button.addEventListener('click', function() {
+            button.classList.toggle('active'); // Toggle active class on the button
+            div.classList.toggle('active');    // Toggle active class on the div
+        });
+    }
