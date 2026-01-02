@@ -153,7 +153,9 @@ async function loadPage(path) {
 // Navbar
 // ================================
 function initNavbar() {
+  // ================================
   // Sticky navbar
+  // ================================
   const navbar = document.getElementById("navbar");
   if (navbar) {
     window.addEventListener("scroll", () => {
@@ -163,14 +165,43 @@ function initNavbar() {
     });
   }
 
+  // ================================
   // Hamburger toggle
+  // ================================
   const button = document.getElementById("navbar-burger-menu");
   const collapse = document.getElementById("navbar-collapse");
 
-  if (!button || !collapse) return;
+  if (button && collapse) {
+    button.addEventListener("click", () => {
+      button.classList.toggle("active");
+      collapse.classList.toggle("active");
+    });
+  }
 
-  button.addEventListener("click", () => {
-    button.classList.toggle("active");
-    collapse.classList.toggle("active");
+  // ================================
+  // Active nav handling
+  // ================================
+  const navLinks = document.querySelectorAll(
+    '#navbar a[data-page]'
+  );
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      // remove active from all links
+      navLinks.forEach(l => l.classList.remove("active-nav"));
+
+      // add active to clicked link
+      link.classList.add("active-nav");
+
+      // close mobile menu after click
+      if (collapse) {
+        collapse.classList.remove("active");
+        button?.classList.remove("active");
+      }
+    });
   });
 }
+
+
+
+
