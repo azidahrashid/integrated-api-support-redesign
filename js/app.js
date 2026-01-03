@@ -157,9 +157,10 @@ loadPartial("nav", "partials/nav.html").then(() => {
      // 🔁 re-init particles if page contains them
     initParticles();
 });
-loadPartial("footer", "partials/footer.html");
-
-
+loadPartial("footer", "partials/footer.html")
+//.then(() => {
+// initBackToTop();
+ //});
 
 
   removeLoginAssets(); // remove login CSS/JS
