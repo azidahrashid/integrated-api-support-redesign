@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 async function loadPage(path) {
-  const container = document.getElementById("home"); // default page
+  const container = document.getElementById("content-app"); 
   if (!container) return;
 
   try {
