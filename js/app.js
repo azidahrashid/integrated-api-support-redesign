@@ -119,7 +119,7 @@ function showApp() {
 // Initialize App
 // ================================
 document.addEventListener("DOMContentLoaded", () => {
-<<<<<<< HEAD
+
   if (localStorage.getItem("isLoggedIn")) {
     showApp();
   } else {
@@ -149,9 +149,9 @@ async function loadPage(path) {
   }
 }
 
-=======
+
   localStorage.getItem("isLoggedIn") ? showApp() : showLogin();
->>>>>>> 4f454f12e7f8333226215e054352e31a6ebe1674
+
 
   document.addEventListener("click", (e) => {
 
@@ -484,7 +484,7 @@ function initFAQPage() {
        const searchInput2 = document.querySelector('.search-input');
        const faqCards = document.querySelectorAll('.faq-card');
 
-<<<<<<< HEAD
+
             if (refreshBtn && searchInput2) {
               refreshBtn.addEventListener('click', () => {
                 searchInput2.value = '';
@@ -529,7 +529,7 @@ function initFAQPage() {
 }
 
 // =====================================
-// FAQ - Update Page Count Functionality
+// FAQ - Scroll Back to top
 // =====================================
 
 function initBackToTop(){    
@@ -549,18 +549,3 @@ function initBackToTop(){
 }
     
 
-
-      
-    
-=======
-// ================================
-// FAQ Counter
-// ================================
-function updateCount() {
-  const count = document.getElementById('totalCount');
-  if (!count) return;
-
-  count.textContent =
-    document.querySelectorAll('.faq-card:not([style*="display: none"])').length;
-}
->>>>>>> 4f454f12e7f8333226215e054352e31a6ebe1674
