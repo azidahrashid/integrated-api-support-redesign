@@ -29,6 +29,110 @@
                 </div>
 
 
+    <!-- Search Bar -->
+    <div class="search-container">
+    <div class="search-flex">
+        <div class="search-input-wrapper">
+        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+            </path>
+        </svg>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for the information you're curious about."
+            class="search-input">
+        </div>
+
+        <button class="refresh-btn" title="Reset search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 4v6h-6"></path>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+        </button>
+
+        <button class="search-btn">
+        Search
+        </button>
+        </div>
+    </div>
+
+
+
+  <!-- Category Filters -->
+    <div class="category-filters">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="How to contact us">How to contact us</button>
+        <button class="category-btn" data-category="Betting and Results">Betting and Results</button>
+        <button class="category-btn" data-category="API">API</button>
+        <button class="category-btn" data-category="How to use the agent page">How to use the agent page</button>
+        <button class="category-btn" data-category="support">Support</button>
+    </div>
+
+
+
+    <div class="pagination-outer-container">
+    <!-- DropDown Menu -->
+    <div class="pagination-bar">
+        <div class="items-per-page">
+            <label for="itemsPerPage" class="items-label">Show:</label>
+
+            <div class="dropdown">
+            <button id="dropdownBtn" class="dropdown-btn">
+                <span id="selectedValue">10 items</span>
+                <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            <ul id="dropdownMenu" class="dropdown-menu hidden">
+                <li>10 items</li>
+                <li>25 items</li>
+                <li>50 items</li>
+                <li>100 items</li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination buttons -->
+    <div id="pagination" class="pagination">
+        
+        <button id="prevPage" class="page-btn prev-btn">
+            <svg class="page-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Prev</span>
+        </button>
+
+        <span id="pageNumbers" class="page-numbers"></span>
+
+        <button id="nextPage" class="page-btn next-btn">
+            <span>Next</span>
+            <svg class="page-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+    </div>
+</div>  
+
+    <!-- Page Count -->
+    <div class="pagination-header-container">
+        <div class="pagination-info">
+            <span class="total-text">Total <span id="totalCount">0</span> items</span>
+            <span class="current-page">Page 1</span>
+        </div>
+        <hr class="accent-divider">
+    </div>
+
+
+
             <!-- Table -->
             <div class="table-card">
                 <div class="table-header">
