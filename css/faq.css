@@ -153,7 +153,7 @@
         opacity: 0;
         transform: translateY(20px);
         animation: fadeSlide 0.5s forwards;
-        margin-right: 12px;
+       
     }
 
     /* Invisible line under each letter */
@@ -168,10 +168,7 @@
     }
 
 
-    .animated-heading span.space {
-        display: inline-block;
-        width: 20px; 
-    }
+    
 
     .animated-heading span:nth-child(1) { animation-delay: 0s; }
     .animated-heading span:nth-child(2) { animation-delay: 0.05s; }

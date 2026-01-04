@@ -185,6 +185,14 @@ async function loadPage(path) {
     const res = await fetch(path);
     if (!res.ok) throw new Error(`Failed to load ${path}`);
     container.innerHTML = await res.text();
+
+    initFAQ();
+
+    initParticles();
+
+    initBackToTop();
+
+
   } catch (err) {
     console.error(err);
     container.innerHTML = "<p>Error loading page.</p>";
@@ -298,14 +306,11 @@ function initNavbar() {
 
 }
 
-
-
-
   // ================================
   // Particles
   // ================================
 
-function initParticles() {
+  function initParticles() {
   const particlesContainer = document.getElementById('particles');
   if (!particlesContainer) return; // 🔴 IMPORTANT
 
@@ -335,8 +340,221 @@ function initParticles() {
   }
 }
 
+// ================================
+// FAQ - Heading Animation
+// ================================
+function initFAQ() {
+  
+  // H2 animation
+  const heading = document.querySelector('.animated-heading');
+
+  if (heading && !heading.classList.contains('animated-done')) {
+    const originalText = heading.textContent;
+
+    heading.innerHTML = originalText
+      .split('')
+      .map(letter => {
+        if (letter === ' ') {
+          return `<span >&nbsp;</span>`;
+        } else {
+          return `<span>${letter}</span>`;
+        }
+      })
+      .join('');
+
+    heading.classList.add('animated-done');
+  }
+
+  
+// ================================
+// FAQ - accordion functionality
+// ================================
+
+document.querySelectorAll('.faq-header').forEach(question => {
+    question.addEventListener('click', () => {
+      const faqItem = question.closest('.faq-card');
+      const wasOpen = faqItem.classList.contains('open');
+
+      document.querySelectorAll('.faq-card').forEach(item => {
+        item.classList.remove('open');
+      });
+
+      if (!wasOpen) {
+        faqItem.classList.add('open');
+      }
+  });
+});
 
 
+// ===================================
+// FAQ - Category filter functionality
+// ===================================
+
+document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+                
+                // Update active button
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Filter FAQ items
+                document.querySelectorAll('.faq-card').forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+// ===================================
+// FAQ - Dropdown
+// ===================================
+
+const btn = document.getElementById("dropdownBtn");
+            const menu = document.getElementById("dropdownMenu");
+            const value = document.getElementById("selectedValue");
+
+            btn.onclick = () => menu.classList.toggle("hidden");
+
+            menu.querySelectorAll("li").forEach(item => {
+                item.onclick = () => {
+                    value.textContent = item.textContent;
+                    menu.classList.add("hidden");
+                };
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                    menu.classList.add("hidden");
+                }
+            });
+
+// ===================================
+// FAQ - Search Functionality
+// ===================================
+
+const searchInput = document.getElementById('searchInput');
+const btn2 = document.getElementById('search-Btn');
+
+if (!btn2 || !searchInput) {
+  console.error('Search button or input not found');
+} else {
+  btn2.addEventListener('click', () => {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+
+    document.querySelectorAll('.faq-card').forEach(item => {
+      const question =
+        item.querySelector('.faq-question-text')?.textContent.toLowerCase() || '';
+
+      const answer =
+        item.querySelector('.faq-answer-content')?.textContent.toLowerCase() || '';
+
+      const match =
+        question.includes(searchTerm) || answer.includes(searchTerm);
+
+      item.style.display = match ? '' : 'none';
+    });
+
+   updateCount();
+  });
+}
+
+//Call on DOM load
+        document.addEventListener('DOMContentLoaded', updateCount);
+
+        //call after filtering by category
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (category === 'all'  || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // update count after filtering
+                updateCount();
+            });
+        });
 
 
+       const refreshBtn = document.querySelector('.refresh-btn');
+       const searchInput2 = document.querySelector('.search-input');
+       const faqCards = document.querySelectorAll('.faq-card');
 
+            if (refreshBtn && searchInput2) {
+              refreshBtn.addEventListener('click', () => {
+                searchInput2.value = '';
+
+                faqCards.forEach(card => {
+                  card.style.display = '';
+                  card.classList.remove('open');
+                });
+
+                updateCount();
+
+                const icon = refreshBtn.querySelector('svg');
+                if (icon) {
+                  icon.style.transition = 'transform 0.5s ease';
+                  icon.style.transform = 'rotate(360deg)';
+
+                  setTimeout(() => {
+                    icon.style.transition = 'none';
+                    icon.style.transform = 'rotate(0deg)';
+                  }, 500);
+                }
+
+                searchInput2.focus();
+              });
+            }
+
+
+}
+
+// =====================================
+// FAQ - Update Page Count Functionality
+// =====================================
+
+  function updateCount() {
+
+      const visibleItems = document.querySelectorAll('#faqContainer .faq-card:not([style*="display: none"])');
+      const counter = document.getElementById('totalCount');
+
+        if (counter) {
+            counter.textContent = visibleItems.length;
+        }
+}
+
+// =====================================
+// FAQ - Update Page Count Functionality
+// =====================================
+
+function initBackToTop(){    
+
+        // Scroll-to-top button logic
+        const backToTopBtn = document.getElementById("backToTop");
+        if (!backToTopBtn) return;
+
+        window.addEventListener("scroll", () => {
+            backToTopBtn.classList.toggle("show", window.pageYOffset > 300);
+        });
+
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth"});
+        });
+
+}
+    
+
+
+      
+    
