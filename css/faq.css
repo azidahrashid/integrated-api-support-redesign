@@ -1,25 +1,3 @@
- @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-    * {
-        font-family: 'Inter', sans-serif;
-    }
-
-    body {
-        background: linear-gradient(135deg, #f8f9fb 0%, #e8edf3 100%);
-        margin: 0;
-        overflow-x: hidden;
-        min-height: 100vh;
-    }
-
-    .glow-orb {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(80px);
-        pointer-events: none;
-        z-index: 0;
-        opacity: 0.5;
-        animation: pulse 8s ease-in-out infinite;
-    }
 
  @keyframes pulse {
             0%, 100% {
@@ -507,10 +485,6 @@
 
     .dropdown-menu li:hover {
         background-color: #cffafe;      
-    }
-
-    .hidden {
-        display: none;
     }
 
     .pagination {
