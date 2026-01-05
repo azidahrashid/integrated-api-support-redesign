@@ -802,3 +802,19 @@
 
 
 
+@media (max-width:998px) {
+    .main-container h2 {
+    font-size: 4vw;
+    padding: 9vw;
+    white-space: normal;
+    word-break: keep-all;
+    }
+
+    .main-container h1 {
+    font-size: 22px;
+    }
+
+    .main-container p {
+    font-size: 13px;
+    }
+}
