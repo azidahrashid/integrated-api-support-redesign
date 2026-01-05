@@ -36,7 +36,7 @@ async function loadPage(path) {
     container.innerHTML = await res.text();
 
     // 🔥 INIT BASED ON PAGE
-    if (path.includes("faq") || path.includes("inquiry")) {
+    if (path.includes("faq")) {
       initFAQ();
       initBackToTop();
     }
@@ -260,6 +260,38 @@ function initTicketModal() {
       document.getElementById(tab.dataset.tab)?.classList.add("active");
     };
   });
+
+
+
+
+
+
+  /* ===== IMAGE LIGHTBOX ===== */
+  const zoomImages = document.querySelectorAll(".zoomable");
+  const lightbox = document.getElementById("imageLightbox");
+  const lightboxImg = document.getElementById("lightboxImage");
+  const lightboxClose = document.getElementById("lightboxClose");
+
+  if (zoomImages.length && lightbox) {
+    zoomImages.forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+      });
+    });
+  }
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener("click", closeLightbox);
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+    lightboxImg.src = "";
+  }
+
+
+
 }
 
 

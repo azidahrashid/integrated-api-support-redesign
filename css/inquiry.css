@@ -142,6 +142,8 @@
             width: 100%;
             display: flex;
             justify-content: center;   /* centers content horizontally */
+            position: relative;
+            z-index: 1;
         }
 
         .content-container {
