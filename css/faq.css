@@ -331,7 +331,7 @@
     /* Refresh Button */
     .refresh-btn {
         display: flex;
-        margin-left: 60px;
+        /* margin-left: 60px; */
         align-items: center;
         justify-content: center;
         width: 46px; 

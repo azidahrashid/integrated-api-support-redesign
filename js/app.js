@@ -39,7 +39,7 @@ async function loadPage(path) {
     container.innerHTML = await res.text();
 
     // ✅ Page-specific init
-    if (path.includes("faq")) {
+    if (path.includes("faq") || path.includes("inquiry-details")) {
       initFAQ();
       initParticles();
       initBackToTop();
