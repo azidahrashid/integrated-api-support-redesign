@@ -785,7 +785,10 @@ tbody tr:hover {
 }
 
 
-
+.date_td {
+    white-space: nowrap;
+    text-align: center;
+}
 
 /* Mobile tweaks */
 @media (max-width: 768px) {

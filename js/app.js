@@ -45,6 +45,8 @@ async function loadPage(path) {
       initBackToTop();
     }
 
+     initTicketModal(); 
+
   } catch (err) {
     console.error(err);
     container.innerHTML = "<p>Error loading page.</p>";
@@ -491,3 +493,66 @@ function initBackToTop(){
 }
     
 
+// ================================
+// Ticket Modal
+// ================================
+function initTicketModal() {
+  const modal = document.getElementById("modal");
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeModal");
+
+  if (!modal) return;
+
+  const modalTicketId = document.getElementById("modalTicketId");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDescription = document.getElementById("modalDescription");
+  const modalAgent = document.getElementById("modalAgent");
+  const modalRequestor = document.getElementById("modalRequestor");
+  const modalDate = document.getElementById("modalDate");
+  const modalCategory = document.getElementById("modalCategory");
+  const modalStatus = document.getElementById("modalStatus");
+
+  function openModal() {
+    modal.classList.add("active");
+    overlay.classList.add("active");
+  }
+
+  function closeModal() {
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+
+  document.querySelectorAll(".ticket-row").forEach(row => {
+    row.addEventListener("click", () => {
+      const ticket = JSON.parse(row.dataset.ticket);
+
+      modalTicketId.textContent = `#${ticket.id}`;
+      modalTitle.textContent = ticket.title;
+      modalDescription.textContent = ticket.description;
+      modalAgent.textContent = ticket.agent;
+      modalRequestor.textContent = ticket.requestor;
+      modalDate.textContent = ticket.date;
+      modalCategory.textContent = ticket.category;
+      modalStatus.textContent = ticket.status;
+
+      openModal();
+    });
+  });
+
+  // Tabs inside modal
+  const tabs = document.querySelectorAll(".tab");
+  const contents = document.querySelectorAll(".tab-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.tab).classList.add("active");
+    });
+  });
+}

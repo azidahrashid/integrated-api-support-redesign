@@ -152,7 +152,18 @@
 
 
 
-                <table>
+<table>
+
+<colgroup>
+<col width="4%">
+<col width="8%">
+<col width="11%">
+<col width="8%">
+<col width="">
+<col width="10%">
+</colgroup>
+
+
   <thead>
     <tr>
       <th>Ticket ID</th>
@@ -176,9 +187,9 @@
     <td><span class="status active">Completed</span></td>
   </tr>
 
-  <tr  class="ticket-row" data-ticket-id="364921">
+  <tr  class="ticket-row">
     <td>#364921</td>
-    <td>2025-12-15 14:28:34</td>
+    <td class="date_td">2025-12-15 14:28:34</td>
     <td>rokmc88</td>
     <td><span class="status technical">Technical</span></td>
     <td>심리스방식에서 /changeBalance 로</td>
@@ -187,7 +198,7 @@
 
   <tr>
     <td>#364600</td>
-    <td>2025-12-14 10:14:22</td>
+    <td class="date_td">2025-12-14 10:14:22</td>
     <td>rokmc88</td>
     <td><span class="status technical">Technical</span></td>
     <td>지리게임 슬롯 환수율 확인 부탁 드립니다</td>
@@ -196,7 +207,7 @@
 
   <tr>
     <td>#361076</td>
-    <td>2025-12-01 18:19:58</td>
+    <td class="date_td">2025-12-01 18:19:58</td>
     <td>rokmc88</td>
     <td><span class="status technical">Technical</span></td>
     <td>안녕하세요 혹시 에볼 장애 있나요?</td>
@@ -205,7 +216,7 @@
 
   <tr>
     <td>#356222</td>
-    <td>2025-11-11 14:18:52</td>
+    <td class="date_td">2025-11-11 14:18:52</td>
     <td>rokmc88</td>
     <td><span class="status technical">Technical</span></td>
     <td>심리스에서</td>
@@ -214,7 +225,7 @@
 
   <tr>
     <td>#352219</td>
-    <td>2025-10-29 04:48:27</td>
+    <td class="date_td">2025-10-29 04:48:27</td>
     <td>rokmc88</td>
     <td><span class="status other">Other</span></td>
     <td>에이전트 bet247 서비스데스크 로그인 불가</td>
@@ -223,7 +234,7 @@
 
   <tr>
     <td>#347753</td>
-    <td>2025-10-13 09:16:40</td>
+    <td class="date_td">2025-10-13 09:16:40</td>
     <td>rokmc88</td>
     <td><span class="status technical">Technical</span></td>
     <td>드림게임 배팅 표시 방식 문의</td>
@@ -232,7 +243,7 @@
 
   <tr>
     <td>#340749</td>
-    <td>2025-09-18 15:00:51</td>
+    <td class="date_td">2025-09-18 15:00:51</td>
     <td>rokmc88</td>
     <td><span class="status operational">Operational</span></td>
     <td>섹시카지노 한국 딜러 운영 시간 문의</td>
@@ -241,7 +252,7 @@
 
   <tr>
     <td>#334930</td>
-    <td>2025-08-30 06:07:33</td>
+    <td class="date_td">2025-08-30 06:07:33</td>
     <td>rokmc88</td>
     <td><span class="status technical">Technical</span></td>
     <td>프라그마틱 관련 문의</td>
@@ -250,7 +261,7 @@
 
   <tr>
     <td>#327152</td>
-    <td>2025-08-06 09:29:10</td>
+    <td class="date_td">2025-08-06 09:29:10</td>
     <td>rokmc88</td>
     <td><span class="status technical">Technical</span></td>
     <td>에볼 로비 테이블 입장 오류</td>
@@ -259,7 +270,7 @@
 
   <tr>
     <td>#310152</td>
-    <td>2025-06-12 11:27:52</td>
+    <td class="date_td">2025-06-12 11:27:52</td>
     <td>rokmc88</td>
     <td><span class="status technical">Technical</span></td>
     <td>PlaynGo 504 Gateway Time-out 오류</td>
@@ -268,7 +279,7 @@
 
   <tr>
     <td>#298619</td>
-    <td>2025-05-12 01:13:57</td>
+    <td class="date_td">2025-05-12 01:13:57</td>
     <td>rokmc88</td>
     <td><span class="status result">Result</span></td>
     <td>배팅 누락 1,605,900원 지급 문의</td>
@@ -400,34 +411,6 @@
 
 
     <script>
-        // Create particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 4 + 2;
-                const startX = Math.random() * window.innerWidth;
-                const startY = Math.random() * window.innerHeight;
-                const delay = Math.random() * 20;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${startX}px`;
-                particle.style.top = `${startY}px`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.background = `rgba(${Math.random() > 0.5 ? '6, 182, 212' : '59, 130, 246'}, 0.6)`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
 
-        
-
-        // Initialize particles
-        createParticles();
     </script>
 
