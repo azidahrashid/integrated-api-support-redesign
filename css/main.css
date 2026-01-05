@@ -51401,6 +51401,11 @@ footer a:hover {
     max-width: 900px;
   }
 
+.site-header .container > .container-nav {
+      width: 900px;
+     margin: 0 auto;
+}
+
   .section_cards {
     display: flex;
     flex-wrap: wrap;
