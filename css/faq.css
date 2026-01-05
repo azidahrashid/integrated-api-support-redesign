@@ -817,4 +817,35 @@
     .main-container p {
     font-size: 13px;
     }
+
+
+
+    .search-flex {
+    display: block;
+}
+
+.search-flex .search-input-wrapper {
+    width: calc(100% - 46px);
+}
+
+.search-flex .search-input-wrapper , .refresh-btn {
+    float: left;
+    height: 53px;
+    margin-bottom: 0.3rem;
+}
+
+.search-flex .search-btn {
+        width:100%;
+    }
+
+
+.pagination-outer-container {
+    flex-direction: column;
+}
+
+.pagination-bar {
+    justify-content: center;
+}
+
+
 }

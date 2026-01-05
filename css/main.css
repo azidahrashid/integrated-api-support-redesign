@@ -51304,7 +51304,7 @@ html[dir="rtl"] {
    Card
    ============================== */
 .card {
-  margin: 2.3rem auto;
+  margin: 0.5rem auto;
   cursor: pointer;
   /* width: 27rem; */
 }
