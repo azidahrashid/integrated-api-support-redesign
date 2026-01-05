@@ -40,7 +40,9 @@ async function loadPage(path) {
 
     // ✅ Page-specific init
     if (path.includes("faq")) {
-      initFAQPage();
+      initFAQ();
+      initParticles();
+      initBackToTop();
     }
 
   } catch (err) {
@@ -114,6 +116,65 @@ function showApp() {
   loadPage(DEFAULT_PAGE);
 }
 
+
+// ================================
+// Initialize App
+// ================================
+document.addEventListener("DOMContentLoaded", () => {
+
+  if (localStorage.getItem("isLoggedIn")) {
+    showApp();
+  } else {
+    showLogin();
+  }
+
+
+
+  localStorage.getItem("isLoggedIn") ? showApp() : showLogin();
+
+
+  document.addEventListener("click", (e) => {
+
+    // ======================
+    // Logo → Default page
+    // ======================
+    if (e.target.closest("#logo")) {
+      e.preventDefault();
+      loadPage(DEFAULT_PAGE);
+      return;
+    }
+
+    // ======================
+    // SPA navigation
+    // ======================
+    const link = e.target.closest("[data-page]");
+    if (link) {
+      e.preventDefault();
+      loadPage(link.dataset.page);
+
+      document.getElementById("navbar-burger-menu")?.classList.remove("active");
+      document.getElementById("navbar-collapse")?.classList.remove("active");
+      return;
+    }
+
+    // ======================
+    // Login
+    // ======================
+    if (e.target.id === "loginBtn") {
+      localStorage.setItem("isLoggedIn", "true");
+      showApp();
+    }
+
+    // ======================
+    // Logout
+    // ======================
+    if (e.target.id === "logoutBtn") {
+      e.preventDefault();
+      localStorage.removeItem("isLoggedIn");
+      showLogin();
+    }
+  });
+});
 
 
 // ================================
