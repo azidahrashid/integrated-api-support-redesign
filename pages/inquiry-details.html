@@ -165,7 +165,9 @@
   </thead>
 
   <tbody>
-  <tr>
+<tr class="ticket-row"
+    data-ticket="id=321234&title=Balance+Insufficient+Issue&description=I+am+unable+to+complete+my+transaction&agent=Rokmcc8&requestor=Olivia+Rhye&date=2025-12-08+12:09:56&category=Technical&status=Pending">
+
     <td>#369455</td>
     <td>2026-01-03 03:35:18</td>
     <td>rokmc88</td>
@@ -174,7 +176,7 @@
     <td><span class="status active">Completed</span></td>
   </tr>
 
-  <tr>
+  <tr  class="ticket-row" data-ticket-id="364921">
     <td>#364921</td>
     <td>2025-12-15 14:28:34</td>
     <td>rokmc88</td>
@@ -278,6 +280,119 @@
 
 
 
+<div id="overlay"></div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Reusable Modal -->
+<div class="glass-modal" id="modal">
+  <!-- HEADER -->
+  <div class="modal-header">
+    <div>
+      <h2>View Inquiry Details</h2>
+      <p>Understand the user's request and provide assistance.</p>
+    </div>
+    <button class="close-btn" id="closeModal">✕</button>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <span class="tab active" data-tab="details">Ticket Details</span>
+    <span class="tab" data-tab="chat">Communication</span>
+  </div>
+
+  <!-- BODY -->
+  <div class="modal-body">
+    <!-- Ticket Details -->
+    <div class="tab-content active" id="details">
+      <div class="ticket-id">
+        <span>Ticket ID</span>
+        <h3 id="modalTicketId">#000000</h3>
+      </div>
+
+      <div class="ticket-meta-card">
+        <div class="meta-row one-col">
+          <div class="meta-item">
+            <label>Agent</label>
+            <div class="user">
+              <span id="modalAgent">Agent Name</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="meta-row two-col">
+          <div class="meta-item">
+            <label>Requestor</label>
+            <div class="user">
+              <span id="modalRequestor">Requestor Name</span>
+            </div>
+          </div>
+          <div class="meta-item">
+            <label>Date & Time Created</label>
+            <p id="modalDate">2025-12-08 00:00:00</p>
+          </div>
+        </div>
+
+        <div class="meta-row two-col">
+          <div class="meta-item">
+            <label>Category</label>
+            <span class="badge technical" id="modalCategory">Technical</span>
+          </div>
+          <div class="meta-item">
+            <label>Status</label>
+            <span class="badge pending" id="modalStatus">Pending</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-section">
+        <div class="ticket-section-2">
+          <label>Ticket Title</label>
+          <p id="modalTitle">Title</p>
+        </div>
+        <div class="ticket-section-2">
+          <label>Ticket Description</label>
+          <p id="modalDescription">Description</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h4>Attachments</h4>
+        <div class="attachments">
+          <img src="https://picsum.photos/1200/800?1" class="zoomable">
+          <img src="https://picsum.photos/1200/800?2" class="zoomable">
+          <img src="https://picsum.photos/1200/800?3" class="zoomable">
+        </div>
+      </div>
+    </div>
+
+    <!-- Communication -->
+    <div class="tab-content" id="chat">
+      <div class="communication-card support">
+        <div class="comm-top">
+          <div class="comm-user">
+            <div class="avatar" data-name="Customer Support">CS</div>
+            <div class="user-info">
+              <span class="name">Customer Support</span>
+            </div>
+          </div>
+          <span class="comm-time">2025-12-08 13:22:09</span>
+        </div>
+        <div class="comm-divider"></div>
+        <div class="comm-message">
+          This is a sample support message.
+        </div>
+      </div>
+    </div>
+
+    <!-- Fullscreen Image Lightbox -->
+    <div class="image-lightbox" id="imageLightbox">
+      <span class="lightbox-close" id="lightboxClose">✕</span>
+      <img id="lightboxImage">
+    </div>
+  </div>
+</div>
 
 
             </div>

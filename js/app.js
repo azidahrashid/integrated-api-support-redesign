@@ -200,10 +200,10 @@ function initNavbar() {
     collapse?.classList.toggle("active");
   });
 
-  document.querySelectorAll('#navbar a[data-page]').forEach(link => {
+  document.querySelectorAll('#navbar [data-page]').forEach(link => {
     link.addEventListener("click", () => {
       document
-        .querySelectorAll('#navbar a[data-page]')
+        .querySelectorAll('#navbar [data-page]')
         .forEach(l => l.classList.remove("active-nav"));
 
       link.classList.add("active-nav");
