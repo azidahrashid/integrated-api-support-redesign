@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XTREEM - View Inquiry Details</title>
@@ -57,6 +55,9 @@ body {
   max-width: 95vw;
   height: auto;
   max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
   background: rgba(255, 255, 255, 0.712);
   backdrop-filter: blur(20px);
@@ -73,6 +74,7 @@ body {
 
 .glass-modal.active {
   opacity: 1;
+  background-color: #efefef;
   visibility: visible;
   transform: translate(-50%, -50%) scale(1);
   animation: popIn .35s ease;
@@ -127,18 +129,28 @@ body {
 
 /* Body */
 .modal-body {
-  padding: 22px;
+  flex: 1;
+  padding: 20px;
   overflow-y: auto;
 }
 
-/* Glass Card */
-.glass-card {
-  /* background: rgba(255,255,255,0.06); */
-  border-radius: 18px;
-  padding: 0 20px 20px 20px;
-  /* border: 1px solid rgba(255,255,255,0.12); */
-  /* margin: 20px; */
+.modal-body::-webkit-scrollbar {
+  width: 6px;
 }
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: rgba(99,102,241,0.35);
+  border-radius: 6px;
+}
+
+.modal-header,
+.tabs {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.9);
+  z-index: 5;
+}
+
 
 /* Ticket ID */
 .ticket-id span {
@@ -417,7 +429,7 @@ body {
 /* Content */
 .tab-content {
   display: none;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .tab-content.active {
@@ -430,7 +442,7 @@ body {
   padding: 0 22px;
   gap: 20px;
   border-bottom: 1px solid rgb(160, 160, 160);
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 
@@ -496,8 +508,8 @@ body {
 }
 
 .communication-card {
-  margin: 20px;
-  padding: 18px 20px;
+  margin-bottom: 20px;
+  padding: 20px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(14px);
@@ -575,6 +587,10 @@ body {
   white-space: pre-line;
 }
 
+.comm-message i {
+  font-size: 12px;
+}
+
 .avatar {
   width: 36px;
   height: 36px;
@@ -587,12 +603,10 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-
-
 </style>
 
 
+<body>
 <!-- Open Modal Button -->
 <button class="open-modal-btn" id="openModal">
   View Inquiry Details
@@ -600,9 +614,8 @@ body {
 
 <!-- Overlay -->
 <div class="overlay" id="overlay"></div>
-
 <div class="glass-modal" id="modal">
-
+  <!-- HEADER -->
   <div class="modal-header">
     <div>
       <h2>View Inquiry Details</h2>
@@ -610,75 +623,73 @@ body {
     </div>
     <button class="close-btn" id="closeModal">✕</button>
   </div>
-
+  <!-- TABS -->
   <div class="tabs">
     <span class="tab active" data-tab="details">Ticket Details</span>
     <span class="tab" data-tab="chat">Communication</span>
   </div>
-
-  <div class="modal-body glass-card">
+  <!-- BODY (SCROLL AREA) -->
+  <div class="modal-body">
 
     <!-- CONTENT: Ticket Details -->
-    <div class="tab-content active" id="details">
-    <!-- Ticket ID -->
-      <div class="ticket-id">
-        <span>Ticket ID</span>
-        <h3>#321234</h3>
-      </div>
+    <div class="tab-content" id="details">
+      <!-- Ticket ID -->
+        <div class="ticket-id">
+          <span>Ticket ID</span>
+          <h3>#321234</h3>
+        </div>
 
     <!-- Ticket Meta Card -->
-  <div class="ticket-meta-card">
+    <div class="ticket-meta-card">
+      <!-- Row 1 -->
+      <div class="meta-row one-col">
+        <div class="meta-item">
+          <label>Agent</label>
+          <div class="user">
+            <!-- <div class="avatar" data-name="Rokmcc8"></div> -->
+            <span>Rokmcc8</span>
+          </div>
+        </div>
+      </div>
 
-    <!-- ROW 1 -->
-    <div class="meta-row one-col">
-      <div class="meta-item">
-        <label>Agent</label>
-        <div class="user">
-          <!-- <div class="avatar" data-name="Rokmcc8"></div> -->
-          <span>Rokmcc8</span>
+      <!-- ROW 2 -->
+      <div class="meta-row two-col">
+        <div class="meta-item">
+          <label>Requestor</label>
+          <div class="user">
+            <div class="avatar" data-name="Olivia Rhye">OR</div>
+            <span>Olivia Rhye</span>
+          </div>
+        </div>
+
+        <div class="meta-item">
+          <label>Date &amp; Time Created</label>
+          <p>2025-12-08 12:09:56</p>
+        </div>
+      </div>
+
+      <!-- ROW 3 -->
+      <div class="meta-row two-col">
+        <div class="meta-item">
+          <label>Category</label>
+          <span class="badge technical">Technical</span>
+        </div>
+
+        <div class="meta-item">
+          <label>Status</label>
+          <span class="badge pending">Pending</span>
         </div>
       </div>
     </div>
 
-        <!-- ROW 2 -->
-    <div class="meta-row two-col">
-      <div class="meta-item">
-        <label>Requestor</label>
-        <div class="user">
-          <div class="avatar" data-name="Olivia Rhye"></div>
-          <span>Olivia Rhye</span>
-        </div>
-      </div>
-
-      <div class="meta-item">
-        <label>Date & Time Created</label>
-        <p>2025-12-08 12:09:56</p>
-      </div>
-    </div>
-
-        <!-- ROW 3 -->
-    <div class="meta-row two-col">
-      <div class="meta-item">
-        <label>Category</label>
-        <span class="badge technical">Technical</span>
-      </div>
-
-      <div class="meta-item">
-        <label>Status</label>
-        <span class="badge pending">Pending</span>
-      </div>
-    </div>
-
-</div>
-
-  <!-- Ticket Title -->
+    <!-- Ticket Title -->
   <div class="ticket-section">
     <div class="ticket-section-2">
       <label>Ticket Title</label>
       <p>Balance Insufficient Issue</p>
     </div>
 
-  <!-- Ticket Description -->
+    <!-- Ticket Description -->
     <div class="ticket-section-2">
       <label>Ticket Description</label>
       <p>I am unable to complete my transaction because the system indicates that my
@@ -687,7 +698,17 @@ body {
     </div>
   </div>
     
+    <!-- Attachments -->
+    <div class="section">
+      <h4>Attachments</h4>
+      <div class="attachments">
+        <img src="https://picsum.photos/1200/800?1" class="zoomable">
+        <img src="https://picsum.photos/1200/800?2" class="zoomable">
+        <img src="https://picsum.photos/1200/800?3" class="zoomable">
+      </div>
+    </div>
 
+    <!-- Attachments -->
     <div class="section">
       <h4>Attachments</h4>
       <div class="attachments">
@@ -697,22 +718,15 @@ body {
       </div>
     </div>
 </div>
-    
-  <!-- Fullscreen Image Lightbox -->
-  <div class="image-lightbox" id="imageLightbox">
-    <span class="lightbox-close" id="lightboxClose">✕</span>
-    <img id="lightboxImage" />
-  </div>
-</div>
 
 <!-- COMMUNICATION TAB CONTENT -->
-  <div class="tab-content" id="chat">
+<div class="tab-content active" id="chat">
 
     <div class="communication-card support">
 
       <div class="comm-top">
         <div class="comm-user">
-          <div class="avatar" data-name="Customer Support"></div>
+          <div class="avatar" data-name="Customer Support">CS</div>
           <div class="user-info">
             <span class="name">Customer Support</span>
             <!-- <span class="role">Support Team</span> -->
@@ -731,19 +745,19 @@ body {
         -----------------------------
         Consultant JangH
         Global Aggregator X.TREEM
-        Provides the largest number of integrated game APIs.
+        -----------------------------
+        <i>Provides the largest number of integrated game APIs.
         Check out the list of games provided by X.TREEM at the link below!
         <a href="//demo.honorlink.org">demo.honorlink.org</a>
-        ID: honor, PW: link
+        ID: honor, PW: link</i>
       </div>
-
     </div>
 
     <div class="communication-card support">
 
       <div class="comm-top">
         <div class="comm-user">
-          <div class="avatar" data-name="Customer Support"></div>
+          <div class="avatar" data-name="Customer Support">CS</div>
           <div class="user-info">
             <span class="name">Customer Support</span>
             <!-- <span class="role">Support Team</span> -->
@@ -763,29 +777,30 @@ body {
         -----------------------------
         Consultant JangH
         Global Aggregator X.TREEM
-        Provides the largest number of integrated game APIs.
+        -----------------------------
+        <i>Provides the largest number of integrated game APIs.
         Check out the list of games provided by X.TREEM at the link below!
         <a href="//demo.honorlink.org">demo.honorlink.org</a>
-        ID: honor, PW: link
+        ID: honor, PW: link</i>
       </div>
-
     </div>
+  </div>
 
     
-    
-
-  </div> 
-
+  <!-- Fullscreen Image Lightbox -->
+  <div class="image-lightbox" id="imageLightbox">
+    <span class="lightbox-close" id="lightboxClose">✕</span>
+    <img id="lightboxImage">
+  </div>
+</div>
+   
 </div> 
-
-
-
-
 
 
 
 <script src="script.js"></script>
 </body>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -877,4 +892,5 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 </head>
+</body>
 </html>
