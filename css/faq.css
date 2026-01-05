@@ -1,27 +1,3 @@
- @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-    * {
-        font-family: 'Inter', sans-serif;
-    }
-
-    body {
-        background: linear-gradient(135deg, #f8f9fb 0%, #e8edf3 100%);
-        margin: 0;
-        overflow-x: hidden;
-        min-height: 100vh;
-    }
-
-    .glow-orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        opacity: 0.5;
-        pointer-events: none;
-        z-index: 0;
-       
-        animation: pulse 8s ease-in-out infinite;
-    }
-
 
  @keyframes pulse {
             0%, 100% {
@@ -35,37 +11,25 @@
         }
 
 
-    #particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -1;
-    }
+   .particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.4;
+            animation: float 20s infinite;
+        }
 
-    .particle {
-        position: absolute;
-        border-radius: 50%;
-
-        animation: float 20s linear infinite; 
-        opacity: 0;
-    }
-
- @keyframes float {
-            0% {
-                transform: translate(0, 0);
-                opacity: 0;
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
             }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.5; }
-            100% {
-                /* This moves the particle in a random-looking diagonal direction */
-                transform: translate(100px, -100px); 
-                opacity: 0;
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
             }
-    }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
 
 
     /* Header */
@@ -172,6 +136,7 @@
         font-weight: bold;
         text-shadow:0 4px 6px rgba(0,0,0,0.25);
         padding: 52px;
+        
     }
 
     .animated-heading {
@@ -188,6 +153,7 @@
         opacity: 0;
         transform: translateY(20px);
         animation: fadeSlide 0.5s forwards;
+       
     }
 
     /* Invisible line under each letter */
@@ -202,10 +168,7 @@
     }
 
 
-    .animated-heading span.space {
-        display: inline-block;
-        width: 0.3em; 
-    }
+    
 
     .animated-heading span:nth-child(1) { animation-delay: 0s; }
     .animated-heading span:nth-child(2) { animation-delay: 0.05s; }
@@ -293,7 +256,7 @@
         padding: 22px; 
         margin: 14px auto 32px auto; 
         max-width: 1100px; 
-        width: 95%;
+        width: 100%;
     }
 
     .search-flex {
@@ -368,14 +331,14 @@
     /* Refresh Button */
     .refresh-btn {
         display: flex;
-        margin-left: 60px;
+        /* margin-left: 60px; */
         align-items: center;
         justify-content: center;
         width: 46px; 
         height: 46px; 
         background-color: #ffffff; 
+        border: 1px solid transparent;
         color:#9ca3af;
-        border-color: #9ca3af;
         border-radius: 12px; 
         cursor: pointer;
         transition: all 0.2s ease;
@@ -394,12 +357,19 @@
 
     .refresh-btn:active {
         transform: translateY(0);
+        border-color: #06b6d4;
     }
 
     /* Category */
     .category-filters {
+        display: flex;
         flex-wrap: wrap;
-        margin-right: 250px;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 80px;
+        gap: 12px;
+        padding: 18px 24px;
+        
     }
 
     .category-btn {
@@ -412,6 +382,8 @@
         border: 1px solid rgba(34, 211, 238, 0.3);
         cursor: pointer;
         transition: all 0.25s ease;
+        line-height: 1;
+        white-space: nowrap;
     }
 
     
@@ -456,7 +428,7 @@
 
     .items-label {
         font-size: 16px; 
-        margin-left: 70px;               
+                   
     }
 
     /* Dropdown */
@@ -510,10 +482,6 @@
 
     .dropdown-menu li:hover {
         background-color: #cffafe;      
-    }
-
-    .hidden {
-        display: none;
     }
 
     .pagination {
@@ -611,7 +579,7 @@
 
     /* FAQ container */
     .faq-container {
-        width: 95%;
+        width: 100%;
         max-width: 1150px;
         margin: auto;
         display: flex;
@@ -751,12 +719,12 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        background: #fff;
-        padding: 60px 40px; 
+        background: #fff; 
         padding-top: 3rem;
         padding-bottom: 3rem;
         border-radius: 24px;
-        max-width: 1050px;
+        width: 100%;
+        max-width: 1150px;
         margin: 40px auto;
         
         
@@ -834,3 +802,50 @@
 
 
 
+@media (max-width:998px) {
+    .main-container h2 {
+    font-size: 4vw;
+    padding: 9vw;
+    white-space: normal;
+    word-break: keep-all;
+    }
+
+    .main-container h1 {
+    font-size: 22px;
+    }
+
+    .main-container p {
+    font-size: 13px;
+    }
+
+
+
+    .search-flex {
+    display: block;
+}
+
+.search-flex .search-input-wrapper {
+    width: calc(100% - 46px);
+}
+
+.search-flex .search-input-wrapper , .refresh-btn {
+    float: left;
+    height: 53px;
+    margin-bottom: 0.3rem;
+}
+
+.search-flex .search-btn {
+        width:100%;
+    }
+
+
+.pagination-outer-container {
+    flex-direction: column;
+}
+
+.pagination-bar {
+    justify-content: center;
+}
+
+
+}

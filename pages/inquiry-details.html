@@ -29,52 +29,257 @@
                 </div>
 
 
+    <!-- Search Bar -->
+    <div class="search-container">
+    <div class="search-flex">
+        <div class="search-input-wrapper">
+        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+            </path>
+        </svg>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for the information you're curious about."
+            class="search-input">
+        </div>
+
+        <button class="refresh-btn" title="Reset search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 4v6h-6"></path>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+        </button>
+
+        <!-- <button class="search-btn">
+             Search
+        </button> -->
+        </div>
+    </div>
+
+
+
+  <!-- Category Filters -->
+    <div class="category-filters">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="How to contact us">How to contact us</button>
+        <button class="category-btn" data-category="Betting and Results">Betting and Results</button>
+        <button class="category-btn" data-category="API">API</button>
+        <button class="category-btn" data-category="How to use the agent page">How to use the agent page</button>
+        <button class="category-btn" data-category="support">Support</button>
+    </div>
+
+
+
+    <div class="pagination-outer-container">
+    <!-- DropDown Menu -->
+    <div class="pagination-bar">
+        <div class="items-per-page">
+            <label for="itemsPerPage" class="items-label">Show:</label>
+
+            <div class="dropdown">
+            <button id="dropdownBtn" class="dropdown-btn">
+                <span id="selectedValue">10 items</span>
+                <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            <ul id="dropdownMenu" class="dropdown-menu hidden">
+                <li>10 items</li>
+                <li>25 items</li>
+                <li>50 items</li>
+                <li>100 items</li>
+            </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination buttons -->
+    <div id="pagination" class="pagination">
+        
+        <button id="prevPage" class="page-btn prev-btn">
+            <svg class="page-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Prev</span>
+        </button>
+
+        <span id="pageNumbers" class="page-numbers"></span>
+
+        <button id="nextPage" class="page-btn next-btn">
+            <span>Next</span>
+            <svg class="page-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+    </div>
+</div>  
+
+    <!-- Page Count -->
+    <div class="pagination-header-container">
+        <div class="pagination-info">
+            <span class="total-text">Total <span id="totalCount">0</span> items</span>
+            <span class="current-page">Page 1</span>
+        </div>
+        <hr class="accent-divider">
+    </div>
+
+
+
             <!-- Table -->
             <div class="table-card">
                 <div class="table-header">
                  <h3>Inquiry List</h3>
-                <span class="table-subtitle">Last 30 Days</span>
+                <button type="button" class="inline-block transition-all rounded-md font-medium px-[13px] py-[6px] text-primary-500 border border-primary-500 hover:bg-primary-500 hover:text-white" id="add-new-popup-toggle">
+                    <span class="inline-block relative ltr:pl-[22px] rtl:pr-[22px]">
+                        <i class="material-symbols-outlined !text-[22px] absolute ltr:-left-[4px] rtl:-right-[4px] top-1/2 -translate-y-1/2">
+                            add
+                        </i>
+                        Add New Task
+                    </span>
+                </button>
                 </div>
 
             <div class="table-wrapper">
+
+
+
+
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Ticket ID</th>
-                            <th>Date & Time Created</th>
-                            <th>Author</th>
-                            <th>Category</th>
-                            <th>Title</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#A1023</td>
-                            <td>2025-12-02 12:25:14</td>
-                            <td>John Tan</td>
-                            <td><span class="status active">Technical</span></td>
-                            <td>Change balance in seamless mode</td>
-                            <td><span class="status warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>#A1023</td>
-                            <td>2025-04-12 09:43:54</td>
-                            <td>Sarah Lim</td>
-                            <td><span class="status warning">Operational</span></td>
-                            <td>Change balance in seamless mode</td>
-                            <td><span class="status warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>#A1023</td>
-                            <td>2025-08-12 15:07:59</td>
-                            <td>Daniel Wong</td>
-                            <td><span class="status warning">Operational</span></td>
-                            <td>Change balance in seamless mode</td>
-                            <td><span class="status active">Completed</span></td>
-</tr>
+  <thead>
+    <tr>
+      <th>Ticket ID</th>
+      <th>Date &amp; Time Created</th>
+      <th>Author</th>
+      <th>Category</th>
+      <th>Title</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <td>#369455</td>
+    <td>2026-01-03 03:35:18</td>
+    <td>rokmc88</td>
+    <td><span class="status operational">Operational</span></td>
+    <td>에볼루션 정상화 아직 안된건가요?</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#364921</td>
+    <td>2025-12-15 14:28:34</td>
+    <td>rokmc88</td>
+    <td><span class="status technical">Technical</span></td>
+    <td>심리스방식에서 /changeBalance 로</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#364600</td>
+    <td>2025-12-14 10:14:22</td>
+    <td>rokmc88</td>
+    <td><span class="status technical">Technical</span></td>
+    <td>지리게임 슬롯 환수율 확인 부탁 드립니다</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#361076</td>
+    <td>2025-12-01 18:19:58</td>
+    <td>rokmc88</td>
+    <td><span class="status technical">Technical</span></td>
+    <td>안녕하세요 혹시 에볼 장애 있나요?</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#356222</td>
+    <td>2025-11-11 14:18:52</td>
+    <td>rokmc88</td>
+    <td><span class="status technical">Technical</span></td>
+    <td>심리스에서</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#352219</td>
+    <td>2025-10-29 04:48:27</td>
+    <td>rokmc88</td>
+    <td><span class="status other">Other</span></td>
+    <td>에이전트 bet247 서비스데스크 로그인 불가</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#347753</td>
+    <td>2025-10-13 09:16:40</td>
+    <td>rokmc88</td>
+    <td><span class="status technical">Technical</span></td>
+    <td>드림게임 배팅 표시 방식 문의</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#340749</td>
+    <td>2025-09-18 15:00:51</td>
+    <td>rokmc88</td>
+    <td><span class="status operational">Operational</span></td>
+    <td>섹시카지노 한국 딜러 운영 시간 문의</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#334930</td>
+    <td>2025-08-30 06:07:33</td>
+    <td>rokmc88</td>
+    <td><span class="status technical">Technical</span></td>
+    <td>프라그마틱 관련 문의</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#327152</td>
+    <td>2025-08-06 09:29:10</td>
+    <td>rokmc88</td>
+    <td><span class="status technical">Technical</span></td>
+    <td>에볼 로비 테이블 입장 오류</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#310152</td>
+    <td>2025-06-12 11:27:52</td>
+    <td>rokmc88</td>
+    <td><span class="status technical">Technical</span></td>
+    <td>PlaynGo 504 Gateway Time-out 오류</td>
+    <td><span class="status active">Completed</span></td>
+  </tr>
+
+  <tr>
+    <td>#298619</td>
+    <td>2025-05-12 01:13:57</td>
+    <td>rokmc88</td>
+    <td><span class="status result">Result</span></td>
+    <td>배팅 누락 1,605,900원 지급 문의</td>
+    <td><span class="status warning">Recheck</span></td>
+  </tr>
 </tbody>
+
 </table>
+
+
+
+
+
             </div>
     </main>
 
