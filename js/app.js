@@ -235,8 +235,8 @@ function initParticles() {
 // FAQ - Heading Animation
 // ================================
 function initFAQ() {
-  
-  // H2 animation
+
+  // Heading animation
   const heading = document.querySelector('.animated-heading');
 
   if (heading && !heading.classList.contains('animated-done')) {
@@ -244,37 +244,29 @@ function initFAQ() {
 
     heading.innerHTML = originalText
       .split('')
-      .map(letter => {
-        if (letter === ' ') {
-          return `<span >&nbsp;</span>`;
-        } else {
-          return `<span>${letter}</span>`;
-        }
-      })
+      .map(letter =>
+        letter === ' ' ? `<span>&nbsp;</span>` : `<span>${letter}</span>`
+      )
       .join('');
 
     heading.classList.add('animated-done');
   }
 
-  
-// ================================
-// FAQ - accordion functionality
-// ================================
-
-document.querySelectorAll('.faq-header').forEach(question => {
+  // FAQ accordion
+  document.querySelectorAll('.faq-header').forEach(question => {
     question.addEventListener('click', () => {
       const faqItem = question.closest('.faq-card');
       const wasOpen = faqItem.classList.contains('open');
 
-      document.querySelectorAll('.faq-card').forEach(item => {
-        item.classList.remove('open');
-      });
+      document.querySelectorAll('.faq-card').forEach(item =>
+        item.classList.remove('open')
+      );
 
-      if (!wasOpen) {
-        faqItem.classList.add('open');
-      }
+      if (!wasOpen) faqItem.classList.add('open');
+    });
   });
-});
+
+} 
 
 // ================================
 // Login Particles
