@@ -440,45 +440,7 @@ if (!btn2 || !searchInput) {
 // ================================
 // FAQ Page Logic
 // ================================
-function initFAQPage() {
-  document.querySelectorAll('.faq-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const card = header.closest('.faq-card');
-      const open = card.classList.contains('open');
-      document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
-      if (!open) card.classList.add('open');
-    });
-  });
 
-  document.querySelectorAll('.category-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const cat = btn.dataset.category;
-
-      document.querySelectorAll('.category-btn')
-        .forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      document.querySelectorAll('.faq-card').forEach(card => {
-        card.style.display =
-          cat === 'all' || card.dataset.category === cat ? 'block' : 'none';
-      });
-
-      updateCount();
-    });
-  });
-
-  const search = document.getElementById('searchInput');
-  search?.addEventListener('input', e => {
-    const q = e.target.value.toLowerCase();
-    document.querySelectorAll('.faq-card').forEach(card => {
-      card.style.display =
-        card.textContent.toLowerCase().includes(q) ? 'block' : 'none';
-    });
-    updateCount();
-  });
-
-  updateCount();
-}
 
        const refreshBtn = document.querySelector('.refresh-btn');
        const searchInput2 = document.querySelector('.search-input');
