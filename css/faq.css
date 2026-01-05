@@ -17,6 +17,7 @@
             pointer-events: none;
             opacity: 0.4;
             animation: float 20s infinite;
+            background:rgba(6,182,212,.6);
         }
 
         @keyframes float {

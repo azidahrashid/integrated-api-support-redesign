@@ -162,6 +162,17 @@ function initNavbar() {
     burger.classList.toggle("active");
     collapse?.classList.toggle("active");
   });
+
+  document.querySelectorAll('#navbar [data-page]').forEach(link => {
+    link.addEventListener("click", () => {
+      document
+        .querySelectorAll('#navbar [data-page]')
+        .forEach(l => l.classList.remove("active-nav"));
+
+      link.classList.add("active-nav");
+    });
+  });
+
 }
 
 
