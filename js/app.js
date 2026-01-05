@@ -425,22 +425,40 @@ function initFAQ() {
   /* ==============================
    * Search
    * ============================== */
-  const searchInput = document.getElementById('searchInput');
-  const searchBtn = document.getElementById('search-Btn');
+  // const searchInput = document.getElementById('searchInput');
+  // const searchBtn = document.getElementById('search-Btn');
 
-  if (searchInput && searchBtn) {
-    searchBtn.onclick = () => {
-      const term = searchInput.value.toLowerCase().trim();
+  // if (searchInput && searchBtn) {
+  //   searchBtn.onclick = () => {
+  //     const term = searchInput.value.toLowerCase().trim();
 
-      document.querySelectorAll('.faq-card').forEach(card => {
-        const q = card.querySelector('.faq-question-text')?.textContent.toLowerCase() || '';
-        const a = card.querySelector('.faq-answer-content')?.textContent.toLowerCase() || '';
-        card.style.display = (q.includes(term) || a.includes(term)) ? '' : 'none';
-      });
+  //     document.querySelectorAll('.faq-card').forEach(card => {
+  //       const q = card.querySelector('.faq-question-text')?.textContent.toLowerCase() || '';
+  //       const a = card.querySelector('.faq-answer-content')?.textContent.toLowerCase() || '';
+  //       card.style.display = (q.includes(term) || a.includes(term)) ? '' : 'none';
+  //     });
 
-      updateCount();
-    };
-  }
+  //     updateCount();
+  //   };
+  // }
+/* ==============================
+ * Search on input
+ * ============================== */
+const searchInput = document.getElementById('searchInput');
+
+if (searchInput) {
+  searchInput.addEventListener('input', () => {
+    const term = searchInput.value.toLowerCase().trim();
+
+    document.querySelectorAll('.faq-card').forEach(card => {
+      const q = card.querySelector('.faq-question-text')?.textContent.toLowerCase() || '';
+      const a = card.querySelector('.faq-answer-content')?.textContent.toLowerCase() || '';
+      card.style.display = (q.includes(term) || a.includes(term)) ? '' : 'none';
+    });
+
+    updateCount();
+  });
+}
 
   /* ==============================
    * Refresh Button

@@ -51405,6 +51405,13 @@ footer a:hover {
       width: 900px;
      margin: 0 auto;
 }
+.content-container{
+  padding:0;
+}
+
+.page-wrapper {
+  margin:0 auto;
+}
 
   .section_cards {
     display: flex;

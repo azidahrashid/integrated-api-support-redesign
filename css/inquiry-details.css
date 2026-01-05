@@ -494,6 +494,7 @@ tbody tr:hover {
   position: relative;
   /* margin: 20px; */
   /* padding: 12px; */
+      display: inline-block;
 }
 
 /* Scale thumbnail slightly */
