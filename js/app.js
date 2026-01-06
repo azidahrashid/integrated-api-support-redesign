@@ -25,6 +25,9 @@ async function loadPartial(id, path) {
 // ================================
 // Page Loader (SPA)
 // ================================
+// ================================
+// Page Loader (SPA SAFE)
+// ================================
 async function loadPage(path) {
   const container = document.getElementById("content-app");
   if (!container) return;
@@ -35,29 +38,34 @@ async function loadPage(path) {
 
     container.innerHTML = await res.text();
 
-    // 🔥 INIT BASED ON PAGE
-    if (path.includes("faq")) {
-      initFAQ();
-      initBackToTop();
-    }
+    // ------------------------------
+    // Run page-specific inits SPA-safe
+    // ------------------------------
+    // Use requestAnimationFrame to ensure DOM is parsed
+    requestAnimationFrame(() => {
+      const pageInits = [
+        () => initParticles(),        // always safe
+        () => initTicketModal(),      // modal if exists
+        () => initBackToTop(),        // back-to-top if exists
+        () => initFAQ(),              // FAQ page if exists
+        () => inquiryType()           // inquiry page if exists
+      ];
 
-    if (path.includes("inquiry")) {
-      inquiryType();
-    }
-
-    if (path.includes("inquiry-details")) {
-      initTicketModal();
-    }
-
-    // 🔥 ALWAYS SAFE INIT
-    initParticles();
-    
+      pageInits.forEach(fn => {
+        try {
+          fn();
+        } catch (err) {
+          console.warn("Page init skipped or failed:", err);
+        }
+      });
+    });
 
   } catch (err) {
     console.error(err);
     container.innerHTML = "<p>Error loading page.</p>";
   }
 }
+
 
 
 // ================================
