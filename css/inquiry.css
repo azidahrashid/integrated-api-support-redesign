@@ -179,6 +179,10 @@
             box-shadow: 0 8px 24px rgba(6, 182, 212, 0.3);
             animation: pulse 2s ease-in-out infinite;
         }
+        
+        .wrapper-title {
+            margin: 40px;
+        }
 
         .page-title {
             font: 36px;
@@ -188,7 +192,7 @@
             margin-top: 40px;
         }
 
-        .page-subtitle p {
+        .page-subtitle {
             font: 20px;
             color: #6e6e6e;
             margin-bottom: 40px;
