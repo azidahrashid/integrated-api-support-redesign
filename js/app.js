@@ -507,6 +507,24 @@ function updateCount() {
    * Inquiry Type
    * ============================== */
 function inquiryType() {
+  //Inquiry Type 
+        const categories = [
+            "Technical Inquiry",
+            "Inquiry for Results",
+            "Both Sides Inquiry",
+            "Operational",
+            "Account Inquiry",
+            "Promotion",
+            "계좌 문의",
+            "운영 관련",
+            "기능 개선",
+            "결과 처리 요청",
+            "비스포크",
+            "프로모션",
+            "비스포크 토너먼트 신청",
+            "후원금 신청",
+            "기타"
+        ];
   const container = document.getElementById("categoryContainer");
 
           categories.forEach((name, index) => {
