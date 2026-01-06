@@ -44,6 +44,7 @@ async function loadPage(path) {
     // 🔥 ALWAYS SAFE INIT
     initParticles();
     initTicketModal();
+    inquiryType();
 
   } catch (err) {
     console.error(err);
@@ -499,6 +500,33 @@ function updateCount() {
   const counter = document.getElementById('totalCount');
   if (counter) counter.textContent = visible.length;
 }
+
+
+
+/* ==============================
+   * Inquiry Type
+   * ============================== */
+function inquiryType() {
+  const container = document.getElementById("categoryContainer");
+
+          categories.forEach((name, index) => {
+          const btn = document.createElement("button");
+          btn.className = "category-btn";
+          btn.textContent = name;
+
+          if (index === 0) btn.classList.add("active");
+
+          btn.addEventListener("click", () => {
+              document
+                  .querySelectorAll(".category-btn")
+                  .forEach(b => b.classList.remove("active"));
+              btn.classList.add("active");
+          });
+
+          container.appendChild(btn);
+      });
+}
+
 
 
 
