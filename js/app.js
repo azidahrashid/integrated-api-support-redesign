@@ -45,9 +45,12 @@ async function loadPage(path) {
       inquiryType();
     }
 
+    if (path.includes("inquiry-details")) {
+      initTicketModal();
+    }
+
     // 🔥 ALWAYS SAFE INIT
     initParticles();
-    initTicketModal();
     
 
   } catch (err) {
