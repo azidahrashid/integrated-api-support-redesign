@@ -41,10 +41,14 @@ async function loadPage(path) {
       initBackToTop();
     }
 
+    if (path.includes("inquiry")) {
+      inquiryType();
+    }
+
     // 🔥 ALWAYS SAFE INIT
     initParticles();
     initTicketModal();
-    inquiryType();
+    
 
   } catch (err) {
     console.error(err);
