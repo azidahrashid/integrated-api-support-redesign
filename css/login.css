@@ -19,6 +19,7 @@ body {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  max-width:100%;
 }
 
 .login-center {
@@ -315,6 +316,8 @@ footer .copyright {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+      width: 100%;
+    height: 100%;
 }
 
 
