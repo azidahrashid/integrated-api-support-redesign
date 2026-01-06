@@ -185,10 +185,10 @@
             font-weight: 700;
             color: #111827;
             text-align: center;
-            margin-bottom: 4px;
+            margin-top: 40px;
         }
 
-        .page-subtitle {
+        .page-subtitle p {
             font: 20px;
             color: #6e6e6e;
             margin-bottom: 40px;
